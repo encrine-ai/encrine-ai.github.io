@@ -1,0 +1,12 @@
+Police Marelle — fichier fonts/marelle.woff2, redistribué sans modification.
+
+[0] Copyright 2026 Ministère de l’Éducation nationale, de l’Enseignement supérieur et de la Recherche, Laurent Bourcellier, Jonathan Fabreguettes and Rosalie Wagner, with Reserved Font Name "Marelle".
+[1] Marelle
+[5] Version 1.005; ttfautohint (v1.8.4)
+[8] la Forge des communs numériques éducatifs
+[9] Laurent Bourcellier, Jonathan Fabreguettes, Rosalie Wagner
+[11] https://marelle.forge.apps.education.fr
+[13] This Font Software is licensed under the SIL Open Font License, Version 1.1. This license is available with a FAQ at: https://openfontlicense.org
+[14] https://openfontlicense.org
+
+Texte complet de la licence SIL Open Font License 1.1 : https://openfontlicense.org/open-font-license-official-text/
