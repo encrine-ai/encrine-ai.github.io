@@ -17,7 +17,7 @@ Comme pour Ludea, le domaine n'est déclaré qu'une fois, sur ce dépôt : les a
 
 ## Les adresses à tenir à jour
 
-En bas de `index.html`, l'objet `LIENS` porte le propriétaire et le nom du dépôt modèle (`encrine-ai` / `moteur`), le nom de ce dépôt (`encrine-ai.github.io`, pour « Signaler une classe », qui ouvre une issue ici) et l'adresse de la classe d'exemple, la démonstration que publie le dépôt modèle (`https://encrine.ai/moteur/`). Les liens de la page sont réécrits depuis cet objet ; les adresses écrites en dur dans le HTML ne servent qu'aux navigateurs sans JavaScript, à aligner si l'on change l'objet.
+En bas de `index.html`, l'objet `LIENS` porte le propriétaire et le nom du dépôt modèle (`encrine-ai` / `moteur`), le nom de ce dépôt (`encrine-ai.github.io`, pour « Signaler une classe », qui ouvre une issue ici) et l'adresse de la classe d'exemple, la démonstration, une classe à part (`encrine-ai/tour-du-monde`) (`https://encrine.ai/tour-du-monde/`). Les liens de la page sont réécrits depuis cet objet ; les adresses écrites en dur dans le HTML ne servent qu'aux navigateurs sans JavaScript, à aligner si l'on change l'objet.
 
 ## Les classes : `classes.json`
 
