@@ -29,7 +29,12 @@ En bas de `index.html`, l'objet `LIENS` porte le propriétaire et le nom du dép
 
 ## Les classes : `classes.json`
 
-La section « Les classes » est une galerie construite à partir de `classes.json`. La classe d’exemple (`"exemple": true`) vient toujours en premier, avec le badge « Classe d’exemple » ; les classes partagées suivent. Chaque carte prend les couleurs **de son thème** (la frise de ses milieux), jamais celles d'Encrine, et propose deux actions : « Voir la classe » (le site de l'enseignant) et « Partir de cette classe ». Ce bouton ouvre un panneau unique (`<dialog id="partir">`, Échap pour fermer), rempli pour la carte : créer son dépôt depuis le modèle (lien construit depuis `LIENS`), activer le site, puis taper `/nouvelle-classe <site>` dans Claude Code, avec un bouton « Copier ».
+La section « Les classes » est une galerie construite à partir de `classes.json`. La classe d’exemple (`"exemple": true`) vient toujours en premier, avec le badge « Classe d’exemple » ; les classes partagées suivent. Chaque carte prend les couleurs **de son thème** (la frise de ses milieux), jamais celles d'Encrine, et propose deux actions : « Voir la classe » (le site de l'enseignant) et « Partir de cette classe ». Les deux voies passent par le même panneau (`<dialog id="partir">`, un seul pour toute la page, rempli selon le bouton qui l'ouvre ; Échap pour fermer, le focus revient au bouton) :
+
+- **« Créer ma classe »** (en-tête, haut de page, appel final) l'ouvre pour le modèle `moteur`, « Créer votre classe » : créer son dépôt depuis le modèle (lien construit depuis `LIENS`), activer le site (*Settings* → *Pages* → *Source* : *GitHub Actions*), puis taper `/nouvelle-classe` dans Claude Code, avec un bouton « Copier ». Sans JavaScript, le bouton reste un lien direct vers le modèle sur GitHub.
+- **« Partir de cette classe »** l'ouvre pour la carte. Chaque classe partagée est elle-même un modèle GitHub : on crée son dépôt depuis **celle-ci** (`github.com/new?template_owner=<propriétaire>&template_name=<dépôt>`, tiré du champ `depot`), on active le site, puis on tape `/nouvelle-classe`, sans adresse : l'agent voit de quelle classe il part, annonce ce qu'il garde et cite la classe d'origine.
+
+Le bouton « Partir de cette classe » n'apparaît que si la fiche a un `depot` et une licence qui permet la reprise : CC BY ou CC BY-SA (ni NC, ni ND). Le dépôt d'une classe partagée doit donc être marqué *Template repository* dans ses réglages.
 
 ```json
 {
@@ -45,10 +50,10 @@ La section « Les classes » est une galerie construite à partir de `classes.js
       "accroche": "Un conte par période…",                // facultatif : une ou deux phrases sur la classe
       "milieux": [ { "nom": "les contes de randonnée", "couleur": "#7a4b9c", "semaines": 7 } ],  // une entrée par période, couleur du thème, semaines dans la zone
       "auteur": "M. Martin",                              // nom ou pseudonyme, au choix de l'auteur
-      "licence": "CC BY-SA 4.0",                          // par défaut
+      "licence": "CC BY-SA 4.0",                          // par défaut ; CC BY ou CC BY-SA pour que la classe puisse être reprise
       "licence_note": "sauf les pictogrammes ARASAAC, sous leur propre licence",  // facultatif : les exceptions
-      "site": "https://…",                                // le site de la classe, et le lien donné à /nouvelle-classe
-      "depot": "https://github.com/…",                    // le dépôt de la classe
+      "site": "https://…",                                // le site de la classe (« Voir la classe »)
+      "depot": "martin/il-etait-une-fois",                // facultatif : le dépôt de la classe, « propriétaire/dépôt », marqué Template repository ; sans lui, pas de « Partir de cette classe »
       "verifie": { "attendus": "120/120", "pdf": 140, "pagination": true, "le": "2027-09-20" },  // facultatif (absent pour la classe d'exemple, en cours d'écriture)
       "partagee_le": "2027-09-21"                         // facultatif
     }
@@ -56,7 +61,7 @@ La section « Les classes » est une galerie construite à partir de `classes.js
 }
 ```
 
-(Exemple fictif ; les commentaires ne sont qu'explicatifs : le fichier est du JSON strict. Aujourd'hui la liste ne contient que la classe d'exemple, « Le tour du monde » ; sous sa carte, un message dit que les premières classes partagées apparaîtront ici.)
+(Exemple fictif ; les commentaires ne sont qu'explicatifs : le fichier est du JSON strict. Aujourd'hui la liste ne contient que la classe d'exemple, « Le tour du monde », avec `"depot": "encrine-ai/tour-du-monde"` ; sous sa carte, un message dit que les premières classes partagées apparaîtront ici.)
 
 ### Ajouter une classe
 

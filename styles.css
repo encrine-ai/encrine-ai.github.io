@@ -350,11 +350,13 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .classe__accroche { margin: 0; font-size: 15px; color: var(--ardoise-douce); }
 .classe__actions { margin-top: var(--pas-2); }
 
-/* ——— Le panneau « Partir de cette classe » ——— */
+/* ——— Le panneau « Créer votre classe » / « Partir de cette classe » ——— */
 .partir { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: var(--pas-5); border: 0; border-radius: var(--angle-carte); background: var(--feuille); color: var(--ardoise); box-shadow: 0 10px 0 rgba(29, 42, 58, 0.25); }
 .partir::backdrop { background: rgba(20, 28, 39, 0.55); }
 .partir__tete { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--pas-3); }
-.partir h3 { font-size: 20px; line-height: 1.25; font-weight: 700; min-width: 0; overflow-wrap: anywhere; }
+.partir h2 { font-size: 20px; line-height: 1.25; font-weight: 700; min-width: 0; overflow-wrap: anywhere; }
+.partir__intro { margin: var(--pas-3) 0 0; font-size: 15.5px; color: var(--ardoise-douce); }
+.partir [hidden] { display: none !important; }
 .partir__fermer { flex: none; width: 44px; height: 44px; margin: -8px -8px 0 0; border: 0; background: transparent; color: var(--ardoise); font: 400 30px/1 var(--font-texte); cursor: pointer; }
 .partir__etapes { list-style: none; margin: var(--pas-5) 0 0; padding: 0; counter-reset: pe; display: grid; gap: var(--pas-4); }
 .partir__etapes li { counter-increment: pe; display: grid; grid-template-columns: 34px minmax(0, 1fr); column-gap: var(--pas-3); font-size: 15.5px; color: var(--ardoise-douce); }

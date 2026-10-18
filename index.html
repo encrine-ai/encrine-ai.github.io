@@ -25,7 +25,7 @@
       <a href="#classes">Les classes</a>
       <a href="#capot">Sous le capot</a>
       <a href="#controles">Les contrôles</a>
-      <a class="bouton bouton--principal bouton--petit" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele">Créer ma classe</a>
+      <a class="bouton bouton--principal bouton--petit" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele" data-panneau="creer">Créer ma classe</a>
     </nav>
   </div>
 </header>
@@ -38,7 +38,7 @@
       <h1 id="titre">Case après case, votre année de classe.</h1>
       <p class="chapeau">Répondez à quelques questions, une par case : le niveau, la zone de vacances, le thème de l’année… Encrine fabrique la programmation, des progressions qui couvrent tout le programme, et le matériel de la classe, prêt à imprimer.</p>
       <div class="boutons">
-        <a class="bouton bouton--principal" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele">Créer ma classe</a>
+        <a class="bouton bouton--principal" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele" data-panneau="creer">Créer ma classe</a>
         <a class="bouton" href="https://encrine.ai/tour-du-monde/" data-lien="exemple">Voir une classe d’exemple</a>
       </div>
       <div class="chiffres chiffres--faits" aria-label="Ce que le moteur garantit pour chaque classe">
@@ -78,7 +78,7 @@
       <li class="etape">
         <div class="case" aria-hidden="true"><span class="case__etiquette">le modèle</span><span class="case__chiffre">1</span></div>
         <h3>Créez votre classe depuis le modèle</h3>
-        <p>Un clic sur « Créer ma classe », puis « Use this template ». Choisissez un dépôt <strong>public</strong> : c’est ce qui permet de mettre votre site en ligne.</p>
+        <p>Un clic sur « Créer ma classe », puis « Ouvrir le modèle » et « Use this template ». Choisissez un dépôt <strong>public</strong> : c’est ce qui permet de mettre votre site en ligne.</p>
       </li>
       <li class="etape">
         <div class="case case--sombre" aria-hidden="true"><span class="case__etiquette">le site</span><span class="case__chiffre">2</span></div>
@@ -105,7 +105,7 @@
       <article class="depart__voie">
         <span class="depart__etiquette depart__etiquette--galerie" aria-hidden="true">d’une classe</span>
         <h3>Partir d’une classe</h3>
-        <p>Choisissez dans <a href="#classes">la galerie</a> une classe qui vous plaît. L’entretien reprend son thème, ses cinq périodes, son style et ses choix de matériel, et son contenu si sa licence le permet. L’entretien ne vous demande ensuite que ce qui vous est propre : le niveau, l’année, la zone de vacances et le profil de la classe. Si votre niveau est différent (un CP qui part d’une Grande Section), le thème, les périodes et le style sont gardés, mais les progressions, les évaluations et les fiches sont réécrites pour votre niveau.</p>
+        <p>Choisissez dans <a href="#classes">la galerie</a> une classe qui vous plaît, et cliquez sur son bouton « Partir de cette classe ». Vous créez votre dépôt depuis cette classe, vous activez le site, puis vous tapez <code>/nouvelle-classe</code>, comme pour partir de zéro. L’entretien voit de quelle classe vous partez et vous annonce ce qu’il garde : son thème, ses cinq périodes, son style et son contenu. Il ne vous demande ensuite que ce qui vous est propre : le niveau, la zone de vacances, l’année et le profil de la classe. Si votre niveau est différent (un CP qui part d’une Grande Section), il réécrit les progressions et les fiches pour votre niveau. Et il cite la classe d’origine, comme le demande sa licence.</p>
       </article>
     </div>
     <div class="entretien">
@@ -250,20 +250,6 @@
     <div class="classes" id="liste-classes" aria-live="polite">
       <p class="classes__attente">Chargement des classes…</p>
     </div>
-    <dialog class="partir" id="partir" aria-labelledby="partir-titre">
-      <div class="partir__tete">
-        <h3 id="partir-titre">Partir de <span id="partir-classe">cette classe</span></h3>
-        <button class="partir__fermer" type="button" data-fermer aria-label="Fermer le panneau">×</button>
-      </div>
-      <ol class="partir__etapes">
-        <li><div><b>Créez votre classe depuis le modèle.</b> <a href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele">Ouvrir le modèle</a>, puis « Use this template », en dépôt <strong>public</strong>.</div></li>
-        <li><div><b>Activez votre site.</b> Dans les réglages du dépôt : <em>Settings</em> → <em>Pages</em> → <em>GitHub Actions</em>.</div></li>
-        <li><div><b>Lancez l’entretien.</b> Dans Claude Code, sur la branche <code>main</code>, tapez :
-          <span class="partir__commande"><code id="partir-commande"></code><button class="bouton bouton--petit" type="button" id="partir-copier">Copier</button></span>
-        </div></li>
-      </ol>
-      <p class="partir__note">L’entretien vous annonce ce qu’il reprend de cette classe, puis vous demande le niveau, la zone de vacances, l’année et le profil de votre classe.</p>
-    </dialog>
     <p class="classes__signaler"><a href="https://github.com/encrine-ai/encrine-ai.github.io/issues/new?title=Signaler%20une%20classe" data-lien="signaler">Signaler une classe</a> : un contenu qui pose problème, une image sans droits, une erreur dans le programme.</p>
   </div>
 </section>
@@ -460,12 +446,28 @@
   <div class="cadre">
     <h2 id="titre-appel">Votre classe commence à la case 1.</h2>
     <div class="boutons">
-      <a class="bouton bouton--principal" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele">Créer ma classe</a>
+      <a class="bouton bouton--principal" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele" data-panneau="creer">Créer ma classe</a>
       <a class="bouton" href="https://encrine.ai/tour-du-monde/" data-lien="exemple">Voir une classe d’exemple</a>
     </div>
   </div>
 </section>
 </main>
+
+<dialog class="partir" id="partir" aria-labelledby="partir-titre">
+  <div class="partir__tete">
+    <h2 id="partir-titre">Créer votre classe</h2>
+    <button class="partir__fermer" type="button" data-fermer aria-label="Fermer le panneau">×</button>
+  </div>
+  <p class="partir__intro" data-pour="creer">Trois étapes, puis l’entretien : l’agent vous pose ses questions une à une, et construit la classe avec vos réponses.</p>
+  <ol class="partir__etapes">
+    <li><div><b>Créez votre classe <span data-pour="creer">depuis le modèle</span><span data-pour="classe" hidden>depuis celle-ci</span>.</b> <a id="partir-lien" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur"><span data-pour="creer">Ouvrir le modèle</span><span data-pour="classe" hidden>Ouvrir cette classe</span></a>, puis « Use this template ». Choisissez un dépôt <strong>public</strong>.</div></li>
+    <li><div><b>Activez votre site.</b> Dans les réglages du dépôt : <em>Settings</em> → <em>Pages</em> → <em>Source</em> : <em>GitHub Actions</em>.</div></li>
+    <li><div><b>Lancez l’entretien.</b> <span data-pour="creer">Ouvrez le dépôt dans Claude Code, sur la branche <code>main</code>, et tapez :</span><span data-pour="classe" hidden>Dans Claude Code, sur la branche <code>main</code>, tapez juste :</span>
+      <span class="partir__commande"><code id="partir-commande">/nouvelle-classe</code><button class="bouton bouton--petit" type="button" id="partir-copier">Copier</button></span>
+    </div></li>
+  </ol>
+  <p class="partir__note" data-pour="classe" hidden>L’agent voit qu’il part de <span id="partir-origine">cette classe</span>, et vous annonce ce qu’il garde : le thème, les périodes, le style et le contenu. Il ne vous demande ensuite que votre niveau, votre zone de vacances, l’année et le profil de votre classe. Si votre niveau est différent, il réécrit les progressions et les fiches pour votre niveau. Et il cite la classe d’origine, comme le demande sa licence.</p>
+</dialog>
 
 <footer class="pied">
   <div class="cadre">
@@ -483,23 +485,72 @@ var LIENS = {
   accueil: 'encrine-ai.github.io',
   exemple: 'https://encrine.ai/tour-du-monde/'
 };
-var MODELE = 'https://github.com/new?template_owner=' + encodeURIComponent(LIENS.proprietaire) + '&template_name=' + encodeURIComponent(LIENS.modele);
+function gabarit(proprietaire, nom) { return 'https://github.com/new?template_owner=' + encodeURIComponent(proprietaire) + '&template_name=' + encodeURIComponent(nom); }
+var MODELE = gabarit(LIENS.proprietaire, LIENS.modele);
 document.querySelectorAll('[data-lien="modele"]').forEach(function (a) { a.href = MODELE; });
 document.querySelectorAll('[data-lien="exemple"]').forEach(function (a) { a.href = LIENS.exemple; });
 document.querySelectorAll('[data-lien="signaler"]').forEach(function (a) {
   a.href = 'https://github.com/' + LIENS.proprietaire + '/' + LIENS.accueil + '/issues/new?title=' + encodeURIComponent('Signaler une classe');
 });
 
-/* La galerie : classes.json. La classe d’exemple d’abord (exemple: true), puis
- * les classes partagées. Chaque carte prend les couleurs de son thème ; un seul
- * panneau « Partir de cette classe » sert à toutes les cartes. */
-(function () {
-  var liste = document.getElementById('liste-classes');
-  var panneau = document.getElementById('partir');
-  var nomClasse = document.getElementById('partir-classe');
+/* Le panneau : un seul <dialog>, rempli selon le bouton qui l’ouvre. « Créer
+ * ma classe » l’ouvre pour le modèle (partir de zéro), « Partir de cette
+ * classe » pour la classe de la carte, elle-même un modèle GitHub. Sans
+ * JavaScript, « Créer ma classe » garde son lien direct vers le modèle. */
+var panneau = (function () {
+  var dlg = document.getElementById('partir');
+  var titre = document.getElementById('partir-titre');
+  var lien = document.getElementById('partir-lien');
+  var origine = document.getElementById('partir-origine');
   var commande = document.getElementById('partir-commande');
   var copier = document.getElementById('partir-copier');
   var ouvreur = null;
+
+  function ouvrir(mode, bouton, c) {
+    ouvreur = bouton;
+    dlg.querySelectorAll('[data-pour]').forEach(function (el) { el.hidden = el.getAttribute('data-pour') !== mode; });
+    if (mode === 'classe') {
+      titre.textContent = 'Partir de « ' + c.titre + ' »';
+      origine.textContent = '« ' + c.titre + ' »';
+      lien.href = gabarit(c.depot.proprietaire, c.depot.nom);
+    } else {
+      titre.textContent = 'Créer votre classe';
+      lien.href = MODELE;
+    }
+    commande.textContent = '/nouvelle-classe';
+    copier.textContent = 'Copier';
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+  }
+  function fermer() {
+    if (!dlg.open) return;
+    if (dlg.close) dlg.close(); else { dlg.removeAttribute('open'); if (ouvreur) ouvreur.focus(); }
+  }
+  dlg.addEventListener('close', function () { if (ouvreur) ouvreur.focus(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.closest('[data-fermer]')) fermer(); });
+  dlg.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dlg.close) fermer(); });
+  function selectionner() { var r = document.createRange(); r.selectNodeContents(commande); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); }
+  copier.addEventListener('click', function () {
+    var fini = function () { copier.textContent = 'Copié'; setTimeout(function () { copier.textContent = 'Copier'; }, 1800); };
+    try { navigator.clipboard.writeText(commande.textContent).then(fini, selectionner); } catch (e) { selectionner(); }
+  });
+
+  /* « Créer ma classe » : le panneau ; un clic avec Ctrl, Cmd ou Maj garde le lien direct. */
+  document.querySelectorAll('[data-panneau="creer"]').forEach(function (a) {
+    a.setAttribute('aria-haspopup', 'dialog'); a.setAttribute('aria-controls', 'partir');
+    a.addEventListener('click', function (e) {
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault(); ouvrir('creer', a);
+    });
+  });
+  return { ouvrir: ouvrir };
+})();
+
+/* La galerie : classes.json. La classe d’exemple d’abord (exemple: true), puis
+ * les classes partagées. Chaque carte prend les couleurs de son thème. « Partir
+ * de cette classe » n’apparaît que si la fiche donne son dépôt (`depot`) et une
+ * licence qui permet la reprise (CC BY ou CC BY-SA). */
+(function () {
+  var liste = document.getElementById('liste-classes');
 
   function texte(balise, classe, contenu) {
     var el = document.createElement(balise);
@@ -511,25 +562,14 @@ document.querySelectorAll('[data-lien="signaler"]').forEach(function (a) {
     try { return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(iso + 'T00:00:00Z')); }
     catch (e) { return iso; }
   }
-
-  /* Le panneau : rempli pour la carte qui l’ouvre, fermé par Échap, par le
-   * bouton ou par un clic à côté ; le focus revient au bouton de la carte. */
-  function ouvrir(c, bouton) {
-    ouvreur = bouton;
-    nomClasse.textContent = '« ' + c.titre + ' »';
-    commande.textContent = '/nouvelle-classe ' + c.site;
-    copier.textContent = 'Copier';
-    if (typeof panneau.showModal === 'function') panneau.showModal(); else panneau.setAttribute('open', '');
+  /* « propriétaire/dépôt », ou l’adresse https://github.com/propriétaire/dépôt. */
+  function depot(d) {
+    if (typeof d !== 'string') return null;
+    var m = d.trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\/+$/, '').replace(/\.git$/, '').match(/^([A-Za-z0-9-]+)\/([A-Za-z0-9._-]+)$/);
+    return m ? { proprietaire: m[1], nom: m[2] } : null;
   }
-  function fermer() { if (panneau.open) { if (panneau.close) panneau.close(); else panneau.removeAttribute('open'); } }
-  panneau.addEventListener('close', function () { if (ouvreur) ouvreur.focus(); });
-  panneau.addEventListener('click', function (e) { if (e.target === panneau || e.target.hasAttribute('data-fermer')) fermer(); });
-  panneau.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panneau.close) fermer(); });
-  function selectionner() { var r = document.createRange(); r.selectNodeContents(commande); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); }
-  copier.addEventListener('click', function () {
-    var fini = function () { copier.textContent = 'Copié'; setTimeout(function () { copier.textContent = 'Copier'; }, 1800); };
-    try { navigator.clipboard.writeText(commande.textContent).then(fini, selectionner); } catch (e) { selectionner(); }
-  });
+  /* CC BY ou CC BY-SA : ni NC, ni ND. */
+  function reprenable(licence) { return /^CC BY(-SA)?(\s|$)/i.test(licence || ''); }
 
   function carte(c) {
     var art = texte('article', 'classe' + (c.exemple ? ' classe--exemple' : ''));
@@ -556,10 +596,13 @@ document.querySelectorAll('[data-lien="signaler"]').forEach(function (a) {
     art.appendChild(texte('p', 'classe__meta', meta));
     var actions = texte('div', 'boutons classe__actions');
     var voir = texte('a', 'bouton bouton--principal bouton--petit', 'Voir la classe'); voir.href = c.site; actions.appendChild(voir);
-    var partir = texte('button', 'bouton bouton--petit', 'Partir de cette classe'); partir.type = 'button';
-    partir.setAttribute('aria-haspopup', 'dialog'); partir.setAttribute('aria-controls', 'partir');
-    partir.addEventListener('click', function () { ouvrir(c, partir); });
-    actions.appendChild(partir);
+    var d = depot(c.depot);
+    if (d && reprenable(c.licence)) {
+      var partir = texte('button', 'bouton bouton--petit', 'Partir de cette classe'); partir.type = 'button';
+      partir.setAttribute('aria-haspopup', 'dialog'); partir.setAttribute('aria-controls', 'partir');
+      partir.addEventListener('click', function () { panneau.ouvrir('classe', partir, { titre: c.titre, depot: d }); });
+      actions.appendChild(partir);
+    }
     art.appendChild(actions);
     return art;
   }
