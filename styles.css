@@ -4,6 +4,39 @@
  * ne servent qu'aux cases. Mise en page : une colonne de texte, le
  * parcours de cases à droite ; sur téléphone, tout s'empile.
  */
+/* Unbounded et Figtree : les fichiers de Google Fonts (latin, latin étendu), servis par le site. */
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(fonts/figtree-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url(fonts/figtree-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+  src: url(fonts/unbounded-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+  src: url(fonts/unbounded-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 @font-face {
   font-family: "Marelle";
   src: url("fonts/marelle.woff2") format("woff2");
@@ -95,6 +128,8 @@ a { color: inherit; }
 .nav { display: flex; align-items: center; gap: var(--pas-5); font-weight: 600; font-size: 15px; }
 .nav a { text-decoration: none; }
 .nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.nav__github { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; white-space: nowrap; }
+.nav__icone { flex: none; }
 
 /* ——— Boutons : des cases ——— */
 .bouton {
@@ -210,6 +245,34 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .pied { padding-block: 40px 56px; border-top: 1px solid var(--trait); font-size: 13.5px; color: var(--ardoise-douce); }
 .pied .cadre { display: grid; gap: var(--pas-3); }
 .pied p { margin: 0; max-width: 60em; }
+.pied__liens ul { list-style: none; margin: 0 0 var(--pas-2); padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 0; font-size: 15px; font-weight: 600; color: var(--ardoise); }
+.pied__liens li { display: inline-flex; align-items: center; }
+.pied__liens li + li::before { content: "·"; padding: 0 12px; color: var(--ardoise-douce); }
+.pied__liens a { display: inline-flex; align-items: center; min-height: 32px; text-underline-offset: 4px; }
+.pied__liens a[aria-current] { text-decoration: none; }
+.pied__copyright { font-weight: 600; }
+
+/* ——— Les pages de texte : contact, mentions légales, confidentialité ——— */
+.texte { padding-block: 32px 72px; }
+.texte .cadre { max-width: calc(46em + 40px); }
+.texte h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.1; font-weight: 700; letter-spacing: -0.015em; margin: 0 0 var(--pas-4); overflow-wrap: anywhere; }
+.texte .chapeau { margin: 0 0 var(--pas-6); font-size: 19px; color: var(--ardoise-douce); }
+.texte section { margin-top: var(--pas-6); }
+.texte h2 { font-size: 21px; line-height: 1.25; font-weight: 700; margin: 0 0 var(--pas-3); }
+.texte p, .texte li { color: var(--ardoise-douce); }
+.texte p { margin: 0 0 var(--pas-3); }
+.texte ul { margin: 0 0 var(--pas-3); padding-left: 1.2em; display: grid; gap: var(--pas-2); }
+.texte b, .texte strong, .texte a:not(.bouton) { color: var(--ardoise); }
+.texte a:not(.bouton) { font-weight: 600; overflow-wrap: anywhere; }
+.texte code { font: 600 0.9em ui-monospace, "SFMono-Regular", Menlo, monospace; background: var(--feuille); padding: 1px 5px; border-radius: 4px; color: var(--ardoise); }
+.texte__courriel { margin: 0 0 var(--pas-6); }
+.texte__courriel .bouton { overflow-wrap: anywhere; }
+.texte__cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--pas-4); }
+.texte__cartes section { margin: 0; background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
+.texte__cartes section:first-child { box-shadow: inset 6px 0 0 var(--case-ocre); }
+.texte__cartes h2 { font-size: 19px; }
+.texte__cartes p:last-child { margin-bottom: 0; }
+.texte__date { margin-top: var(--pas-6); font-size: 14.5px; }
 
 /* ——— Sommaire ——— */
 .sommaire { padding-block: 0 var(--pas-6); }
@@ -305,7 +368,7 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 
 /* ——— Téléphone ——— */
 @media (max-width: 1100px) {
-  .nav a:not(.bouton) { display: none; }
+  .nav a:not(.bouton):not(.nav__github) { display: none; }
   .fonctions, .skills, .controles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .controle--encre { grid-column: 1 / -1; }
 }
@@ -320,8 +383,9 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
-  .nav a:not(.bouton) { display: none; }
+  .nav a:not(.bouton):not(.nav__github) { display: none; }
   .marque img { height: 44px; }
+  .nav { gap: var(--pas-4); }
   .section { padding-block: 52px; }
   .chiffres { grid-template-columns: 1fr; gap: var(--pas-4); }
   .etapes { grid-template-columns: 1fr; }
@@ -349,6 +413,11 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .classe__badge { justify-self: start; margin: var(--pas-2) 0 -4px; padding: 2px 10px; border-radius: var(--angle-pastille); background: var(--case-ocre); color: var(--sur-case-sombre); font: 700 12.5px/1.6 var(--font-texte); }
 .classe__accroche { margin: 0; font-size: 15px; color: var(--ardoise-douce); }
 .classe__actions { margin-top: var(--pas-2); }
+
+@media (max-width: 480px) {
+  .entete .cadre { flex-wrap: wrap; row-gap: 12px; padding-block: 16px; }
+  .entete .nav { flex: 1 0 100%; justify-content: space-between; }
+}
 
 /* ——— Le panneau « Créer votre classe » / « Partir de cette classe » ——— */
 .partir { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: var(--pas-5); border: 0; border-radius: var(--angle-carte); background: var(--feuille); color: var(--ardoise); box-shadow: 0 10px 0 rgba(29, 42, 58, 0.25); }

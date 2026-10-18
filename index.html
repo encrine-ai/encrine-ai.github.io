@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Encrine — votre année de classe, case après case</title>
 <meta name="description" content="Répondez à quelques questions : Encrine fabrique la programmation, des progressions qui couvrent le programme, et tout le matériel de la classe, prêt à imprimer.">
-<link rel="icon" href="assets/icone-encrine.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600..900&family=Figtree:wght@400..800&display=swap">
+<link rel="icon" href="assets/icone-onglet.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icone-encrine.svg">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,13 +17,14 @@
       <img class="clair" src="assets/logo-encrine.svg" alt="encrine" width="661" height="221">
       <img class="sombre" src="assets/logo-encrine-craie.svg" alt="encrine" width="661" height="221">
     </a>
-    <nav class="nav" aria-label="Sections de la page">
+    <nav class="nav" aria-label="Menu principal">
       <a href="#comment">Comment ça marche</a>
       <a href="#recu">Ce que vous recevez</a>
       <a href="#classes">Les classes</a>
       <a href="#capot">Sous le capot</a>
       <a href="#controles">Les contrôles</a>
       <a class="bouton bouton--principal bouton--petit" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele" data-panneau="creer">Créer ma classe</a>
+      <a class="nav__github" href="https://github.com/encrine-ai"><svg class="nav__icone" viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
     </nav>
   </div>
 </header>
@@ -471,8 +470,17 @@
 
 <footer class="pied">
   <div class="cadre">
+    <nav class="pied__liens" aria-label="Informations">
+      <ul>
+        <li><a href="contact/">Contact</a></li>
+        <li><a href="mentions-legales/">Mentions légales</a></li>
+        <li><a href="confidentialite/">Confidentialité</a></li>
+        <li><a href="https://github.com/encrine-ai">GitHub</a></li>
+      </ul>
+    </nav>
     <p>Encrine ne demande et ne garde aucune donnée d’élève : ni prénom, ni liste de classe.</p>
-    <p>Polices : Marelle (ministère de l’Éducation nationale ; Laurent Bourcellier, Jonathan Fabreguettes, Rosalie Wagner), Unbounded et Figtree, toutes trois sous licence libre SIL Open Font License 1.1. Photographies de l’imagier : iNaturalist, sous licences libres, créditées dans chaque cahier.</p>
+    <p>Polices : Marelle (ministère de l’Éducation nationale ; Laurent Bourcellier, Jonathan Fabreguettes, Rosalie Wagner), Unbounded et Figtree, toutes trois sous licence libre SIL Open Font License 1.1, servies par le site lui-même. Photographies de l’imagier : iNaturalist, sous licences libres, créditées dans chaque cahier.</p>
+    <p class="pied__copyright">© 2026 Encrine</p>
   </div>
 </footer>
 
@@ -542,6 +550,12 @@ var panneau = (function () {
       e.preventDefault(); ouvrir('creer', a);
     });
   });
+  /* Les autres pages (contact, mentions légales…) mènent ici par « #creer ». */
+  if (location.hash === '#creer') {
+    var premier = document.querySelector('[data-panneau="creer"]');
+    if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
+    if (premier) ouvrir('creer', premier);
+  }
   return { ouvrir: ouvrir };
 })();
 

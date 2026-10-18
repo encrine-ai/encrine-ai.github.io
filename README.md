@@ -2,7 +2,7 @@
 
 Le site https://encrine.ai : il explique le principe, guide l'enseignant qui veut créer sa classe, et montre « Les classes » que des enseignants ont choisi de partager. Une classe partagée reste dans le dépôt de son auteur, qui peut la retirer à tout moment ; cette page n'en garde qu'une fiche.
 
-Site statique, sans étape de fabrication : `index.html`, `styles.css`, `classes.json` (les classes partagées), `assets/` (logos, icône), `fonts/` (Marelle, auto-hébergée). Unbounded et Figtree viennent de Google Fonts. Le style suit le design system Encrine, « Le parcours ».
+Site statique, sans étape de fabrication : `index.html`, `styles.css`, `classes.json` (les classes partagées), les trois pages `contact/`, `mentions-legales/` et `confidentialite/`, `assets/` (logos ; `icone-onglet.svg`, l'icône d'onglet, les trois cases sans fond ; `icone-encrine.svg`, la même sur fond ardoise, pour `apple-touch-icon`, où un fond est obligatoire), `fonts/` (Marelle, Unbounded et Figtree, toutes servies par le site : aucune requête vers un service tiers, ce que la page Confidentialité affirme). Le style suit le design system Encrine, « Le parcours ».
 
 ## Mettre en ligne
 
@@ -17,11 +17,21 @@ Comme pour Ludea, le domaine n'est déclaré qu'une fois, sur ce dépôt : les a
 
 ## Les sections de la page
 
-Dans l’ordre : le héros, « Sur cette page » (le sommaire), Comment ça marche (les deux façons de commencer, puis les questions de l’entretien), Ce que vous recevez (neuf cases, chacune avec « Le détail » qui se déplie), Vos retours, Les classes (la galerie), Sous le capot (les quatorze skills du moteur), Les contrôles, Ce qui est prêt, l’appel final.
+Dans l’ordre : l’en-tête (le menu, « Créer ma classe », GitHub), le héros, « Sur cette page » (le sommaire), Comment ça marche (les deux façons de commencer, puis les questions de l’entretien), Ce que vous recevez (neuf cases, chacune avec « Le détail » qui se déplie), Vos retours, Les classes (la galerie), Sous le capot (les quatorze skills du moteur), Les contrôles, Ce qui est prêt, l’appel final, le pied de page (les liens vers les trois autres pages).
 
 Chaque chose ne se dit qu’à un endroit. Les garanties (le programme couvert, une page par fiche, le choix des photos, les licences, les skills mesurés) ne se détaillent que dans Les contrôles ; ailleurs, un renvoi « voir Les contrôles ». La boucle des retours et la mise à jour du moteur vivent dans Vos retours, le partage dans Les classes : les cartes des skills correspondants, dans Sous le capot, y renvoient sans les répéter. L’ancre `#fonctionnalites` reste valable : elle mène à Ce que vous recevez.
 
 Ce que vous recevez, Sous le capot et Les contrôles décrivent le moteur (`encrine-ai/moteur`) : chaque phrase y a été vérifiée dans son `README.md`, ses skills (`.claude/skills/*/SKILL.md`) et ses scripts. Quand le moteur change (un skill ajouté, un contrôle nouveau), ces trois sections se mettent à jour avec lui ; une chose prévue mais pas prête n’y entre pas. Les chiffres sont ceux du moteur, jamais ceux d’une classe (159 : les attendus de la liste de Grande Section, `referentiel/cycle1-gs.yml`).
+
+## Les autres pages
+
+Trois pages de texte, avec le même en-tête et le même pied que l'accueil, et `styles.css` (les règles `.texte`) :
+
+- `contact/` : hello@encrine.ai ; un problème dans une classe de la galerie, le mode retours pour l'enseignant qui a sa classe, le moteur et ses issues pour les développeurs ;
+- `mentions-legales/` : l'éditeur (NORRECRAFT), le directeur de la publication, l'hébergeur (GitHub Pages), la propriété intellectuelle, le signalement d'un contenu ;
+- `confidentialite/` : la politique de confidentialité (RGPD). Elle affirme que le site n'a ni compte, ni formulaire, ni cookie, ni mesure d'audience, ni publicité, ni service tiers : tout ajout d'un script, d'une police ou d'un outil extérieur doit d'abord la mettre à jour.
+
+Le pied de page (Contact · Mentions légales · Confidentialité · GitHub · © 2026 Encrine) et le lien GitHub de l'en-tête sont recopiés dans les quatre pages : une modification se fait partout. Dans les trois pages, « Créer ma classe » mène à `../#creer`, qui ouvre le panneau sur l'accueil.
 
 ## Les adresses à tenir à jour
 
@@ -75,4 +85,4 @@ L'auteur le demande, ou retire lui-même son dépôt : son enregistrement est en
 
 ## Licences
 
-Marelle, Unbounded et Figtree sont sous SIL Open Font License 1.1 (`fonts/LICENCE-Marelle.txt`). Le nom « encrine » du logo est tracé depuis Marelle.
+Marelle, Unbounded et Figtree sont sous SIL Open Font License 1.1 (`fonts/LICENCE-Marelle.txt`, `fonts/LICENCE-Unbounded.txt`, `fonts/LICENCE-Figtree.txt`). Unbounded et Figtree sont les fichiers de Google Fonts (sous-ensembles latin et latin étendu), copiés dans `fonts/`. Le nom « encrine » du logo est tracé depuis Marelle.
