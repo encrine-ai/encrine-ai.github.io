@@ -318,6 +318,17 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .ancre { display: block; position: relative; top: -16px; }
 .niveau-fiche { white-space: nowrap; padding: 1px 8px; border: 1.5px solid var(--trait-fort); border-radius: var(--angle-pastille); font-weight: 700; font-size: 13.5px; color: var(--ardoise); }
 
+/* ——— L'appli installable, en bas de « Ce que vous recevez » ——— */
+.appli { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: var(--pas-6); align-items: center; margin-top: var(--pas-7); padding: var(--pas-6); background: #1d2a3a; color: #efece5; border-radius: var(--angle-carte); }
+.appli .surtitre { color: #e0a526; }
+.appli h3 { font: 700 clamp(22px, 2.6vw, 30px)/1.15 var(--font-titre); color: #efece5; }
+.appli p { margin: var(--pas-3) 0 0; font-size: 15.5px; line-height: 1.55; }
+.appli .renvoi a { color: #efece5; }
+.appli__etapes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--pas-3); counter-reset: a; }
+.appli__etapes li { counter-increment: a; position: relative; padding: var(--pas-3) var(--pas-4) var(--pas-3) 52px; background: rgba(255, 255, 255, .07); font-size: 15px; line-height: 1.5; }
+.appli__etapes li::before { content: counter(a); position: absolute; left: 14px; top: 12px; width: 26px; height: 26px; display: grid; place-items: center; background: #e0a526; color: #1d2a3a; font: 900 14px/1 var(--font-titre); transform: rotate(-3deg); }
+@media (max-width: 860px) { .appli { grid-template-columns: minmax(0, 1fr); padding: var(--pas-5); } }
+
 /* ——— Sous le capot ——— */
 .mecanique { list-style: none; margin: var(--pas-6) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-6); counter-reset: m; }
 .mecanique li { position: relative; background: var(--craie); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
