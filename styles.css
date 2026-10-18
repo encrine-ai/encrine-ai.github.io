@@ -232,8 +232,8 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .entretien__liste li:nth-child(even)::before { transform: translateY(6px) rotate(3deg); }
 .entretien__liste b { color: var(--ardoise); }
 
-/* ——— Ce que vous recevez : neuf cases, chacune son détail à déplier ——— */
-.fonctions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-4); margin-top: var(--pas-7); align-items: start; }
+/* ——— Ce que vous recevez : neuf cases, leurs points toujours visibles ——— */
+.fonctions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-4); margin-top: var(--pas-7); align-items: stretch; }
 .fonction { background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
 .fonction__case { display: inline-flex; align-items: flex-end; justify-content: flex-start; width: 48px; height: 48px; padding: 0 0 4px 7px; color: var(--sur-case-clair); font: 900 24px/1 var(--font-titre); box-shadow: var(--ombre-case); transform: rotate(-3deg); }
 .fonction:nth-child(even) .fonction__case { transform: rotate(2.5deg); }
@@ -241,13 +241,7 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .fonction__case.case--encre { background: var(--case-encre); }
 .fonction h3 { margin-top: var(--pas-4); font-size: 18px; line-height: 1.25; font-weight: 700; }
 .fonction__phrase { margin: var(--pas-2) 0 0; font-size: 15.5px; color: var(--ardoise-douce); }
-.detail { margin-top: var(--pas-4); border-top: 1.5px dashed var(--trait); }
-.detail summary { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: var(--pas-2); cursor: pointer; list-style: none; font-weight: 700; font-size: 15px; }
-.detail summary::-webkit-details-marker { display: none; }
-.detail summary::before { content: "+"; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; flex: none; background: var(--ardoise); color: var(--craie); font: 800 16px/1 var(--font-titre); transform: rotate(-4deg); }
-.detail[open] summary::before { content: "−"; transform: rotate(3deg); }
-.detail summary:hover { text-decoration: underline; text-underline-offset: 4px; }
-.fonction ul { list-style: none; margin: var(--pas-2) 0 0; padding: 0; display: grid; gap: var(--pas-2); }
+.fonction ul { list-style: none; margin: var(--pas-4) 0 0; border-top: 1.5px dashed var(--trait); padding: var(--pas-3) 0 0; display: grid; gap: var(--pas-2); }
 .fonction li { position: relative; padding-left: 20px; font-size: 15px; line-height: 1.5; color: var(--ardoise-douce); }
 .fonction li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; background: var(--ardoise); transform: rotate(-8deg); }
 .fonction li strong { color: var(--ardoise); }
