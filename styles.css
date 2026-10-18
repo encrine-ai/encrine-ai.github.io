@@ -129,6 +129,7 @@ a { color: inherit; }
 .nav a { text-decoration: none; }
 .nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .nav__github { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; white-space: nowrap; }
+.nav a.nav__github:hover { text-decoration: none; }
 .nav__icone { flex: none; }
 
 /* ——— Boutons : des cases ——— */
@@ -416,7 +417,7 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 
 @media (max-width: 480px) {
   .entete .cadre { flex-wrap: wrap; row-gap: 12px; padding-block: 16px; }
-  .entete .nav { flex: 1 0 100%; justify-content: space-between; }
+  .entete .nav { flex: 0 0 auto; margin-left: auto; }
 }
 
 /* ——— Le panneau « Créer votre classe » / « Partir de cette classe » ——— */
