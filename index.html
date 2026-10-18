@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
 
 <header class="entete">
   <div class="cadre">
@@ -28,7 +29,7 @@
   </div>
 </header>
 
-<main>
+<main id="contenu" tabindex="-1">
 <section class="heros" aria-labelledby="titre">
   <div class="cadre">
     <div class="heros__texte">
@@ -488,6 +489,7 @@
         <li><a href="contact/">Contact</a></li>
         <li><a href="mentions-legales/">Mentions légales</a></li>
         <li><a href="confidentialite/">Confidentialité</a></li>
+        <li><a href="design/">Design system</a></li>
         <li><a href="https://github.com/encrine-ai">GitHub</a></li>
       </ul>
     </nav>
@@ -497,157 +499,6 @@
   </div>
 </footer>
 
-<script>
-/* Les adresses de la page, en un seul endroit : le modèle de classe, la classe
- * d’exemple (la démonstration du modèle), et le dépôt de cette page (pour signaler une classe). */
-var LIENS = {
-  proprietaire: 'encrine-ai',
-  modele: 'moteur',
-  accueil: 'encrine-ai.github.io',
-  exemple: 'https://encrine.ai/tour-du-monde/'
-};
-function gabarit(proprietaire, nom) { return 'https://github.com/new?template_owner=' + encodeURIComponent(proprietaire) + '&template_name=' + encodeURIComponent(nom); }
-var MODELE = gabarit(LIENS.proprietaire, LIENS.modele);
-document.querySelectorAll('[data-lien="modele"]').forEach(function (a) { a.href = MODELE; });
-document.querySelectorAll('[data-lien="exemple"]').forEach(function (a) { a.href = LIENS.exemple; });
-document.querySelectorAll('[data-lien="signaler"]').forEach(function (a) {
-  a.href = 'https://github.com/' + LIENS.proprietaire + '/' + LIENS.accueil + '/issues/new?title=' + encodeURIComponent('Signaler une classe');
-});
-
-/* Le panneau : un seul <dialog>, rempli selon le bouton qui l’ouvre. « Créer
- * ma classe » l’ouvre pour le modèle (partir de zéro), « Partir de cette
- * classe » pour la classe de la carte, elle-même un modèle GitHub. Sans
- * JavaScript, « Créer ma classe » garde son lien direct vers le modèle. */
-var panneau = (function () {
-  var dlg = document.getElementById('partir');
-  var titre = document.getElementById('partir-titre');
-  var lien = document.getElementById('partir-lien');
-  var origine = document.getElementById('partir-origine');
-  var commande = document.getElementById('partir-commande');
-  var copier = document.getElementById('partir-copier');
-  var ouvreur = null;
-
-  function ouvrir(mode, bouton, c) {
-    ouvreur = bouton;
-    dlg.querySelectorAll('[data-pour]').forEach(function (el) { el.hidden = el.getAttribute('data-pour') !== mode; });
-    if (mode === 'classe') {
-      titre.textContent = 'Partir de « ' + c.titre + ' »';
-      origine.textContent = '« ' + c.titre + ' »';
-      lien.href = gabarit(c.depot.proprietaire, c.depot.nom);
-    } else {
-      titre.textContent = 'Créer votre classe';
-      lien.href = MODELE;
-    }
-    commande.textContent = '/nouvelle-classe';
-    copier.textContent = 'Copier';
-    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
-  }
-  function fermer() {
-    if (!dlg.open) return;
-    if (dlg.close) dlg.close(); else { dlg.removeAttribute('open'); if (ouvreur) ouvreur.focus(); }
-  }
-  dlg.addEventListener('close', function () { if (ouvreur) ouvreur.focus(); });
-  dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.closest('[data-fermer]')) fermer(); });
-  dlg.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !dlg.close) fermer(); });
-  function selectionner() { var r = document.createRange(); r.selectNodeContents(commande); var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r); }
-  copier.addEventListener('click', function () {
-    var fini = function () { copier.textContent = 'Copié'; setTimeout(function () { copier.textContent = 'Copier'; }, 1800); };
-    try { navigator.clipboard.writeText(commande.textContent).then(fini, selectionner); } catch (e) { selectionner(); }
-  });
-
-  /* « Créer ma classe » : le panneau ; un clic avec Ctrl, Cmd ou Maj garde le lien direct. */
-  document.querySelectorAll('[data-panneau="creer"]').forEach(function (a) {
-    a.setAttribute('aria-haspopup', 'dialog'); a.setAttribute('aria-controls', 'partir');
-    a.addEventListener('click', function (e) {
-      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
-      e.preventDefault(); ouvrir('creer', a);
-    });
-  });
-  /* Les autres pages (contact, mentions légales…) mènent ici par « #creer ». */
-  if (location.hash === '#creer') {
-    var premier = document.querySelector('[data-panneau="creer"]');
-    if (history.replaceState) history.replaceState(null, '', location.pathname + location.search);
-    if (premier) ouvrir('creer', premier);
-  }
-  return { ouvrir: ouvrir };
-})();
-
-/* La galerie : classes.json. La classe d’exemple d’abord (exemple: true), puis
- * les classes partagées. Chaque carte prend les couleurs de son thème. « Partir
- * de cette classe » n’apparaît que si la fiche donne son dépôt (`depot`) et une
- * licence qui permet la reprise (CC BY ou CC BY-SA). */
-(function () {
-  var liste = document.getElementById('liste-classes');
-
-  function texte(balise, classe, contenu) {
-    var el = document.createElement(balise);
-    if (classe) el.className = classe;
-    if (contenu != null) el.textContent = contenu;
-    return el;
-  }
-  function date(iso) {
-    try { return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(iso + 'T00:00:00Z')); }
-    catch (e) { return iso; }
-  }
-  /* « propriétaire/dépôt », ou l’adresse https://github.com/propriétaire/dépôt. */
-  function depot(d) {
-    if (typeof d !== 'string') return null;
-    var m = d.trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\/+$/, '').replace(/\.git$/, '').match(/^([A-Za-z0-9-]+)\/([A-Za-z0-9._-]+)$/);
-    return m ? { proprietaire: m[1], nom: m[2] } : null;
-  }
-  /* CC BY ou CC BY-SA : ni NC, ni ND. */
-  function reprenable(licence) { return /^CC BY(-SA)?(\s|$)/i.test(licence || ''); }
-
-  function carte(c) {
-    var art = texte('article', 'classe' + (c.exemple ? ' classe--exemple' : ''));
-    var frise = texte('div', 'frise'); frise.setAttribute('aria-hidden', 'true');
-    var legende = texte('div', 'frise-legende'); legende.setAttribute('aria-hidden', 'true');
-    c.milieux.forEach(function (m) {
-      var b = document.createElement('span'); b.style.flex = m.semaines; b.style.background = m.couleur; frise.appendChild(b);
-      var l = texte('span', null, m.nom); l.style.flex = m.semaines; legende.appendChild(l);
-    });
-    art.appendChild(frise); art.appendChild(legende);
-    if (c.exemple) art.appendChild(texte('p', 'classe__badge', 'Classe d’exemple'));
-    art.appendChild(texte('h3', 'classe__titre', c.titre));
-    art.appendChild(texte('p', 'classe__sous', c.niveau + ' · ' + c.annee + ' · zone ' + c.zone));
-    if (c.accroche) art.appendChild(texte('p', 'classe__accroche', c.accroche));
-    art.appendChild(texte('p', 'cache', 'Les périodes : ' + c.milieux.map(function (m) { return m.nom; }).join(', ') + '.'));
-    if (c.verifie) {
-      var faits = texte('ul', 'classe__faits');
-      [c.verifie.attendus ? c.verifie.attendus + ' attendus du programme couverts' : null, c.verifie.pdf ? c.verifie.pdf + ' PDF' : null,
-       c.verifie.pagination ? 'une page par fiche, vérifiée' : null].forEach(function (f) { if (f) faits.appendChild(texte('li', null, f)); });
-      if (faits.children.length) art.appendChild(faits);
-    }
-    var meta = 'Par ' + c.auteur + ' · licence ' + c.licence + (c.licence_note ? ' (' + c.licence_note + ')' : '');
-    if (c.partagee_le) meta += ' · partagée le ' + date(c.partagee_le);
-    art.appendChild(texte('p', 'classe__meta', meta));
-    var actions = texte('div', 'boutons classe__actions');
-    var voir = texte('a', 'bouton bouton--principal bouton--petit', 'Voir la classe'); voir.href = c.site; actions.appendChild(voir);
-    var d = depot(c.depot);
-    if (d && reprenable(c.licence)) {
-      var partir = texte('button', 'bouton bouton--petit', 'Partir de cette classe'); partir.type = 'button';
-      partir.setAttribute('aria-haspopup', 'dialog'); partir.setAttribute('aria-controls', 'partir');
-      partir.addEventListener('click', function () { panneau.ouvrir('classe', partir, { titre: c.titre, depot: d }); });
-      actions.appendChild(partir);
-    }
-    art.appendChild(actions);
-    return art;
-  }
-
-  fetch('classes.json').then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
-    liste.textContent = '';
-    var classes = d.classes.slice().sort(function (a, b) { return (b.exemple ? 1 : 0) - (a.exemple ? 1 : 0); });
-    classes.forEach(function (c) { liste.appendChild(carte(c)); });
-    if (!classes.some(function (c) { return !c.exemple; })) {
-      liste.appendChild(texte('p', 'classes__attente', 'Les premières classes partagées apparaîtront ici. Une fois votre classe prête, l’outil vous propose de la partager : rien n’est mis en ligne sans votre accord.'));
-    }
-  }).catch(function () {
-    liste.textContent = '';
-    var p = texte('p', 'classes__attente', 'La liste des classes ne s’est pas chargée. ');
-    var a = texte('a', null, 'Voir une classe d’exemple'); a.href = LIENS.exemple; p.appendChild(a);
-    liste.appendChild(p);
-  });
-})();
-</script>
+<script src="site.js"></script>
 </body>
 </html>

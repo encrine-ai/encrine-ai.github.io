@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Design system — Encrine</title>
+<meta name="description" content="Le style de la marque Encrine : le logo, les couleurs, les polices, les composants et le ton, lus dans les fichiers mêmes du site.">
+<link rel="icon" href="../assets/icone-onglet.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/icone-encrine.svg">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+
+<header class="entete">
+  <div class="cadre">
+    <a class="marque" href="../" aria-label="Encrine, accueil">
+      <img class="clair" src="../assets/logo-encrine.svg" alt="encrine" width="661" height="221">
+      <img class="sombre" src="../assets/logo-encrine-craie.svg" alt="encrine" width="661" height="221">
+    </a>
+    <nav class="nav" aria-label="Menu principal">
+      <a href="../#comment">Comment ça marche</a>
+      <a href="../#recu">Ce que vous recevez</a>
+      <a href="../#classes">Les classes</a>
+      <a href="../#capot">Sous le capot</a>
+      <a href="../#controles">Les contrôles</a>
+      <a class="nav__github" href="https://github.com/encrine-ai"><svg class="nav__icone" viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu" tabindex="-1" class="ds">
+
+<section class="ds-tete" aria-labelledby="titre">
+  <div class="cadre">
+    <div>
+      <p class="surtitre">Design system · Le parcours</p>
+      <h1 id="titre">Le style d’Encrine, case après case.</h1>
+      <p class="chapeau">C’est le style de la marque Encrine, pour la page d’accueil et la documentation : son logo, ses couleurs, ses polices, ses composants et son ton.</p>
+      <p class="ds-tete__suite">Chaque classe a son propre design system, choisi par son enseignant parmi trois maquettes de mini-site. Celui-ci est le style du moteur, pas celui des classes. Toutes les valeurs de cette page sont lues dans <code>styles.css</code> et dans <code>assets/</code> : elles ne peuvent pas s’écarter de ce que le site affiche.</p>
+      <div class="chiffres" aria-label="Le design system en chiffres">
+        <div><b data-compte="cases">9</b><small>couleurs de case, une par case du parcours</small></div>
+        <div><b>3</b><small>polices libres, servies par le site</small></div>
+        <div><b>2</b><small>thèmes, clair et sombre</small></div>
+      </div>
+      <div class="ds-theme" role="group" aria-label="Voir la page en thème clair ou sombre">
+        <p class="ds-theme__titre">Voir la page en</p>
+        <button class="bouton bouton--petit" type="button" data-theme-choix="light" aria-pressed="false">Clair</button>
+        <button class="bouton bouton--petit" type="button" data-theme-choix="dark" aria-pressed="false">Sombre</button>
+        <button class="bouton bouton--petit" type="button" data-theme-choix="" aria-pressed="true">Comme l’appareil</button>
+      </div>
+    </div>
+    <ol class="ds-marelle" aria-hidden="true">
+      <li class="gauche" style="background:var(--case-encre)">encre</li>
+      <li class="droite case--sombre" style="background:var(--case-ciel)">ciel</li>
+      <li class="seule" style="background:var(--case-rouge)">rouge</li>
+      <li class="gauche" style="background:var(--case-violet)">violet</li>
+      <li class="droite" style="background:var(--case-turquoise)">turquoise</li>
+      <li class="seule case--sombre" style="background:var(--case-ocre)">ocre</li>
+      <li class="gauche case--sombre" style="background:var(--case-rose)">rose</li>
+      <li class="droite" style="background:var(--case-vert)">vert</li>
+      <li class="seule" style="background:var(--case-bleu)">bleu</li>
+    </ol>
+  </div>
+</section>
+
+<nav class="sommaire" aria-label="Sur cette page">
+  <div class="cadre">
+    <p class="sommaire__titre">Sur cette page</p>
+    <ol class="sommaire__liste">
+      <li><a href="#logo"><span class="sommaire__case" style="background:var(--case-rouge)" aria-hidden="true"></span>Le logo</a></li>
+      <li><a href="#couleurs"><span class="sommaire__case" style="background:var(--case-ocre)" aria-hidden="true"></span>Les couleurs</a></li>
+      <li><a href="#polices"><span class="sommaire__case" style="background:var(--case-violet)" aria-hidden="true"></span>Les polices</a></li>
+      <li><a href="#formes"><span class="sommaire__case" style="background:var(--case-bleu)" aria-hidden="true"></span>Les espaces et les formes</a></li>
+      <li><a href="#composants"><span class="sommaire__case" style="background:var(--case-vert)" aria-hidden="true"></span>Les composants</a></li>
+      <li><a href="#ton"><span class="sommaire__case" style="background:var(--case-turquoise)" aria-hidden="true"></span>Le ton</a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- ——— Le logo ——— -->
+<section class="section section--feuille ds-section" id="logo" aria-labelledby="titre-logo">
+  <div class="cadre">
+    <p class="surtitre">1 · Le logo</p>
+    <h2 id="titre-logo">Quatre cases posées de travers, et un nom à la craie.</h2>
+    <p class="intro">Le symbole, ce sont quatre cases de marelle, une, deux, une, comme on les trace dans la cour ; aucune n’est droite. Le nom, « encrine », en minuscules, est tracé dans Marelle, la cursive scolaire. Le logo existe en deux fichiers : à l’encre ardoise pour les fonds clairs, à la craie pour les fonds sombres. Le site passe de l’un à l’autre tout seul.</p>
+    <div class="ds-planches ds-planches--2">
+      <figure class="ds-planche ds-fichier">
+        <div class="ds-logo ds-logo--clair"><img src="../assets/logo-encrine.svg" alt="Le logo d’Encrine, à l’encre ardoise" width="661" height="221"></div>
+        <figcaption><b>assets/logo-encrine.svg</b>Sur la craie et les fonds clairs. <a href="../assets/logo-encrine.svg">Ouvrir le fichier</a></figcaption>
+      </figure>
+      <figure class="ds-planche ds-fichier">
+        <div class="ds-logo ds-logo--sombre"><img src="../assets/logo-encrine-craie.svg" alt="Le logo d’Encrine, à la craie" width="661" height="221"></div>
+        <figcaption><b>assets/logo-encrine-craie.svg</b>Sur l’ardoise et le thème sombre. <a href="../assets/logo-encrine-craie.svg">Ouvrir le fichier</a></figcaption>
+      </figure>
+    </div>
+
+    <div class="ds-planches ds-planches--2">
+      <div class="ds-planche">
+        <h3>Les quatre cases</h3>
+        <p>Lues dans le fichier du logo, de haut en bas : chaque case a sa couleur de case et son angle, et une ombre portée, comme les cases du site.</p>
+        <ul class="ds-anatomie" data-anatomie="../assets/logo-encrine.svg"><li>Lecture du fichier…</li></ul>
+      </div>
+      <div class="ds-planche">
+        <h3>La zone de protection</h3>
+        <p>Autour du logo, laisser vide <strong>au moins la largeur d’une case</strong>. Le logo entier ne descend pas sous <strong>32 px de haut</strong> (l’en-tête du téléphone le montre à 40 px, 32 une fois resserré) ; en dessous, on prend l’icône.</p>
+        <div class="ds-protection bascule"><span><img class="clair" src="../assets/logo-encrine.svg" alt="" width="661" height="221"><img class="sombre" src="../assets/logo-encrine-craie.svg" alt="" width="661" height="221"></span></div>
+      </div>
+    </div>
+
+    <h3 class="ds-sous-titre">Les icônes</h3>
+    <p class="intro">L’icône d’onglet ne garde que trois cases, sans fond, pour rester lisible à 16 px. Celle de l’écran du téléphone pose les mêmes cases sur un fond ardoise, parce que l’écran d’accueil exige un fond.</p>
+    <div class="ds-planches ds-planches--2">
+      <figure class="ds-planche ds-fichier">
+        <div class="ds-scene" style="margin:0;border-radius:0">
+          <div class="ds-onglet-barre"><div class="ds-onglet" style="margin:0"><img src="../assets/icone-onglet.svg" alt="" width="16" height="16"><span>Encrine — votre année de classe, case après case</span></div></div>
+          <div class="ds-icones">
+            <figure><img src="../assets/icone-onglet.svg" alt="" width="16" height="16">16 px</figure>
+            <figure><img src="../assets/icone-onglet.svg" alt="" width="32" height="32">32 px</figure>
+            <figure><img src="../assets/icone-onglet.svg" alt="" width="64" height="64">64 px</figure>
+            <figure><img src="../assets/icone-onglet.svg" alt="L’icône d’onglet : trois cases sans fond" width="112" height="112">112 px</figure>
+          </div>
+        </div>
+        <figcaption><b>assets/icone-onglet.svg</b>L’icône d’onglet (<code>rel="icon"</code>) : les cases <span data-couleurs-de="../assets/icone-onglet.svg">rouge, ocre et bleue</span>, sans fond. <a href="../assets/icone-onglet.svg">Ouvrir le fichier</a></figcaption>
+      </figure>
+      <figure class="ds-planche ds-fichier">
+        <div class="ds-scene" style="margin:0;border-radius:0">
+          <div class="ds-ecran">
+            <figure><span class="ds-ecran__autre"></span>Photos</figure>
+            <figure><img src="../assets/icone-encrine.svg" alt="L’icône de l’écran d’accueil : trois cases sur fond ardoise" width="64" height="64">Encrine</figure>
+            <figure><span class="ds-ecran__autre"></span>Notes</figure>
+          </div>
+          <div class="ds-icones">
+            <figure><img src="../assets/icone-encrine.svg" alt="" width="40" height="40">40 px</figure>
+            <figure><img src="../assets/icone-encrine.svg" alt="" width="76" height="76">76 px</figure>
+            <figure><img src="../assets/icone-encrine.svg" alt="" width="112" height="112">112 px</figure>
+          </div>
+        </div>
+        <figcaption><b>assets/icone-encrine.svg</b>L’icône de l’écran du téléphone (<code>apple-touch-icon</code>) : les mêmes cases sur fond ardoise. <a href="../assets/icone-encrine.svg">Ouvrir le fichier</a></figcaption>
+      </figure>
+    </div>
+
+    <h3 class="ds-sous-titre">Ce qu’on ne fait pas</h3>
+    <p class="intro">Le logo se pose tel quel, sur la craie ou sur l’ardoise. On ne le redessine pas, on ne l’écrit pas dans une autre police.</p>
+    <div class="ds-interdits">
+      <figure class="ds-interdit ds-interdit--deforme"><div><img src="../assets/logo-encrine.svg" alt="" width="661" height="221"></div><figcaption>Ne pas le déformer, ni l’étirer.</figcaption></figure>
+      <figure class="ds-interdit ds-interdit--couleur"><div><img src="../assets/logo-encrine.svg" alt="" width="661" height="221"></div><figcaption>Ne pas le recolorer : les cases gardent leurs couleurs.</figcaption></figure>
+      <figure class="ds-interdit ds-interdit--effet"><div><img src="../assets/logo-encrine.svg" alt="" width="661" height="221"></div><figcaption>Ne pas ajouter de contour, d’ombre ni d’effet.</figcaption></figure>
+      <figure class="ds-interdit ds-interdit--fond"><div><img src="../assets/logo-encrine.svg" alt="" width="661" height="221"></div><figcaption>Ne pas le poser sur une couleur de case.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ——— Les couleurs ——— -->
+<section class="section ds-section" id="couleurs" aria-labelledby="titre-couleurs">
+  <div class="cadre">
+    <p class="surtitre">2 · Les couleurs</p>
+    <h2 id="titre-couleurs">La craie, l’ardoise, et les couleurs des cases.</h2>
+    <p class="intro">Un fond de craie, des cartes de feuille, une encre ardoise : c’est tout le texte du site. Les couleurs vives ne servent qu’aux cases. En sombre, la craie et l’ardoise échangent leurs rôles ; les cases ne changent pas. Chaque pastille est peinte avec la variable elle-même ; les deux petits carrés montrent sa valeur en clair et en sombre.</p>
+
+    <h3 class="ds-sous-titre">Le fond et l’encre</h3>
+    <div class="ds-teintes">
+      <figure class="ds-teinte"><div class="ds-teinte__pastille" style="background:var(--craie)"><span class="ds-teinte__duo" data-duo="craie"></span></div><figcaption><b>Craie</b><code>--craie</code><p class="ds-teinte__valeurs" data-valeurs="craie">—</p><p class="ds-teinte__role">Le fond de la page, et l’encre en sombre.</p></figcaption></figure>
+      <figure class="ds-teinte"><div class="ds-teinte__pastille" style="background:var(--feuille)"><span class="ds-teinte__duo" data-duo="feuille"></span></div><figcaption><b>Feuille</b><code>--feuille</code><p class="ds-teinte__valeurs" data-valeurs="feuille">—</p><p class="ds-teinte__role">Les cartes, et une section sur deux.</p></figcaption></figure>
+      <figure class="ds-teinte"><div class="ds-teinte__pastille" style="background:var(--ardoise)"><span class="ds-teinte__duo" data-duo="ardoise"></span></div><figcaption><b>Ardoise</b><code>--ardoise</code><p class="ds-teinte__valeurs" data-valeurs="ardoise">—</p><p class="ds-teinte__role">Le texte, les titres, le bouton principal, l’encre du logo.</p></figcaption></figure>
+      <figure class="ds-teinte"><div class="ds-teinte__pastille" style="background:var(--ardoise-douce)"><span class="ds-teinte__duo" data-duo="ardoise-douce"></span></div><figcaption><b>Ardoise douce</b><code>--ardoise-douce</code><p class="ds-teinte__valeurs" data-valeurs="ardoise-douce">—</p><p class="ds-teinte__role">Le texte courant des cartes, les chapeaux, les légendes.</p></figcaption></figure>
+      <figure class="ds-teinte"><div class="ds-teinte__pastille" style="background:var(--trait)"><span class="ds-teinte__duo" data-duo="trait"></span></div><figcaption><b>Trait</b><code>--trait</code><p class="ds-teinte__valeurs" data-valeurs="trait">—</p><p class="ds-teinte__role">Les filets : le pied, l’en-tête descendu, les pointillés.</p></figcaption></figure>
+      <figure class="ds-teinte"><div class="ds-teinte__pastille" style="background:var(--trait-fort)"><span class="ds-teinte__duo" data-duo="trait-fort"></span></div><figcaption><b>Trait fort</b><code>--trait-fort</code><p class="ds-teinte__valeurs" data-valeurs="trait-fort">—</p><p class="ds-teinte__role">Le cerne du lien GitHub, les pastilles « Plus tard ».</p></figcaption></figure>
+    </div>
+
+    <h3 class="ds-sous-titre">Les cases</h3>
+    <p class="intro">Huit couleurs vives et la case d’encre, une par case du parcours. Chacune a son texte : blanc, ou ardoise sur les trois plus claires. Le contraste est calculé ici, sur les valeurs du fichier.</p>
+    <div class="ds-cases">
+      <figure class="ds-case"><div class="ds-case__case" style="background:var(--case-bleu)" aria-hidden="true"><span>bleu</span><span>1</span></div><figcaption><b>Bleu</b><code>--case-bleu</code><p class="ds-teinte__valeurs" data-valeurs="case-bleu">—</p><span data-contraste="case-bleu sur-case-clair"></span></figcaption></figure>
+      <figure class="ds-case"><div class="ds-case__case case--sombre" style="background:var(--case-rose)" aria-hidden="true"><span>rose</span><span>2</span></div><figcaption><b>Rose</b><code>--case-rose</code><p class="ds-teinte__valeurs" data-valeurs="case-rose">—</p><span data-contraste="case-rose sur-case-sombre"></span></figcaption></figure>
+      <figure class="ds-case"><div class="ds-case__case" style="background:var(--case-vert)" aria-hidden="true"><span>vert</span><span>3</span></div><figcaption><b>Vert</b><code>--case-vert</code><p class="ds-teinte__valeurs" data-valeurs="case-vert">—</p><span data-contraste="case-vert sur-case-clair"></span></figcaption></figure>
+      <figure class="ds-case"><div class="ds-case__case case--sombre" style="background:var(--case-ocre)" aria-hidden="true"><span>ocre</span><span>4</span></div><figcaption><b>Ocre</b><code>--case-ocre</code><p class="ds-teinte__valeurs" data-valeurs="case-ocre">—</p><span data-contraste="case-ocre sur-case-sombre"></span></figcaption></figure>
+      <figure class="ds-case"><div class="ds-case__case" style="background:var(--case-violet)" aria-hidden="true"><span>violet</span><span>5</span></div><figcaption><b>Violet</b><code>--case-violet</code><p class="ds-teinte__valeurs" data-valeurs="case-violet">—</p><span data-contraste="case-violet sur-case-clair"></span></figcaption></figure>
+      <figure class="ds-case"><div class="ds-case__case" style="background:var(--case-turquoise)" aria-hidden="true"><span>turquoise</span><span>6</span></div><figcaption><b>Turquoise</b><code>--case-turquoise</code><p class="ds-teinte__valeurs" data-valeurs="case-turquoise">—</p><span data-contraste="case-turquoise sur-case-clair"></span></figcaption></figure>
+      <figure class="ds-case"><div class="ds-case__case" style="background:var(--case-rouge)" aria-hidden="true"><span>rouge</span><span>7</span></div><figcaption><b>Rouge</b><code>--case-rouge</code><p class="ds-teinte__valeurs" data-valeurs="case-rouge">—</p><span data-contraste="case-rouge sur-case-clair"></span></figcaption></figure>
+      <figure class="ds-case"><div class="ds-case__case" style="background:var(--case-encre)" aria-hidden="true"><span>encre</span><span>8</span></div><figcaption><b>Encre</b><code>--case-encre</code><p class="ds-teinte__valeurs" data-valeurs="case-encre">—</p><span data-contraste="case-encre sur-case-clair"></span></figcaption></figure>
+      <figure class="ds-case"><div class="ds-case__case case--sombre" style="background:var(--case-ciel)" aria-hidden="true"><span>ciel</span><span>✓</span></div><figcaption><b>Ciel</b><code>--case-ciel</code><p class="ds-teinte__valeurs" data-valeurs="case-ciel">—</p><span data-contraste="case-ciel sur-case-sombre"></span></figcaption></figure>
+    </div>
+
+    <h3 class="ds-sous-titre">Le texte sur les cases</h3>
+    <div class="ds-teintes">
+      <figure class="ds-teinte"><div class="ds-teinte__pastille" style="background:var(--sur-case-clair)"><span class="ds-teinte__duo" data-duo="sur-case-clair"></span></div><figcaption><b>Sur case claire</b><code>--sur-case-clair</code><p class="ds-teinte__valeurs" data-valeurs="sur-case-clair">—</p><p class="ds-teinte__role">Le texte blanc des cases foncées.</p></figcaption></figure>
+      <figure class="ds-teinte"><div class="ds-teinte__pastille" style="background:var(--sur-case-sombre)"><span class="ds-teinte__duo" data-duo="sur-case-sombre"></span></div><figcaption><b>Sur case sombre</b><code>--sur-case-sombre</code><p class="ds-teinte__valeurs" data-valeurs="sur-case-sombre">—</p><p class="ds-teinte__role">Le texte ardoise du rose, de l’ocre et du ciel ; le fond du bloc appli.</p></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ——— Les polices ——— -->
+<section class="section section--feuille ds-section" id="polices" aria-labelledby="titre-polices">
+  <div class="cadre">
+    <p class="surtitre">3 · Les polices</p>
+    <h2 id="titre-polices">Trois polices libres, servies par le site lui-même.</h2>
+    <p class="intro">Unbounded pour les titres et les chiffres, Figtree pour le texte, Marelle pour le nom et les étiquettes. Toutes trois sont sous licence libre SIL Open Font License 1.1 et servies depuis <code>fonts/</code> : aucune requête vers un service extérieur, comme le promet la page Confidentialité.</p>
+
+    <div class="ds-planches">
+      <article class="ds-planche ds-police">
+        <div>
+          <p class="ds-specimen ds-specimen--titre">Case après case.</p>
+          <p class="ds-specimen ds-specimen--chiffres">0 1 2 3 4 5 6 7 8 9</p>
+        </div>
+        <dl class="ds-fiche" data-police="Unbounded">
+          <dt>Police</dt><dd><b>Unbounded</b></dd>
+          <dt>Rôle</dt><dd>Les titres, les chiffres, les numéros des cases.</dd>
+          <dt>Variable</dt><dd><code>--font-titre</code> : <span data-valeur="--font-titre">—</span></dd>
+          <dt>Graisses</dt><dd data-graisses>—</dd>
+          <dt>Fichiers</dt><dd data-fichiers>—</dd>
+          <dt>Licence</dt><dd>SIL OFL 1.1 · <span data-auteur="../fonts/LICENCE-Unbounded.txt"></span> <a href="../fonts/LICENCE-Unbounded.txt">la licence</a></dd>
+        </dl>
+      </article>
+      <article class="ds-planche ds-police">
+        <div>
+          <p class="ds-specimen ds-specimen--texte">Répondez à quelques questions, une par case : le niveau, la zone de vacances, le thème de l’année… Encrine fabrique le reste.</p>
+          <ul class="ds-graisses" data-graisses-figtree>
+            <li style="font-weight:400">Aa<small>400</small></li>
+            <li style="font-weight:600">Aa<small>600</small></li>
+            <li style="font-weight:700">Aa<small>700</small></li>
+            <li style="font-weight:800">Aa<small>800</small></li>
+          </ul>
+        </div>
+        <dl class="ds-fiche" data-police="Figtree">
+          <dt>Police</dt><dd><b>Figtree</b></dd>
+          <dt>Rôle</dt><dd>Le texte, les boutons, les menus.</dd>
+          <dt>Variable</dt><dd><code>--font-texte</code> : <span data-valeur="--font-texte">—</span></dd>
+          <dt>Graisses</dt><dd data-graisses>—</dd>
+          <dt>Fichiers</dt><dd data-fichiers>—</dd>
+          <dt>Licence</dt><dd>SIL OFL 1.1 · <span data-auteur="../fonts/LICENCE-Figtree.txt"></span> <a href="../fonts/LICENCE-Figtree.txt">la licence</a></dd>
+        </dl>
+      </article>
+      <article class="ds-planche ds-police">
+        <div>
+          <p class="ds-specimen ds-specimen--cursive">le niveau, la zone, Prêt !</p>
+          <p class="ds-legende">La cursive scolaire de l’Éducation nationale, celle qu’apprennent les élèves. Le nom « encrine » du logo est tracé avec elle.</p>
+        </div>
+        <dl class="ds-fiche" data-police="Marelle">
+          <dt>Police</dt><dd><b>Marelle</b></dd>
+          <dt>Rôle</dt><dd>Le nom, les étiquettes des cases, les titres du sommaire.</dd>
+          <dt>Variable</dt><dd><code>--font-cursive</code> : <span data-valeur="--font-cursive">—</span></dd>
+          <dt>Fichiers</dt><dd data-fichiers>—</dd>
+          <dt>Licence</dt><dd>SIL OFL 1.1 · ministère de l’Éducation nationale ; Laurent Bourcellier, Jonathan Fabreguettes, Rosalie Wagner. <a href="../fonts/LICENCE-Marelle.txt">la licence</a></dd>
+        </dl>
+      </article>
+    </div>
+
+    <h3 class="ds-sous-titre">L’échelle des textes</h3>
+    <p class="intro">Chaque ligne est l’élément réel du site, avec sa classe ; la mesure à gauche est relevée dans la page, à la largeur de votre écran.</p>
+    <ul class="ds-echelle">
+      <li><p><b>Surtitre</b><code>.surtitre</code><span class="ds-echelle__mesure" data-mesure></span></p><p class="surtitre">Comment ça marche</p></li>
+      <li><p><b>Titre de page</b><code>h1</code><span class="ds-echelle__mesure" data-mesure></span></p><p class="ds-echelle__h1" aria-hidden="true">Case après case.</p></li>
+      <li><p><b>Titre de section</b><code>.section h2</code><span class="ds-echelle__mesure" data-mesure></span></p><p class="ds-echelle__h2" aria-hidden="true">Tout le matériel de l’année.</p></li>
+      <li><p><b>Titre de carte</b><code>.etape h3</code><span class="ds-echelle__mesure" data-mesure></span></p><div class="etape"><p class="ds-echelle__h3" aria-hidden="true">Lancez l’entretien</p></div></li>
+      <li><p><b>Chapeau</b><code>.chapeau</code><span class="ds-echelle__mesure" data-mesure></span></p><p class="chapeau">Répondez à quelques questions, une par case.</p></li>
+      <li><p><b>Texte</b><code>body</code><span class="ds-echelle__mesure" data-mesure></span></p><p class="ds-echelle__corps">Encrine travaille dans votre propre espace : votre classe vous appartient.</p></li>
+      <li><p><b>Étiquette</b><code>.sommaire__titre</code><span class="ds-echelle__mesure" data-mesure></span></p><p class="sommaire__titre">Sur cette page</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ——— Les espaces et les formes ——— -->
+<section class="section ds-section" id="formes" aria-labelledby="titre-formes">
+  <div class="cadre">
+    <p class="surtitre">4 · Les espaces et les formes</p>
+    <h2 id="titre-formes">Des cases carrées, des cartes arrondies, une ombre franche.</h2>
+    <p class="intro">Les cases et les boutons sont carrés, comme à la craie ; les cartes ont des coins arrondis ; les pastilles sont rondes. L’ombre ne flotte pas : elle tombe droit, sans flou, sous la case. Et chaque case penche un peu, jamais plus de quatre degrés.</p>
+    <div class="ds-planches ds-planches--3">
+      <div class="ds-planche">
+        <h3>Les pas</h3>
+        <p>Les marges et les écarts ne prennent que ces valeurs.</p>
+        <ul class="ds-pas" data-pas></ul>
+      </div>
+      <div class="ds-planche">
+        <h3>Les angles</h3>
+        <p>Trois formes, pas davantage.</p>
+        <div class="ds-formes">
+          <figure><i></i><span>Case, bouton : <code>0</code></span></figure>
+          <figure><i style="border-radius:var(--angle-carte)"></i><span><code>--angle-carte</code> <span data-valeur="--angle-carte"></span></span></figure>
+          <figure><i style="border-radius:var(--angle-pastille);height:36px"></i><span><code>--angle-pastille</code> <span data-valeur="--angle-pastille"></span></span></figure>
+        </div>
+        <p class="ds-legende">La page tient dans <code>--largeur</code> : <span data-valeur="--largeur"></span>.</p>
+      </div>
+      <div class="ds-planche">
+        <h3>Les ombres</h3>
+        <p>Pleines et sans flou, plus foncées en sombre.</p>
+        <div class="ds-ombres">
+          <figure><span class="case" style="width:64px;height:64px;background:var(--case-turquoise);transform:rotate(-2deg)" aria-hidden="true"></span><span><code>--ombre-case</code><br><span class="ds-teinte__valeurs" data-valeurs="ombre-case"></span></span></figure>
+          <figure><span class="bouton bouton--principal bouton--petit" aria-hidden="true">Bouton</span><span><code>--ombre-bouton</code><br><span class="ds-teinte__valeurs" data-valeurs="ombre-bouton"></span></span></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— Les composants ——— -->
+<section class="section section--feuille ds-section" id="composants" aria-labelledby="titre-composants">
+  <div class="cadre">
+    <p class="surtitre">5 · Les composants</p>
+    <h2 id="titre-composants">Les pièces du site, avec leurs vraies classes.</h2>
+    <p class="intro">Ce qui suit n’est pas un dessin : ce sont les composants de la page d’accueil, avec les classes de <code>styles.css</code>. Ce que vous voyez ici est exactement ce que le site affiche.</p>
+
+    <div class="ds-planches">
+      <div class="ds-planche">
+        <h3>La case</h3>
+        <p>Le motif de tout le site : un carré de couleur, une étiquette en cursive, un chiffre en Unbounded, une ombre franche et une légère rotation, jamais la même d’une case à l’autre.</p>
+        <div class="ds-scene ds-scene--feuille">
+          <ol class="etapes" aria-label="Exemple : les quatre cases de Comment ça marche">
+            <li class="etape"><div class="case" aria-hidden="true"><span class="case__etiquette">le modèle</span><span class="case__chiffre">1</span></div><h3>Créez votre classe depuis le modèle</h3><p>Un clic sur « Créer ma classe », puis « Use this template ».</p></li>
+            <li class="etape"><div class="case case--sombre" aria-hidden="true"><span class="case__etiquette">le site</span><span class="case__chiffre">2</span></div><h3>Activez votre site</h3><p>Rubrique <em>Pages</em>, choisissez <em>GitHub Actions</em>.</p></li>
+            <li class="etape"><div class="case" aria-hidden="true"><span class="case__etiquette">l’entretien</span><span class="case__chiffre">3</span></div><h3>Lancez l’entretien</h3><p>Tapez <code>/nouvelle-classe</code>.</p></li>
+            <li class="etape"><div class="case case--sombre" aria-hidden="true"><span class="case__etiquette">la classe</span><span class="case__chiffre">4</span></div><h3>Répondez, imprimez</h3><p>Vous jugez sur le papier.</p></li>
+          </ol>
+        </div>
+        <p class="ds-legende"><code>.etapes</code> <code>.etape</code> <code>.case</code> <code>.case--sombre</code> <code>.case__etiquette</code> <code>.case__chiffre</code> · rotations relevées : <span data-rotations=".ds-scene .etape .case">—</span> · ombre <code>--ombre-case</code></p>
+      </div>
+
+      <div class="ds-planches ds-planches--2" style="margin-top:0">
+        <div class="ds-planche">
+          <h3>Les boutons</h3>
+          <p>Des cases, eux aussi : carrés, 54 px de haut (44 en petit). Le principal est plein, avec une ombre qui s’efface à l’appui ; le second est cerné.</p>
+          <div class="ds-scene">
+            <div class="boutons">
+              <a class="bouton bouton--principal" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur" data-lien="modele" data-panneau="creer">Créer ma classe</a>
+              <a class="bouton" href="https://encrine.ai/tour-du-monde/" data-lien="exemple">Voir une classe d’exemple</a>
+            </div>
+            <div class="boutons" style="margin-top:var(--pas-4)">
+              <span class="bouton bouton--principal bouton--petit">Voir la classe</span>
+              <span class="bouton bouton--petit">Copier</span>
+            </div>
+          </div>
+          <p class="ds-legende"><code>.boutons</code> <code>.bouton</code> <code>.bouton--principal</code> <code>.bouton--petit</code> · « Créer ma classe » ouvre ici le vrai panneau.</p>
+        </div>
+        <div class="ds-planche">
+          <h3>Le lien GitHub et les pastilles</h3>
+          <p>GitHub est un lien discret, cerné d’un filet fin, sans fond ; sa cible garde 44 px de haut pour le doigt. Les pastilles disent un état.</p>
+          <div class="ds-scene">
+            <div class="nav"><a class="nav__github" href="https://github.com/encrine-ai"><svg class="nav__icone" viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a></div>
+            <p style="margin:var(--pas-4) 0 0"><span class="etiquette-etat etiquette-etat--pret">Prête</span><span class="etiquette-etat etiquette-etat--bientot">Bientôt</span><span class="etiquette-etat etiquette-etat--plus-tard">Plus tard</span></p>
+            <p style="margin:var(--pas-4) 0 0"><span class="entretien__etiquette">l’entretien</span>&nbsp;&nbsp;<span class="depart__etiquette">de zéro</span>&nbsp;&nbsp;<span class="depart__etiquette depart__etiquette--galerie">d’une classe</span></p>
+          </div>
+          <p class="ds-legende"><code>.nav__github</code> · <code>.etiquette-etat--pret</code> <code>--bientot</code> <code>--plus-tard</code> · <code>.entretien__etiquette</code> <code>.depart__etiquette</code></p>
+        </div>
+      </div>
+
+      <div class="ds-planche">
+        <h3>L’en-tête</h3>
+        <p>Toujours visible, collé en haut de l’écran : le logo, qui ramène en haut, le menu, et GitHub. Une fois la page descendue, il prend un filet et se resserre : sur ordinateur, il remonte de <span data-valeur="--entete-retrait">—</span> sur <span data-valeur="--entete-haut">—</span>, sans rien déplacer dans la page, et le logo rapetisse un peu. Sur téléphone, une seule ligne, et le menu se déplie dans un panneau.</p>
+        <div class="ds-scene" inert>
+          <div class="entete entete--descendu" aria-hidden="true">
+            <div class="cadre">
+              <span class="marque"><img class="clair" src="../assets/logo-encrine.svg" alt="" width="661" height="221"><img class="sombre" src="../assets/logo-encrine-craie.svg" alt="" width="661" height="221"></span>
+              <div class="nav"><a class="nav__github" href="https://github.com/encrine-ai" tabindex="-1"><svg class="nav__icone" viewBox="0 0 16 16" width="20" height="20" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a></div>
+            </div>
+          </div>
+        </div>
+        <p class="ds-legende"><code>.entete</code> <code>.entete--descendu</code> <code>.marque</code> <code>.nav</code> · <code>position: sticky</code> · les ancres s’arrêtent juste dessous (<code>scroll-margin-top</code>).</p>
+      </div>
+
+      <div class="ds-planches ds-planches--2" style="margin-top:0">
+        <div class="ds-planche">
+          <h3>Le sommaire en cases</h3>
+          <p>En tête des pages longues : une petite case de couleur par section, posée de travers.</p>
+          <div class="ds-scene">
+            <ol class="sommaire__liste">
+              <li><a href="#logo"><span class="sommaire__case" style="background:var(--case-rouge)" aria-hidden="true"></span>Le logo</a></li>
+              <li><a href="#couleurs"><span class="sommaire__case" style="background:var(--case-ocre)" aria-hidden="true"></span>Les couleurs</a></li>
+              <li><a href="#polices"><span class="sommaire__case" style="background:var(--case-violet)" aria-hidden="true"></span>Les polices</a></li>
+            </ol>
+          </div>
+          <p class="ds-legende"><code>.sommaire</code> <code>.sommaire__liste</code> <code>.sommaire__case</code></p>
+        </div>
+        <div class="ds-planche">
+          <h3>La case d’étape de l’entretien</h3>
+          <p>Les questions numérotées dans de petites cases ardoise, qui penchent tour à tour.</p>
+          <div class="ds-scene ds-scene--feuille">
+            <div class="entretien" style="grid-template-columns:minmax(0,1fr);gap:var(--pas-5)">
+              <div class="entretien__tete"><span class="entretien__etiquette" aria-hidden="true">l’entretien</span></div>
+              <ol class="entretien__liste">
+                <li><span><b>Le niveau</b> de la classe, et ce qu’Encrine sait déjà en faire.</span></li>
+                <li><span><b>L’année scolaire et votre zone de vacances</b> : A, B ou C.</span></li>
+                <li><span><b>Le thème de l’année</b>, puis un milieu par période.</span></li>
+              </ol>
+            </div>
+          </div>
+          <p class="ds-legende"><code>.entretien</code> <code>.entretien__etiquette</code> <code>.entretien__liste</code></p>
+        </div>
+      </div>
+
+      <div class="ds-planches ds-planches--2" style="margin-top:0">
+        <div class="ds-planche">
+          <h3>Une carte « Ce que vous recevez »</h3>
+          <p>Une case numérotée, un titre, une phrase, et les points toujours visibles.</p>
+          <div class="ds-scene">
+            <article class="fonction">
+              <span class="fonction__case case--sombre-texte" style="background:var(--case-ocre)" aria-hidden="true">4</span>
+              <h3>Les évaluations et les fiches élève</h3>
+              <p class="fonction__phrase">Entraînement à deux niveaux et évaluation de fin de période, prêts à photocopier.</p>
+              <ul class="fonction__points">
+                <li>Une évaluation par période, avec ses grilles d’observation et un livret de suivi.</li>
+                <li>Des fiches d’entraînement à deux niveaux, ★ et ★★, avec des défis.</li>
+              </ul>
+            </article>
+          </div>
+          <p class="ds-legende"><code>.fonction</code> <code>.fonction__case</code> <code>.case--sombre-texte</code> <code>.fonction__phrase</code></p>
+        </div>
+        <div class="ds-planche">
+          <h3>La carte de classe de la galerie</h3>
+          <p>Lue dans <code>classes.json</code> et construite par le même script que l’accueil. Elle prend les couleurs du thème de la classe, jamais celles d’Encrine.</p>
+          <div class="ds-scene">
+            <div class="classes" id="liste-classes" data-source="../classes.json" data-limite="1" style="margin-top:0;grid-template-columns:minmax(0,1fr)" aria-live="polite">
+              <p class="classes__attente">Chargement de la classe d’exemple…</p>
+            </div>
+          </div>
+          <p class="ds-legende"><code>.classes</code> <code>.classe</code> <code>.frise</code> <code>.classe__badge</code> <code>.classe__faits</code> · <code>site.js</code></p>
+        </div>
+      </div>
+
+      <div class="ds-planche">
+        <h3>Le bloc appli</h3>
+        <p>Le seul bloc à l’ardoise dans les deux thèmes : il annonce que la classe s’installe sur le téléphone.</p>
+        <div class="ds-scene ds-scene--feuille">
+          <div class="appli">
+            <div class="appli__texte">
+              <p class="surtitre">Sur votre téléphone, sur la tablette de la classe</p>
+              <h3>Votre classe s’installe comme une appli.</h3>
+              <p>Le site de votre classe se pose sur l’écran d’accueil, avec son icône à ses couleurs, et s’ouvre en plein écran.</p>
+              <p class="renvoi"><a href="https://encrine.ai/tour-du-monde/" data-lien="exemple">Essayer avec la classe d’exemple</a></p>
+            </div>
+            <ol class="appli__etapes">
+              <li><b>Sur iPhone et iPad</b> : dans Safari, « Partager », puis « Sur l’écran d’accueil ».</li>
+              <li><b>Sur Android</b> : le site propose lui-même « Installer ».</li>
+              <li><b>Toujours à jour</b> : chaque nouvelle version arrive à la prochaine ouverture.</li>
+            </ol>
+          </div>
+        </div>
+        <p class="ds-legende"><code>.appli</code> <code>.appli__etapes</code></p>
+      </div>
+
+      <div class="ds-planche">
+        <h3>Le panneau en trois étapes</h3>
+        <p>« Créer ma classe » et « Partir de cette classe » ouvrent le même panneau : trois étapes, puis l’entretien. Ci-dessous, en petit ; le bouton ouvre le vrai, au-dessus de l’en-tête.</p>
+        <div class="ds-scene ds-scene--voile" id="apercu-panneau" inert aria-hidden="true"></div>
+        <div class="boutons" style="margin-top:var(--pas-4)"><button class="bouton bouton--petit" type="button" data-panneau-ouvrir>Ouvrir le panneau</button></div>
+        <p class="ds-legende"><code>dialog.partir</code> <code>.partir__etapes</code> <code>.partir__commande</code> · Échap pour fermer, le focus revient au bouton.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— Le ton ——— -->
+<section class="section ds-section" id="ton" aria-labelledby="titre-ton">
+  <div class="cadre">
+    <p class="surtitre">6 · Le ton</p>
+    <h2 id="titre-ton">Le site vouvoie, l’outil tutoie.</h2>
+    <p class="intro">Le site s’adresse à tous les enseignants, avant qu’ils commencent : il les vouvoie. L’outil, lui, travaille avec un collègue : il le tutoie, et le lui annonce dès la première question.</p>
+    <div class="ds-planches ds-planches--2">
+      <div class="ds-planche">
+        <span class="ds-etiquette-ton" aria-hidden="true">le site</span>
+        <h3>Le site vous vouvoie</h3>
+        <p>L’accueil, la documentation, cette page : des phrases courtes, à la deuxième personne du pluriel.</p>
+        <blockquote class="ds-replique"><span>Sur l’accueil</span>« Répondez à quelques questions, une par case. »</blockquote>
+        <blockquote class="ds-replique"><span>Dans le panneau</span>« Choisissez un dépôt public : c’est ce qui permet de mettre votre site en ligne. »</blockquote>
+      </div>
+      <div class="ds-planche">
+        <span class="ds-etiquette-ton ds-etiquette-ton--outil" aria-hidden="true">l’outil</span>
+        <h3>L’outil tutoie, et l’annonce</h3>
+        <p>Une seule fois, dans le texte de la première question. Si l’enseignant préfère le vous, l’outil passe au vous aussitôt, et s’y tient.</p>
+        <blockquote class="ds-replique"><span>Première question de l’entretien</span>« Je te tutoie, comme entre collègues — si tu préfères le vous, dis-le-moi. »</blockquote>
+        <blockquote class="ds-replique"><span>Une valeur par défaut, annoncée</span>« Je pars sur deux à trois fiches par semaine, dis-moi si c’est trop. »</blockquote>
+      </div>
+    </div>
+    <div class="ds-planche" style="margin-top:var(--pas-4)">
+      <h3>Comment on écrit</h3>
+      <ul class="ds-regles">
+        <li><strong>Sans jargon.</strong> « Le programme en liste numérotée », pas « le référentiel ».</li>
+        <li><strong>Chaque chose ne se dit qu’à un endroit.</strong> Ailleurs, un renvoi : « voir Les contrôles ».</li>
+        <li><strong>Ce qui n’est pas prêt n’est pas annoncé.</strong> Ce qui vient se dit « Bientôt » ou « Plus tard ».</li>
+        <li><strong>Les chiffres sont ceux du moteur</strong>, vérifiés, jamais ceux d’une classe.</li>
+        <li><strong>La typographie française.</strong> Guillemets « », apostrophe ’, espaces insécables devant les deux-points et les points-virgules.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<dialog class="partir" id="partir" aria-labelledby="partir-titre">
+  <div class="partir__tete">
+    <h2 id="partir-titre">Créer votre classe</h2>
+    <button class="partir__fermer" type="button" data-fermer aria-label="Fermer le panneau">×</button>
+  </div>
+  <p class="partir__intro" data-pour="creer">Trois étapes, puis l’entretien : l’agent vous pose ses questions une à une, et construit la classe avec vos réponses.</p>
+  <ol class="partir__etapes">
+    <li><div><b>Créez votre classe <span data-pour="creer">depuis le modèle</span><span data-pour="classe" hidden>depuis celle-ci</span>.</b> <a id="partir-lien" href="https://github.com/new?template_owner=encrine-ai&amp;template_name=moteur"><span data-pour="creer">Ouvrir le modèle</span><span data-pour="classe" hidden>Ouvrir cette classe</span></a>, puis « Use this template ». Choisissez un dépôt <strong>public</strong>.</div></li>
+    <li><div><b>Activez votre site.</b> Dans les réglages du dépôt : <em>Settings</em> → <em>Pages</em> → <em>Source</em> : <em>GitHub Actions</em>.</div></li>
+    <li><div><b>Lancez l’entretien.</b> <span data-pour="creer">Ouvrez le dépôt dans Claude Code, sur la branche <code>main</code>, et tapez :</span><span data-pour="classe" hidden>Dans Claude Code, sur la branche <code>main</code>, tapez juste :</span>
+      <span class="partir__commande"><code id="partir-commande">/nouvelle-classe</code><button class="bouton bouton--petit" type="button" id="partir-copier">Copier</button></span>
+    </div></li>
+  </ol>
+  <p class="partir__note" data-pour="classe" hidden>L’agent voit qu’il part de <span id="partir-origine">cette classe</span>, et vous annonce ce qu’il garde : le thème, les périodes, le style et le contenu. Il ne vous demande ensuite que votre niveau, votre zone de vacances, l’année et le profil de votre classe. Si votre niveau est différent, il réécrit les progressions et les fiches pour votre niveau. Et il cite la classe d’origine, comme le demande sa licence.</p>
+</dialog>
+
+<footer class="pied">
+  <div class="cadre">
+    <nav class="pied__liens" aria-label="Informations">
+      <ul>
+        <li><a href="../contact/">Contact</a></li>
+        <li><a href="../mentions-legales/">Mentions légales</a></li>
+        <li><a href="../confidentialite/">Confidentialité</a></li>
+        <li><a href="../design/" aria-current="page">Design system</a></li>
+        <li><a href="https://github.com/encrine-ai">GitHub</a></li>
+      </ul>
+    </nav>
+    <p>Encrine ne demande et ne garde aucune donnée d’élève : ni prénom, ni liste de classe.</p>
+    <p>Polices : Marelle (ministère de l’Éducation nationale ; Laurent Bourcellier, Jonathan Fabreguettes, Rosalie Wagner), Unbounded et Figtree, toutes trois sous licence libre SIL Open Font License 1.1, servies par le site lui-même. Photographies de l’imagier : iNaturalist, sous licences libres, créditées dans chaque cahier.</p>
+    <p class="pied__copyright">© 2026 Encrine</p>
+  </div>
+</footer>
+
+<script src="../site.js"></script>
+<script>
+/* La page Design system : tout ce qu’elle écrit en toutes lettres (codes de
+ * couleur, polices, pas, angles, ombres, rotations) est relu dans styles.css,
+ * dans les fichiers d’assets/ ou mesuré sur la page : rien n’est recopié. */
+(function () {
+  var racine = document.documentElement;
+
+  /* Le thème de la page : clair, sombre, ou celui de l’appareil. */
+  document.querySelectorAll('[data-theme-choix]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var t = b.getAttribute('data-theme-choix');
+      if (t) racine.setAttribute('data-theme', t); else racine.removeAttribute('data-theme');
+      document.querySelectorAll('[data-theme-choix]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      mesurer();
+    });
+  });
+
+  /* Le panneau en petit : une copie du vrai, sans ses identifiants. */
+  var dlg = document.getElementById('partir');
+  var apercu = document.getElementById('apercu-panneau');
+  var copie = document.createElement('div');
+  copie.className = 'partir';
+  copie.innerHTML = dlg.innerHTML;
+  copie.querySelectorAll('[id]').forEach(function (el) { el.removeAttribute('id'); });
+  copie.querySelectorAll('[data-pour="classe"]').forEach(function (el) { el.hidden = true; });
+  apercu.appendChild(copie);
+  var ouvrirPanneau = document.querySelector('[data-panneau-ouvrir]');
+  ouvrirPanneau.addEventListener('click', function () { if (window.panneau) window.panneau.ouvrir('creer', ouvrirPanneau); });
+
+  function fr(n, d) { return n.toLocaleString('fr-FR', { maximumFractionDigits: d === undefined ? 1 : d }); }
+  function lire(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(url + ' ' + r.status); return r.text(); }); }
+  /* Tous les blocs « debut { … } » posés hors de toute règle @media, mis bout à bout. */
+  function bloc(css, debut) {
+    var texte = '', i = -1;
+    while ((i = css.indexOf(debut, i + 1)) >= 0) {
+      var avant = css.slice(0, i), prof = (avant.match(/{/g) || []).length - (avant.match(/}/g) || []).length;
+      if (prof !== 0) continue;
+      var j = css.indexOf('{', i), k = css.indexOf('}', j);
+      texte += css.slice(j + 1, k) + ';';
+    }
+    return texte;
+  }
+  function jetons(texte) {
+    var t = {}, re = /--([\w-]+)\s*:\s*([^;]+);/g, m;
+    while ((m = re.exec(texte))) t[m[1]] = m[2].trim();
+    return t;
+  }
+  function rvb(hex) {
+    var m = /^#([0-9a-f]{6})$/i.exec(hex || ''); if (!m) return null;
+    var n = parseInt(m[1], 16); return [n >> 16 & 255, n >> 8 & 255, n & 255];
+  }
+  function luminance(c) {
+    return c.map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); })
+      .reduce(function (s, v, i) { return s + v * [0.2126, 0.7152, 0.0722][i]; }, 0);
+  }
+  function contraste(a, b) {
+    var la = luminance(a), lb = luminance(b);
+    return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+  }
+
+  var clair = {}, sombre = {};
+  var pret = lire('../styles.css').then(function (css) {
+    clair = jetons(bloc(css, ':root {'));
+    sombre = jetons(bloc(css, ':root[data-theme="dark"]'));
+
+    Object.keys(clair).forEach(function (n) {
+      racine.style.setProperty('--ds-clair-' + n, clair[n]);
+      racine.style.setProperty('--ds-sombre-' + n, sombre[n] || clair[n]);
+    });
+    document.querySelectorAll('[data-valeurs]').forEach(function (el) {
+      var n = el.getAttribute('data-valeurs');
+      if (!clair[n]) { el.textContent = 'absente de styles.css'; return; }
+      el.textContent = sombre[n] && sombre[n] !== clair[n] ? 'clair ' + clair[n] + ' · sombre ' + sombre[n] : clair[n] + ', dans les deux thèmes';
+    });
+    document.querySelectorAll('[data-duo]').forEach(function (el) {
+      var n = el.getAttribute('data-duo');
+      el.innerHTML = '<i title="clair" style="background:var(--ds-clair-' + n + ')"></i><i title="sombre" style="background:var(--ds-sombre-' + n + ')"></i>';
+    });
+    document.querySelectorAll('[data-valeur]').forEach(function (el) {
+      var n = el.getAttribute('data-valeur').replace(/^--/, '');
+      if (clair[n]) el.textContent = clair[n].replace(/"/g, '');
+    });
+    document.querySelectorAll('[data-contraste]').forEach(function (el) {
+      var p = el.getAttribute('data-contraste').split(' ');
+      var a = rvb(clair[p[0]]), b = rvb(clair[p[1]]);
+      if (!a || !b) return;
+      var c = contraste(a, b);
+      el.textContent = 'texte ' + (p[1] === 'sur-case-clair' ? 'blanc' : 'ardoise') + ' · contraste ' + fr(c) + ':1' + (c >= 4.5 ? '' : c >= 3 ? ' (grands caractères)' : '');
+    });
+    var cases = Object.keys(clair).filter(function (n) { return /^case-/.test(n); });
+    var compte = document.querySelector('[data-compte="cases"]'); if (compte) compte.textContent = cases.length;
+
+    /* Les pas */
+    var pas = document.querySelector('[data-pas]');
+    Object.keys(clair).filter(function (n) { return /^pas-/.test(n); }).forEach(function (n) {
+      var li = document.createElement('li');
+      li.innerHTML = '<code>--' + n + '</code><span>' + clair[n] + '</span><i style="width:var(--' + n + ')"></i>';
+      pas.appendChild(li);
+    });
+
+    /* Les polices : graisses et fichiers, lus dans les @font-face. */
+    var faces = css.match(/@font-face\s*{[^}]*}/g) || [];
+    document.querySelectorAll('[data-police]').forEach(function (dl) {
+      var nom = dl.getAttribute('data-police'), graisses = {}, fichiers = [];
+      faces.forEach(function (f) {
+        if (f.indexOf('"' + nom + '"') < 0) return;
+        var g = /font-weight:\s*([^;]+);/.exec(f); if (g) graisses[g[1].trim()] = true;
+        var u = /url\(["']?([^"')]+)/.exec(f); if (u) fichiers.push(u[1]);
+      });
+      var dg = dl.querySelector('[data-graisses]');
+      if (dg) dg.textContent = Object.keys(graisses).map(function (g) { return g.replace(' ', ' à '); }).join(', ') || 'une seule';
+      var df = dl.querySelector('[data-fichiers]');
+      if (df) df.innerHTML = fichiers.map(function (f) { return '<code>' + f + '</code>'; }).join(' ');
+    });
+    return true;
+  });
+
+  /* Les auteurs des polices, lus dans leurs licences. */
+  document.querySelectorAll('[data-auteur]').forEach(function (el) {
+    lire(el.getAttribute('data-auteur')).then(function (t) {
+      var l = t.split('\n').filter(function (x) { return /Copyright/.test(x); })[0];
+      if (l) el.textContent = l.replace(/\s*\(https?:[^)]*\)/, '').trim() + ' ·';
+    }).catch(function () {});
+  });
+
+  /* Le logo : les cases lues dans le fichier SVG, nommées par leur couleur de case. */
+  function casesDe(url) {
+    return Promise.all([lire(url), pret]).then(function (r) {
+      var doc = new DOMParser().parseFromString(r[0], 'image/svg+xml');
+      return Array.prototype.filter.call(doc.querySelectorAll('rect'), function (x) { return !x.getAttribute('opacity'); })
+        .map(function (x) {
+          var fill = x.getAttribute('fill').toLowerCase();
+          var tr = (x.getAttribute('transform') || '') + ' ' + (x.parentNode.getAttribute && x.parentNode.getAttribute('transform') || '');
+          var a = /rotate\(\s*(-?[\d.]+)/.exec(tr);
+          var nom = Object.keys(clair).filter(function (n) { return /^case-/.test(n) && clair[n].toLowerCase() === fill; })[0];
+          return { fill: fill, angle: a ? parseFloat(a[1]) : 0, nom: nom ? nom.replace('case-', '') : fill, y: parseFloat(x.getAttribute('y')) };
+        }).filter(function (c) { return c.fill !== clair['ardoise']; });
+    });
+  }
+  document.querySelectorAll('[data-anatomie]').forEach(function (ul) {
+    casesDe(ul.getAttribute('data-anatomie')).then(function (cs) {
+      ul.innerHTML = '';
+      cs.forEach(function (c) {
+        var li = document.createElement('li');
+        li.innerHTML = '<i style="background:' + c.fill + ';transform:rotate(' + c.angle + 'deg)"></i><span><b>' + c.nom + '</b> · ' + fr(c.angle).replace('-', '−') + '° · <code>' + c.fill + '</code></span>';
+        ul.appendChild(li);
+      });
+    }).catch(function () { ul.innerHTML = '<li>Le fichier ne s’est pas lu.</li>'; });
+  });
+  document.querySelectorAll('[data-couleurs-de]').forEach(function (el) {
+    casesDe(el.getAttribute('data-couleurs-de')).then(function (cs) {
+      var noms = cs.map(function (c) { return c.nom; });
+      el.textContent = noms.length > 1 ? noms.slice(0, -1).join(', ') + ' et ' + noms[noms.length - 1] : noms.join('');
+    }).catch(function () {});
+  });
+
+  /* L’échelle des textes : les vrais éléments, mesurés dans la page. */
+  function copierStyle(cible, source) {
+    var s = getComputedStyle(source);
+    ['fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'letterSpacing'].forEach(function (p) { cible.style[p] = s[p]; });
+  }
+  /* h1 et h2 n’ont de style que sur leurs balises : on emprunte celui des vrais titres de la page. */
+  var vraiH1 = document.querySelector('#titre'), vraiH2 = document.querySelector('#titre-polices'), vraiH3 = document.querySelector('.ds-scene .etape h3');
+  function mesurer() {
+    var e1 = document.querySelector('.ds-echelle__h1'), e2 = document.querySelector('.ds-echelle__h2'), e3 = document.querySelector('.ds-echelle__h3');
+    if (e1 && vraiH1) copierStyle(e1, vraiH1);
+    if (e2 && vraiH2) copierStyle(e2, vraiH2);
+    if (e3 && vraiH3) copierStyle(e3, vraiH3);
+    document.querySelectorAll('.ds-echelle li').forEach(function (li) {
+      var el = li.children[1]; if (el.classList.contains('etape')) el = el.firstElementChild;
+      var s = getComputedStyle(el);
+      var famille = s.fontFamily.split(',')[0].replace(/["']/g, '');
+      var lh = s.lineHeight === 'normal' ? '' : '/' + fr(parseFloat(s.lineHeight), 0);
+      li.querySelector('[data-mesure]').textContent = famille + ' ' + s.fontWeight + ' · ' + fr(parseFloat(s.fontSize)) + lh + ' px';
+    });
+    document.querySelectorAll('[data-rotations]').forEach(function (el) {
+      el.textContent = Array.prototype.map.call(document.querySelectorAll(el.getAttribute('data-rotations')), function (c) {
+        var m = /matrix\(([^,]+),\s*([^,]+)/.exec(getComputedStyle(c).transform);
+        var a = m ? Math.round(Math.atan2(parseFloat(m[2]), parseFloat(m[1])) * 1800 / Math.PI) / 10 : 0;
+        return fr(a).replace('-', '−') + '°';
+      }).join(', ');
+    });
+  }
+  mesurer();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(mesurer);
+  window.addEventListener('resize', function () { clearTimeout(mesurer.t); mesurer.t = setTimeout(mesurer, 150); });
+})();
+</script>
+</body>
+</html>

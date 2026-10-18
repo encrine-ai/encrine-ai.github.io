@@ -2,7 +2,7 @@
 
 Le site https://encrine.ai : il explique le principe, guide l'enseignant qui veut créer sa classe, et montre « Les classes » que des enseignants ont choisi de partager. Une classe partagée reste dans le dépôt de son auteur, qui peut la retirer à tout moment ; cette page n'en garde qu'une fiche.
 
-Site statique, sans étape de fabrication : `index.html`, `styles.css`, `classes.json` (les classes partagées), les trois pages `contact/`, `mentions-legales/` et `confidentialite/`, `assets/` (logos ; `icone-onglet.svg`, l'icône d'onglet, les trois cases sans fond ; `icone-encrine.svg`, la même sur fond ardoise, pour `apple-touch-icon`, où un fond est obligatoire), `fonts/` (Marelle, Unbounded et Figtree, toutes servies par le site : aucune requête vers un service tiers, ce que la page Confidentialité affirme). Le style suit le design system Encrine, « Le parcours ».
+Site statique, sans étape de fabrication : `index.html`, `styles.css`, `site.js` (le script commun aux pages : l'en-tête, le menu du téléphone, le panneau, la galerie), `classes.json` (les classes partagées), les trois pages `contact/`, `mentions-legales/` et `confidentialite/`, la page `design/` (le design system), `assets/` (logos ; `icone-onglet.svg`, l'icône d'onglet, les trois cases sans fond ; `icone-encrine.svg`, la même sur fond ardoise, pour `apple-touch-icon`, où un fond est obligatoire), `fonts/` (Marelle, Unbounded et Figtree, toutes servies par le site : aucune requête vers un service tiers, ce que la page Confidentialité affirme). Le style suit le design system Encrine, « Le parcours ».
 
 ## Mettre en ligne
 
@@ -17,11 +17,21 @@ Comme pour Ludea, le domaine n'est déclaré qu'une fois, sur ce dépôt : les a
 
 ## Les sections de la page
 
-Dans l’ordre : l’en-tête (le menu, « Créer ma classe », GitHub), le héros, « Sur cette page » (le sommaire), Comment ça marche (les deux façons de commencer, puis les questions de l’entretien), Ce que vous recevez (neuf cases, chacune avec « Le détail » qui se déplie), Vos retours, Les classes (la galerie), Sous le capot (les quatorze skills du moteur), Les contrôles, Ce qui est prêt, l’appel final, le pied de page (les liens vers les trois autres pages).
+Dans l’ordre : l’en-tête (le logo, le menu, GitHub), le héros, « Sur cette page » (le sommaire), Comment ça marche (les deux façons de commencer, puis les questions de l’entretien), Ce que vous recevez (neuf cases, chacune avec « Le détail » qui se déplie), Vos retours, Les classes (la galerie), Sous le capot (les quatorze skills du moteur), Les contrôles, Ce qui est prêt, l’appel final, le pied de page (les liens vers les trois autres pages).
 
 Chaque chose ne se dit qu’à un endroit. Les garanties (le programme couvert, une page par fiche, le choix des photos, les licences, les skills mesurés) ne se détaillent que dans Les contrôles ; ailleurs, un renvoi « voir Les contrôles ». La boucle des retours et la mise à jour du moteur vivent dans Vos retours, le partage dans Les classes : les cartes des skills correspondants, dans Sous le capot, y renvoient sans les répéter. L’ancre `#fonctionnalites` reste valable : elle mène à Ce que vous recevez.
 
 Ce que vous recevez, Sous le capot et Les contrôles décrivent le moteur (`encrine-ai/moteur`) : chaque phrase y a été vérifiée dans son `README.md`, ses skills (`.claude/skills/*/SKILL.md`) et ses scripts. Quand le moteur change (un skill ajouté, un contrôle nouveau), ces trois sections se mettent à jour avec lui ; une chose prévue mais pas prête n’y entre pas. Les chiffres sont ceux du moteur, jamais ceux d’une classe (159 : les attendus de la liste de Grande Section, `referentiel/cycle1-gs.yml`).
+
+## L'en-tête et le menu
+
+L'en-tête est **toujours visible** (`position: sticky`) sur les cinq pages. Une fois la page descendue, `site.js` lui pose la classe `entete--descendu` : un filet fin en bas, et il se resserre sans que rien ne saute (sa boîte garde `--entete-haut`, il remonte de `--entete-retrait` sous le bord de l'écran, le logo rapetisse ; pas d'animation si l'appareil demande moins de mouvement). Les ancres placent leurs titres juste dessous (`scroll-margin-top`, calculé sur ces deux valeurs). Le lien d'évitement « Aller au contenu » et les panneaux `<dialog>` passent au-dessus.
+
+Sous 1100 px, les sections quittent l'en-tête : le bouton « Menu » (trois cases, comme l'icône d'onglet), posé par `site.js`, ouvre un panneau qui reprend le sommaire de l'accueil (la liste `SECTIONS` de `site.js`, à tenir alignée sur le sommaire de `index.html`), « Créer ma classe » et GitHub. Sur les autres pages, ses liens mènent à l'accueil (`../#…`).
+
+## La page Design system
+
+`design/index.html` : le style de la marque (le logo, les couleurs, les polices, les espaces et les formes, les composants, le ton). Elle montre les **vrais** composants, avec les classes de `styles.css` (les règles `ds-…` ne servent qu'à ses planches), et son script relit `styles.css`, les SVG d'`assets/` et les licences de `fonts/` pour écrire les valeurs : un code de couleur, une graisse, un angle ne s'y recopient jamais à la main. Un composant ajouté à l'accueil s'y ajoute ; le panneau `<dialog id="partir">` y est recopié, à aligner sur celui de l'accueil.
 
 ## Les autres pages
 
@@ -31,11 +41,11 @@ Trois pages de texte, avec le même en-tête et le même pied que l'accueil, et 
 - `mentions-legales/` : l'éditeur (NORRECRAFT), le directeur de la publication, l'hébergeur (GitHub Pages), la propriété intellectuelle, le signalement d'un contenu ;
 - `confidentialite/` : la politique de confidentialité (RGPD). Elle affirme que le site n'a ni compte, ni formulaire, ni cookie, ni mesure d'audience, ni publicité, ni service tiers : tout ajout d'un script, d'une police ou d'un outil extérieur doit d'abord la mettre à jour.
 
-Le pied de page (Contact · Mentions légales · Confidentialité · GitHub · © 2026 Encrine) et le lien GitHub de l'en-tête sont recopiés dans les quatre pages : une modification se fait partout. Dans les trois pages, « Créer ma classe » mène à `../#creer`, qui ouvre le panneau sur l'accueil.
+Le pied de page (Contact · Mentions légales · Confidentialité · Design system · GitHub · © 2026 Encrine) et l'en-tête sont recopiés dans les cinq pages : une modification se fait partout. Dans les trois pages, « Créer ma classe » mène à `../#creer`, qui ouvre le panneau sur l'accueil.
 
 ## Les adresses à tenir à jour
 
-En bas de `index.html`, l'objet `LIENS` porte le propriétaire et le nom du dépôt modèle (`encrine-ai` / `moteur`), le nom de ce dépôt (`encrine-ai.github.io`, pour « Signaler une classe », qui ouvre une issue ici) et l'adresse de la classe d'exemple, la démonstration, une classe à part (`encrine-ai/tour-du-monde`) (`https://encrine.ai/tour-du-monde/`). Les liens de la page sont réécrits depuis cet objet ; les adresses écrites en dur dans le HTML ne servent qu'aux navigateurs sans JavaScript, à aligner si l'on change l'objet.
+En haut de `site.js`, l'objet `LIENS` porte le propriétaire et le nom du dépôt modèle (`encrine-ai` / `moteur`), le nom de ce dépôt (`encrine-ai.github.io`, pour « Signaler une classe », qui ouvre une issue ici) et l'adresse de la classe d'exemple, la démonstration, une classe à part (`encrine-ai/tour-du-monde`) (`https://encrine.ai/tour-du-monde/`). Les liens de la page sont réécrits depuis cet objet ; les adresses écrites en dur dans le HTML ne servent qu'aux navigateurs sans JavaScript, à aligner si l'on change l'objet.
 
 ## Les classes : `classes.json`
 
