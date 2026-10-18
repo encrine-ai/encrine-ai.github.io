@@ -46,7 +46,7 @@ La section « Les classes » est une galerie construite à partir de `classes.js
       "milieux": [ { "nom": "les contes de randonnée", "couleur": "#7a4b9c", "semaines": 7 } ],  // une entrée par période, couleur du thème, semaines dans la zone
       "auteur": "M. Martin",                              // nom ou pseudonyme, au choix de l'auteur
       "licence": "CC BY-SA 4.0",                          // par défaut
-      "licence_note": "sauf les pictogrammes sous licence non commerciale",  // facultatif : les exceptions
+      "licence_note": "sauf les pictogrammes ARASAAC, sous leur propre licence",  // facultatif : les exceptions
       "site": "https://…",                                // le site de la classe, et le lien donné à /nouvelle-classe
       "depot": "https://github.com/…",                    // le dépôt de la classe
       "verifie": { "attendus": "120/120", "pdf": 140, "pagination": true, "le": "2027-09-20" },  // facultatif (absent pour la classe d'exemple, en cours d'écriture)
