@@ -1,4 +1,46 @@
 {
   "version": 1,
-  "classes": []
+  "classes": [
+    {
+      "id": "gs-tour-du-monde-2026-2027",
+      "exemple": true,
+      "titre": "Le tour du monde",
+      "niveau": "Grande Section",
+      "annee": "2026-2027",
+      "zone": "C",
+      "accroche": "Un continent par période, de l’Europe aux pôles, avec Plume, la cigogne voyageuse. La période 1 est prête ; les autres continents arrivent période par période.",
+      "milieux": [
+        {
+          "nom": "l’Europe",
+          "couleur": "#2a6aa3",
+          "semaines": 7
+        },
+        {
+          "nom": "l’Afrique",
+          "couleur": "#28744a",
+          "semaines": 7
+        },
+        {
+          "nom": "l’Asie",
+          "couleur": "#6d5a9c",
+          "semaines": 5
+        },
+        {
+          "nom": "les Amériques",
+          "couleur": "#95600f",
+          "semaines": 6
+        },
+        {
+          "nom": "l’Océanie et les pôles",
+          "couleur": "#0f7189",
+          "semaines": 11
+        }
+      ],
+      "auteur": "Encrine",
+      "licence": "CC BY-SA 4.0",
+      "licence_note": "sauf les pictogrammes ARASAAC, sous CC BY-NC-SA",
+      "site": "https://encrine.ai/tour-du-monde/",
+      "depot": "https://github.com/encrine-ai/tour-du-monde"
+    }
+  ]
 }

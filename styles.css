@@ -164,16 +164,9 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .note { margin: var(--pas-6) 0 0; padding: var(--pas-4) var(--pas-5); border-left: 0; background: var(--craie); border-radius: var(--angle-carte); font-size: 15px; color: var(--ardoise-douce); max-width: 46em; }
 .note strong { color: var(--ardoise); }
 
-/* Ce que vous recevez */
-.recu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-4); margin-top: var(--pas-7); }
-.recu article { background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
-.recu h3 { font-size: 18px; line-height: 1.25; font-weight: 700; }
-.recu p { margin: var(--pas-2) 0 0; font-size: 15.5px; color: var(--ardoise-douce); }
-.recu .pastille { display: inline-block; width: 18px; height: 18px; margin-bottom: var(--pas-3); }
-
 /* Les classes partagées : chaque carte porte les couleurs de son thème */
-.classes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: var(--pas-5); margin-top: var(--pas-6); }
-.classe { background: var(--craie); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; display: grid; gap: var(--pas-3); align-content: start; }
+.classes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: var(--pas-5); margin-top: var(--pas-6); }
+.classe { background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--pas-3); align-content: start; }
 .frise { display: flex; gap: 6px; }
 .frise span { display: block; height: 30px; }
 .frise-legende { display: flex; gap: 6px; margin-top: -4px; font-size: 12.5px; color: var(--ardoise-douce); }
@@ -184,18 +177,13 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .classe__faits li { padding: 3px 10px; border-radius: var(--angle-pastille); border: 1.5px solid var(--trait); font-size: 13px; font-weight: 600; }
 .classe__faits li::before { content: "✓ "; color: var(--case-vert); font-weight: 800; }
 .classe__meta { margin: 0; font-size: 13px; color: var(--ardoise-douce); }
-.classe__partir { padding: var(--pas-4); border-radius: 12px; background: var(--feuille); font-size: 15px; }
-.classe__partir p { margin: 0 0 var(--pas-3); }
-.classe__partir code { font: 600 14px/1 ui-monospace, "SFMono-Regular", Menlo, monospace; background: var(--craie); padding: 2px 6px; border-radius: 4px; }
-.classe__lien { display: flex; gap: var(--pas-2); }
-.classe__lien input { flex: 1; min-width: 0; min-height: 44px; padding: 0 12px; font: 500 14px/1 var(--font-texte); color: var(--ardoise); background: var(--craie); border: 1.5px solid var(--trait); border-radius: 4px; }
 .classes__attente { color: var(--ardoise-douce); }
 .classes__signaler { margin: var(--pas-5) 0 0; font-size: 14.5px; color: var(--ardoise-douce); }
 .classes__signaler a { color: var(--ardoise); font-weight: 700; }
 
 /* La boucle */
 .boucle { list-style: none; padding: 0; margin: var(--pas-7) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-5); position: relative; }
-.boucle li { background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; position: relative; }
+.boucle li { background: var(--craie); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; position: relative; }
 .boucle li::before { content: ""; display: block; width: 28px; height: 28px; margin-bottom: var(--pas-4); box-shadow: var(--ombre-case); }
 .boucle li:nth-child(1)::before { background: var(--case-violet); transform: rotate(-3deg); }
 .boucle li:nth-child(2)::before { background: var(--case-turquoise); transform: rotate(2deg); }
@@ -244,39 +232,52 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .entretien__liste li:nth-child(even)::before { transform: translateY(6px) rotate(3deg); }
 .entretien__liste b { color: var(--ardoise); }
 
-/* ——— Fonctionnalités ——— */
-.fonctions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-4); margin-top: var(--pas-7); }
-.fonction { background: var(--craie); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
+/* ——— Ce que vous recevez : neuf cases, chacune son détail à déplier ——— */
+.fonctions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-4); margin-top: var(--pas-7); align-items: start; }
+.fonction { background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
 .fonction__case { display: inline-flex; align-items: flex-end; justify-content: flex-start; width: 48px; height: 48px; padding: 0 0 4px 7px; color: var(--sur-case-clair); font: 900 24px/1 var(--font-titre); box-shadow: var(--ombre-case); transform: rotate(-3deg); }
 .fonction:nth-child(even) .fonction__case { transform: rotate(2.5deg); }
 .fonction__case.case--sombre-texte { color: var(--sur-case-sombre); }
 .fonction__case.case--encre { background: var(--case-encre); }
 .fonction h3 { margin-top: var(--pas-4); font-size: 18px; line-height: 1.25; font-weight: 700; }
-.fonction ul { list-style: none; margin: var(--pas-3) 0 0; padding: 0; display: grid; gap: var(--pas-2); }
+.fonction__phrase { margin: var(--pas-2) 0 0; font-size: 15.5px; color: var(--ardoise-douce); }
+.detail { margin-top: var(--pas-4); border-top: 1.5px dashed var(--trait); }
+.detail summary { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: var(--pas-2); cursor: pointer; list-style: none; font-weight: 700; font-size: 15px; }
+.detail summary::-webkit-details-marker { display: none; }
+.detail summary::before { content: "+"; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; flex: none; background: var(--ardoise); color: var(--craie); font: 800 16px/1 var(--font-titre); transform: rotate(-4deg); }
+.detail[open] summary::before { content: "−"; transform: rotate(3deg); }
+.detail summary:hover { text-decoration: underline; text-underline-offset: 4px; }
+.fonction ul { list-style: none; margin: var(--pas-2) 0 0; padding: 0; display: grid; gap: var(--pas-2); }
 .fonction li { position: relative; padding-left: 20px; font-size: 15px; line-height: 1.5; color: var(--ardoise-douce); }
 .fonction li::before { content: ""; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; background: var(--ardoise); transform: rotate(-8deg); }
 .fonction li strong { color: var(--ardoise); }
+.renvoi { margin: var(--pas-3) 0 0; font-size: 13.5px; color: var(--ardoise-douce); }
+.renvoi a { font-weight: 700; color: var(--ardoise); }
+.cache { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.ancre { display: block; position: relative; top: -16px; }
 .niveau-fiche { white-space: nowrap; padding: 1px 8px; border: 1.5px solid var(--trait-fort); border-radius: var(--angle-pastille); font-weight: 700; font-size: 13.5px; color: var(--ardoise); }
 
 /* ——— Sous le capot ——— */
 .mecanique { list-style: none; margin: var(--pas-6) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-6); counter-reset: m; }
-.mecanique li { position: relative; background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
+.mecanique li { position: relative; background: var(--craie); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
 .mecanique__case { display: block; width: 24px; height: 24px; margin-bottom: var(--pas-3); box-shadow: var(--ombre-case); transform: rotate(-3deg); }
 .mecanique li:nth-child(2) .mecanique__case { transform: rotate(3deg); }
 .mecanique b { display: block; font: 700 17px/1.25 var(--font-titre); }
 .mecanique small { display: block; margin-top: 6px; font-size: 14.5px; color: var(--ardoise-douce); }
 .mecanique li:not(:last-child)::after { content: "→"; position: absolute; right: -16px; top: 50%; transform: translate(50%, -50%); font: 800 22px/1 var(--font-titre); color: var(--trait-fort); }
-.note--feuille { background: var(--feuille); }
-.note code, .skill__nom code, .capot__mesure code { font: 600 13.5px/1 ui-monospace, "SFMono-Regular", Menlo, monospace; }
-.note code { background: var(--craie); padding: 2px 6px; border-radius: 4px; color: var(--ardoise); }
+.note code { font: 600 13.5px/1 ui-monospace, "SFMono-Regular", Menlo, monospace; }
+.skill__nom code { font: 500 12px/1.2 ui-monospace, "SFMono-Regular", Menlo, monospace; letter-spacing: 0.01em; }
+.note code { background: var(--feuille); padding: 2px 6px; border-radius: 4px; color: var(--ardoise); }
 .skills-groupe { margin-top: var(--pas-7); }
 .skills-groupe__titre { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px 14px; font-size: 22px; line-height: 1.2; font-weight: 700; }
 .skills-groupe__etiquette { font: 400 20px/1 var(--font-cursive); color: var(--ardoise-douce); }
+.skills-groupe__intro { margin: var(--pas-3) 0 0; font-size: 15px; color: var(--ardoise-douce); max-width: 40em; }
+.skills-groupe__intro a { font-weight: 700; color: var(--ardoise); }
 .skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-4); margin-top: var(--pas-4); }
-.skill { background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; display: flex; flex-direction: column; }
+.skill { background: var(--craie); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; display: flex; flex-direction: column; }
 .skill__nom { margin: 0; display: flex; align-items: center; gap: 8px; min-width: 0; color: var(--ardoise-douce); }
 .skill__nom code { overflow-wrap: anywhere; }
-.skill__case { width: 12px; height: 12px; flex: none; transform: rotate(-6deg); }
+.skill__case { width: 10px; height: 10px; flex: none; transform: rotate(-6deg); }
 .skill h4 { margin: var(--pas-3) 0 0; font: 700 17px/1.25 var(--font-titre); text-wrap: balance; }
 .skill > p:not(.skill__nom) { margin: var(--pas-2) 0 0; font-size: 15px; color: var(--ardoise-douce); }
 .skill__dit { margin: auto 0 0; padding-top: 22px; }
@@ -284,24 +285,28 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .skill__dit span { display: block; margin-bottom: 4px; font: 400 17px/1 var(--font-cursive); color: var(--ardoise-douce); }
 .skill__dit { position: relative; }
 .skill__dit::before { content: ""; position: absolute; left: 0; right: 0; top: 8px; border-top: 1.5px dashed var(--trait); }
-.skill--mesure { background: transparent; border: 2px dashed var(--trait-fort); }
-.case-pointillee { border: 1.5px dashed var(--ardoise-douce); }
+.skills.skills--petits { grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: var(--pas-3); }
+.skills--petits .skill { padding: var(--pas-4); }
+.skills--petits .skill h4 { margin-top: var(--pas-2); font-size: 15px; }
+.skills--petits .skill > p:not(.skill__nom) { margin-top: 4px; font-size: 14px; line-height: 1.45; }
+.skills--petits .skill__dit { padding-top: 16px; font-size: 14px; }
+.skills--petits .skill__dit span { font-size: 15px; }
 
 /* ——— Les contrôles ——— */
 .controles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--pas-4); margin-top: var(--pas-7); }
-.controle { background: var(--craie); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
+.controle { background: var(--feuille); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
 .controle--large { grid-column: span 2; display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); column-gap: var(--pas-5); align-content: start; }
 .controle--large .controle__quand { grid-column: 1 / -1; }
-.controle--large .controle__chiffre { grid-row: span 2; }
+.controle--large .controle__chiffre { grid-row: span 3; }
 .controle__quand { display: inline-block; margin: 0 0 var(--pas-3); padding: 2px 10px; border-radius: var(--angle-pastille); background: var(--case-vert); color: var(--sur-case-clair); font: 700 12.5px/1.6 var(--font-texte); justify-self: start; }
 .controle h3 { font-size: 18px; line-height: 1.25; font-weight: 700; }
 .controle h3::before { content: "✓"; display: inline-block; margin-right: 8px; color: var(--case-vert); font-weight: 900; }
 .controle p:not(.controle__quand) { margin: var(--pas-2) 0 0; font-size: 15px; color: var(--ardoise-douce); }
 .controle__chiffre b { display: block; font: 900 64px/1 var(--font-titre); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .controle__chiffre small { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.4; color: var(--ardoise-douce); }
-.controle--encre { background: var(--case-encre); color: #efece5; }
+.controle--encre { grid-column: 1 / -1; background: var(--case-encre); color: #efece5; }
 .controle--encre h3::before { color: var(--case-ocre); }
-.controle--encre p:not(.controle__quand) { color: #c9ced6; }
+.controle--encre p:not(.controle__quand) { color: #c9ced6; max-width: 52em; }
 .controle--encre .controle__quand { background: var(--case-ocre); color: var(--sur-case-sombre); }
 
 /* ——— Téléphone ——— */
@@ -317,9 +322,7 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
   .mecanique li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -16px; transform: translate(-50%, 50%); }
   .parcours-heros { max-width: 360px; order: -1; }
   .etapes { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--pas-7); }
-  .recu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .classes { grid-template-columns: 1fr; }
-  .boucle { grid-template-columns: 1fr; }
+    .boucle { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
@@ -328,7 +331,6 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
   .section { padding-block: 52px; }
   .chiffres { grid-template-columns: 1fr; gap: var(--pas-4); }
   .etapes { grid-template-columns: 1fr; }
-  .recu { grid-template-columns: 1fr; }
   .etat div { grid-template-columns: 1fr; gap: 4px; }
   .parcours-heros { max-width: 260px; }
   .cadre { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -337,4 +339,41 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
   .controle--large .controle__chiffre { grid-row: auto; margin-bottom: var(--pas-4); }
   .entretien { padding: var(--pas-5) var(--pas-4); }
   .sommaire__liste a { font-size: 14px; padding: 0 12px 0 10px; }
+}
+
+/* ——— Deux façons de commencer ——— */
+.depart { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--pas-4); margin-top: var(--pas-7); }
+.depart__voie { background: var(--craie); border-radius: var(--angle-carte); padding: var(--pas-5); min-width: 0; }
+.depart__etiquette { display: inline-block; padding: 5px 12px 7px; background: var(--case-bleu); color: var(--sur-case-clair); font: 400 18px/1 var(--font-cursive); transform: rotate(-2deg); box-shadow: var(--ombre-case); }
+.depart__etiquette--galerie { background: var(--case-ocre); color: var(--sur-case-sombre); transform: rotate(1.5deg); }
+.depart h3 { margin-top: var(--pas-4); font-size: 19px; line-height: 1.25; font-weight: 700; }
+.depart p { margin: var(--pas-2) 0 0; font-size: 15.5px; color: var(--ardoise-douce); }
+.depart a { font-weight: 700; color: var(--ardoise); }
+
+/* ——— La galerie ——— */
+.classes .classes__attente { grid-column: 1 / -1; margin: 0; }
+.classe__badge { justify-self: start; margin: var(--pas-2) 0 -4px; padding: 2px 10px; border-radius: var(--angle-pastille); background: var(--case-ocre); color: var(--sur-case-sombre); font: 700 12.5px/1.6 var(--font-texte); }
+.classe__accroche { margin: 0; font-size: 15px; color: var(--ardoise-douce); }
+.classe__actions { margin-top: var(--pas-2); }
+
+/* ——— Le panneau « Partir de cette classe » ——— */
+.partir { width: min(560px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: var(--pas-5); border: 0; border-radius: var(--angle-carte); background: var(--feuille); color: var(--ardoise); box-shadow: 0 10px 0 rgba(29, 42, 58, 0.25); }
+.partir::backdrop { background: rgba(20, 28, 39, 0.55); }
+.partir__tete { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--pas-3); }
+.partir h3 { font-size: 20px; line-height: 1.25; font-weight: 700; min-width: 0; overflow-wrap: anywhere; }
+.partir__fermer { flex: none; width: 44px; height: 44px; margin: -8px -8px 0 0; border: 0; background: transparent; color: var(--ardoise); font: 400 30px/1 var(--font-texte); cursor: pointer; }
+.partir__etapes { list-style: none; margin: var(--pas-5) 0 0; padding: 0; counter-reset: pe; display: grid; gap: var(--pas-4); }
+.partir__etapes li { counter-increment: pe; display: grid; grid-template-columns: 34px minmax(0, 1fr); column-gap: var(--pas-3); font-size: 15.5px; color: var(--ardoise-douce); }
+.partir__etapes li::before { content: counter(pe); display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: var(--ardoise); color: var(--craie); font: 800 14px/1 var(--font-titre); transform: rotate(-3deg); }
+.partir__etapes li:nth-child(even)::before { transform: rotate(3deg); }
+.partir__etapes b, .partir__etapes a, .partir__etapes strong { color: var(--ardoise); }
+.partir__etapes a { font-weight: 700; }
+.partir__etapes code { font: 600 14px/1 ui-monospace, "SFMono-Regular", Menlo, monospace; background: var(--craie); padding: 2px 6px; border-radius: 4px; color: var(--ardoise); }
+.partir__commande { display: flex; gap: var(--pas-2); margin-top: var(--pas-3); }
+.partir__commande { flex-wrap: wrap; align-items: center; }
+.partir__etapes .partir__commande code { flex: 1 1 220px; min-width: 0; display: block; padding: 12px; font-size: 14px; line-height: 1.4; overflow-wrap: anywhere; user-select: all; border: 1.5px solid var(--trait); }
+.partir__note { margin: var(--pas-5) 0 0; padding-top: var(--pas-4); border-top: 1.5px dashed var(--trait); font-size: 14.5px; color: var(--ardoise-douce); }
+@media (max-width: 640px) {
+  .depart { grid-template-columns: 1fr; }
+  .partir { padding: var(--pas-4); }
 }

@@ -17,9 +17,11 @@ Comme pour Ludea, le domaine n'est déclaré qu'une fois, sur ce dépôt : les a
 
 ## Les sections de la page
 
-Dans l’ordre : le héros, « Sur cette page » (le sommaire), Comment ça marche (et les questions de l’entretien), Ce que vous recevez, Fonctionnalités, Sous le capot (les quatorze skills du moteur), Les contrôles, Vos retours, Les classes, Ce qui est prêt.
+Dans l’ordre : le héros, « Sur cette page » (le sommaire), Comment ça marche (les deux façons de commencer, puis les questions de l’entretien), Ce que vous recevez (neuf cases, chacune avec « Le détail » qui se déplie), Vos retours, Les classes (la galerie), Sous le capot (les quatorze skills du moteur), Les contrôles, Ce qui est prêt, l’appel final.
 
-Fonctionnalités, Sous le capot et Les contrôles décrivent le moteur (`encrine-ai/moteur`) : chaque phrase y a été vérifiée dans son `README.md`, ses skills (`.claude/skills/*/SKILL.md`) et ses scripts. Quand le moteur change (un skill ajouté, un contrôle nouveau), ces trois sections se mettent à jour avec lui ; une chose prévue mais pas prête n’y entre pas. Les chiffres sont ceux du moteur, jamais ceux d’une classe (159 : les attendus de la liste de Grande Section, `referentiel/cycle1-gs.yml`).
+Chaque chose ne se dit qu’à un endroit. Les garanties (le programme couvert, une page par fiche, le choix des photos, les licences, les skills mesurés) ne se détaillent que dans Les contrôles ; ailleurs, un renvoi « voir Les contrôles ». La boucle des retours et la mise à jour du moteur vivent dans Vos retours, le partage dans Les classes : les cartes des skills correspondants, dans Sous le capot, y renvoient sans les répéter. L’ancre `#fonctionnalites` reste valable : elle mène à Ce que vous recevez.
+
+Ce que vous recevez, Sous le capot et Les contrôles décrivent le moteur (`encrine-ai/moteur`) : chaque phrase y a été vérifiée dans son `README.md`, ses skills (`.claude/skills/*/SKILL.md`) et ses scripts. Quand le moteur change (un skill ajouté, un contrôle nouveau), ces trois sections se mettent à jour avec lui ; une chose prévue mais pas prête n’y entre pas. Les chiffres sont ceux du moteur, jamais ceux d’une classe (159 : les attendus de la liste de Grande Section, `referentiel/cycle1-gs.yml`).
 
 ## Les adresses à tenir à jour
 
@@ -27,7 +29,7 @@ En bas de `index.html`, l'objet `LIENS` porte le propriétaire et le nom du dép
 
 ## Les classes : `classes.json`
 
-La section « Les classes » se construit à partir de `classes.json`. Chaque carte prend les couleurs **de son thème** (la frise de ses milieux), jamais celles d'Encrine, et propose deux actions : « Voir la classe » (le site de l'enseignant) et « Partir de cette classe » (créer son dépôt depuis le modèle, puis taper `/nouvelle-classe` en donnant le lien du dépôt de la classe).
+La section « Les classes » est une galerie construite à partir de `classes.json`. La classe d’exemple (`"exemple": true`) vient toujours en premier, avec le badge « Classe d’exemple » ; les classes partagées suivent. Chaque carte prend les couleurs **de son thème** (la frise de ses milieux), jamais celles d'Encrine, et propose deux actions : « Voir la classe » (le site de l'enseignant) et « Partir de cette classe ». Ce bouton ouvre un panneau unique (`<dialog id="partir">`, Échap pour fermer), rempli pour la carte : créer son dépôt depuis le modèle (lien construit depuis `LIENS`), activer le site, puis taper `/nouvelle-classe <site>` dans Claude Code, avec un bouton « Copier ».
 
 ```json
 {
@@ -35,24 +37,26 @@ La section « Les classes » se construit à partir de `classes.json`. Chaque ca
   "classes": [
     {
       "id": "cp-contes-2027-2028",                        // unique, minuscules et tirets
+      "exemple": false,                                   // facultatif : true pour la classe d'exemple d'Encrine, montrée en premier
       "titre": "Il était une fois",
       "niveau": "CP",
       "annee": "2027-2028",
       "zone": "B",
+      "accroche": "Un conte par période…",                // facultatif : une ou deux phrases sur la classe
       "milieux": [ { "nom": "les contes de randonnée", "couleur": "#7a4b9c", "semaines": 7 } ],  // une entrée par période, couleur du thème, semaines dans la zone
       "auteur": "M. Martin",                              // nom ou pseudonyme, au choix de l'auteur
       "licence": "CC BY-SA 4.0",                          // par défaut
       "licence_note": "sauf les pictogrammes sous licence non commerciale",  // facultatif : les exceptions
-      "site": "https://…",                                // le site de la classe
-      "depot": "https://github.com/…",                    // le lien donné à /nouvelle-classe
-      "verifie": { "attendus": "120/120", "pdf": 140, "pagination": true, "le": "2027-09-20" },
-      "partagee_le": "2027-09-21"
+      "site": "https://…",                                // le site de la classe, et le lien donné à /nouvelle-classe
+      "depot": "https://github.com/…",                    // le dépôt de la classe
+      "verifie": { "attendus": "120/120", "pdf": 140, "pagination": true, "le": "2027-09-20" },  // facultatif (absent pour la classe d'exemple, en cours d'écriture)
+      "partagee_le": "2027-09-21"                         // facultatif
     }
   ]
 }
 ```
 
-(Exemple fictif ; les commentaires ne sont qu'explicatifs : le fichier est du JSON strict. Aujourd'hui la liste est vide, et la section affiche un message d'attente.)
+(Exemple fictif ; les commentaires ne sont qu'explicatifs : le fichier est du JSON strict. Aujourd'hui la liste ne contient que la classe d'exemple, « Le tour du monde » ; sous sa carte, un message dit que les premières classes partagées apparaîtront ici.)
 
 ### Ajouter une classe
 
