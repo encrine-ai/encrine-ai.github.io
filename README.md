@@ -15,6 +15,12 @@ Site statique, sans étape de fabrication : `index.html`, `styles.css`, `classes
 
 Comme pour Ludea, le domaine n'est déclaré qu'une fois, sur ce dépôt : les autres dépôts Pages de l'organisation sont alors servis à `encrine.ai/<dépôt>/` sans réglage supplémentaire.
 
+## Les sections de la page
+
+Dans l’ordre : le héros, « Sur cette page » (le sommaire), Comment ça marche (et les questions de l’entretien), Ce que vous recevez, Fonctionnalités, Sous le capot (les quatorze skills du moteur), Les contrôles, Vos retours, Les classes, Ce qui est prêt.
+
+Fonctionnalités, Sous le capot et Les contrôles décrivent le moteur (`encrine-ai/moteur`) : chaque phrase y a été vérifiée dans son `README.md`, ses skills (`.claude/skills/*/SKILL.md`) et ses scripts. Quand le moteur change (un skill ajouté, un contrôle nouveau), ces trois sections se mettent à jour avec lui ; une chose prévue mais pas prête n’y entre pas. Les chiffres sont ceux du moteur, jamais ceux d’une classe (159 : les attendus de la liste de Grande Section, `referentiel/cycle1-gs.yml`).
+
 ## Les adresses à tenir à jour
 
 En bas de `index.html`, l'objet `LIENS` porte le propriétaire et le nom du dépôt modèle (`encrine-ai` / `moteur`), le nom de ce dépôt (`encrine-ai.github.io`, pour « Signaler une classe », qui ouvre une issue ici) et l'adresse de la classe d'exemple, la démonstration, une classe à part (`encrine-ai/tour-du-monde`) (`https://encrine.ai/tour-du-monde/`). Les liens de la page sont réécrits depuis cet objet ; les adresses écrites en dur dans le HTML ne servent qu'aux navigateurs sans JavaScript, à aligner si l'on change l'objet.
