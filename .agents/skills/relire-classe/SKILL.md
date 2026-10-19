@@ -440,6 +440,8 @@ vingt minutes, le dire). Un réglage refusé : le clic exact au propriétaire,
   `titre` relu ;
 - `python3 -I outils/miroir-classe.py https://encrine.ai/<id>/ /tmp/copie/<id>-site`
   puis `verifier-pagination.py` de confiance sur ce dossier : vert ;
+- le pied du site porte le lien « Mentions légales » d'Encrine (« La copie
+  et l'original ») ;
 - les captures (§2.6) : l'accueil se charge (plus de « Chargement… »),
   aucune erreur de console, aucune requête vers un autre domaine que ceux
   du moteur.
@@ -519,7 +521,8 @@ sur la copie tant que la mise à jour n'est pas relue **et** acceptée.
 ## 4. Retirer une classe
 
 **Le retrait n'attend pas** : la carte sort de la galerie tout de suite, et
-le site de la copie est coupé.
+le site de la copie est coupé ; puis la copie est supprimée par le
+propriétaire (point 3).
 
 On retire :
 
@@ -557,12 +560,18 @@ Comment :
    ```
    puis vérifier que `https://encrine.ai/<id>/` ne sert plus la classe (404).
    Refusé : le clic exact au propriétaire.
-3. **On ne supprime jamais le dépôt soi-même.** Une copie forkée ne peut pas
-   devenir privée : son contenu reste lisible sur GitHub. Le dire au
-   propriétaire, avec le lien des réglages (« Delete this repository » ou
-   « Archive this repository ») ; **pour un problème de sécurité** (une
-   donnée d'élève, une image inadaptée), recommander la suppression le jour
-   même.
+3. **La copie est supprimée — par le propriétaire, jamais par l'agent**
+   (décision du propriétaire, pour une demande de l'auteur comme pour un
+   problème de sécurité). Une copie forkée ne peut pas devenir privée : tant
+   qu'elle existe, son contenu reste lisible sur GitHub. Le **jour même**,
+   donner au propriétaire, dans le message final, le lien exact :
+   `https://github.com/encrine-ai/<id>/settings`, tout en bas, *Danger Zone*
+   → *Delete this repository* (taper `encrine-ai/<id>` pour confirmer).
+   Étiquette `deletion-pending` sur l'issue. **Le passage suivant vérifie**
+   que c'est fait (`gh api repos/encrine-ai/<id>` → 404) : oui, retirer
+   l'étiquette et ajouter `supprimee_le` à la ligne de la carte retirée ;
+   non, le redemander en tête du message final, chaque nuit, jusqu'à ce que
+   ce soit fait.
 4. **Le dire** à l'auteur (en anglais, une phrase en français) et au
    propriétaire ; fermer l'issue.
 
@@ -579,6 +588,9 @@ Comment :
   `python3 -I outils/couche-classe.py ecarts <clone> <verifie.commit>` ne
   montre **aucune** source changée — seuls les fichiers que le moteur refait
   quand l'agent moteur la synchronise ;
+- **les copies retirées** (`etat: retiree` sans `supprimee_le`) : le dépôt
+  `encrine-ai/<id>` a-t-il été supprimé (404) ? Sinon, le redemander au
+  propriétaire (§4, point 3) ;
 - **réglée** : le dépôt existe, Pages est allumé, `is_template` est ce que
   dit la licence.
 
@@ -599,6 +611,12 @@ une demande de mise à jour.
   même une coquille (le dire à l'auteur, qui corrige et propose une mise à
   jour). Seules exceptions : `moteur.version` de `classe.yml`, et ce que le
   moteur refait depuis les sources (`outils/couche-classe.py` les liste).
+- Les **mentions légales** : le pied du site de la copie porte le lien
+  « Mentions légales » d'Encrine (`https://encrine.ai/mentions-legales/`),
+  posé par le moteur et non par la classe : Encrine publie la copie, ses
+  mentions s'y appliquent. Le vérifier en ligne à la publication (§2.5) et
+  la nuit (§5) ; s'il manque, la copie tourne sur un moteur trop ancien —
+  synchroniser-moteur, et le dire au propriétaire.
 - Le **crédit** : la copie garde son `classe.yml` tel quel, dont `depot`
   (le dépôt de l'enseignant) et `enseignant.signature` (que son site montre).
   C'est ce que prévoit le moteur : une classe créée depuis la copie
@@ -627,7 +645,7 @@ Donner, dans le message final, le lien et les clics **exacts** :
 | marquer modèle | `https://github.com/encrine-ai/<id>/settings` | cocher *Template repository* (sous le nom du dépôt) |
 | lancer le déploiement | `https://github.com/encrine-ai/<id>/actions/workflows/pages.yml` | *Run workflow* → *main* |
 | couper le site (retrait) | `https://github.com/encrine-ai/<id>/settings/pages` | menu *…* → *Unpublish site* ; puis `…/settings/actions` : *Disable actions* ; décocher *Template repository* |
-| supprimer la copie (retrait, sécurité) | `https://github.com/encrine-ai/<id>/settings` | tout en bas, *Delete this repository* |
+| supprimer la copie (tout retrait, le jour même) | `https://github.com/encrine-ai/<id>/settings` | tout en bas, *Danger Zone* → *Delete this repository*, taper `encrine-ai/<id>` pour confirmer |
 
 Puis reprendre au passage suivant, à l'étape inscrite dans la marque
 `publication v1`.

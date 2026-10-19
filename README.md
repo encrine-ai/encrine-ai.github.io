@@ -123,7 +123,7 @@ Les noms des champs sont ceux de la fiche qu'écrit le skill `partager-ma-classe
 
 (Exemple fictif ; les commentaires ne sont qu'explicatifs : le fichier est du JSON strict. Aujourd'hui la liste ne contient que la classe d'exemple, « Le tour du monde », qui est déjà une classe de l'organisation : sa copie est elle-même (`copie` = `source` = `depot` = `encrine-ai/tour-du-monde`), sans demande ni date d'acceptation (`null`), et `verifie` n'y porte que le commit publié ; sous sa carte, un message dit que les premières classes partagées apparaîtront ici.)
 
-Une carte retirée garde une ligne courte, pour l'histoire et pour que la vérification de nuit sache que la copie doit rester éteinte : `id`, `"etat": "retiree"`, `copie`, `source`, `verifie.commit`, `acceptee_le`, `retiree_le`, `raison` (`auteur`, `securite`, `proprietaire`), `demande` — ni titre, ni auteur, ni aperçu, ni `depot`.
+Une carte retirée garde une ligne courte, pour l'histoire et pour que la vérification de nuit s'assure que la copie a bien été supprimée : `id`, `"etat": "retiree"`, `copie`, `source`, `verifie.commit`, `acceptee_le`, `retiree_le`, `raison` (`auteur`, `securite`, `proprietaire`), `demande`, et `supprimee_le` une fois le dépôt de la copie supprimé — ni titre, ni auteur, ni aperçu, ni `depot`.
 
 ### Ajouter une classe
 
@@ -135,7 +135,9 @@ Une **mise à jour** (`genre=mise-a-jour`) se relit sur ce qui a changé depuis 
 
 ### Retirer une classe
 
-L'auteur le demande (`genre=retrait`, ou « Signaler une classe » → « I am the author ») : la carte passe à `"etat": "retiree"` et le site de la copie est coupé, sans discussion. « Signaler une classe » ouvre ici le formulaire `.github/ISSUE_TEMPLATE/signaler-une-classe.yml` ; un problème de sécurité signalé retire la carte et coupe la copie aussitôt (skill `relire-classe`). Le dépôt de la copie n'est jamais supprimé par un agent : le propriétaire le fait s'il le faut.
+L'auteur le demande (`genre=retrait`, ou « Signaler une classe » → « I am the author ») : la carte passe à `"etat": "retiree"` et le site de la copie est coupé, sans discussion. « Signaler une classe » ouvre ici le formulaire `.github/ISSUE_TEMPLATE/signaler-une-classe.yml` ; un problème de sécurité signalé retire la carte et coupe la copie aussitôt (skill `relire-classe`). Puis la copie est **supprimée**, par le propriétaire (un agent ne supprime jamais un dépôt) : l'agent lui donne le jour même le lien (*Settings* → *Danger Zone* → *Delete this repository* de `encrine-ai/<id>`), et vérifie la nuit suivante que c'est fait.
+
+Le pied du site de chaque copie porte le lien « Mentions légales » d'Encrine, posé par le moteur : c'est Encrine qui publie la copie.
 
 ## Licences
 

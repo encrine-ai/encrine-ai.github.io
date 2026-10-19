@@ -30,6 +30,12 @@ avant de toucher à quoi que ce soit.
   personne ne le retouche, même pour une coquille. **Sa couche moteur est
   celle d'Encrine** (`encrine-ai/moteur`, par synchroniser-moteur), jamais le
   code de l'enseignant. `outils/couche-classe.py` tient la frontière.
+  Le pied de chaque copie porte le lien « Mentions légales » d'Encrine
+  (posé par le moteur) : c'est Encrine qui la publie.
+- **Une classe retirée** (à la demande de l'auteur ou pour un problème de
+  sécurité) perd tout de suite sa carte et le site de sa copie ; puis la
+  copie est **supprimée par le propriétaire** — jamais par un agent, qui lui
+  donne le lien le jour même et vérifie la nuit suivante que c'est fait.
 - Les demandes arrivent par le skill `partager-ma-classe` du moteur (une
   issue « Proposer ma classe », marquée
   `<!-- partage v1 genre=<ajout|mise-a-jour|retrait> classe=… commit=… moteur=… -->`).
