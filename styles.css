@@ -678,14 +678,14 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .nav__burger { display: grid; gap: 4px; width: 18px; flex: none; }
 .nav__burger i { display: block; height: 2px; border-radius: 1px; background: currentColor; }
 /* Là où le menu remplace la navigation : le logo à gauche, le bouton à droite ;
-   GitHub passe dans le panneau, et le sommaire de l'accueil s'efface (le menu le reprend). */
+   GitHub passe dans le panneau. Le sommaire de l'accueil reste : on le voit en
+   arrivant, le menu sert ensuite. L'en-tête s'affine en défilant, comme sur
+   ordinateur (décidé par le propriétaire, pour la cohérence). */
 @media (max-width: 1100px) {
   .nav__menu { display: inline-flex; }
   .entete .nav a.nav__github { display: none; }
-  .sommaire--accueil { display: none; }
-  /* Sur téléphone et tablette, l'en-tête garde sa taille en défilant : seuls le filet et le fond. */
-  :root { --entete-retrait: 0px; }
-  .entete--descendu .marque img { transform: none; }
+  /* L'en-tête du téléphone est plus bas : il remonte moins, pour ne pas couper le logo. */
+  :root { --entete-retrait: 10px; }
 }
 .menu { width: min(420px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 24px); margin: 12px 12px auto auto; padding: var(--pas-5); border: 0; border-radius: var(--angle-carte); background: var(--feuille); color: var(--ardoise); box-shadow: 0 10px 0 rgba(29, 42, 58, 0.25); overflow: auto; overscroll-behavior: contain; }
 .menu::backdrop { background: rgba(20, 28, 39, 0.55); }
