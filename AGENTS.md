@@ -82,9 +82,10 @@ avant de toucher à quoi que ce soit.
 
 Encrine et Ludea (https://ludea.ai, organisation `ludea-ai`) ont le même
 propriétaire et la même mécanique, mais chacun garde son périmètre (décidé
-le 19 octobre 2026) : une session d'Encrine ne lit, ne vérifie et ne modifie
-jamais un dépôt de `ludea-ai`, et Ludea fait de même ici. Les deux sessions
-principales gardent seulement un canal entre elles :
+le 19 octobre 2026) : une session d'Encrine peut **lire** les dépôts de
+`ludea-ai`, publics, mais ne les **modifie** jamais, ne fait rien à la place de
+Ludea et ne lit pas ses sessions ; Ludea fait de même ici. Les deux sessions
+principales gardent un canal entre elles :
 
 - **des nouvelles** : quand quelque chose fait pour Encrine pourrait servir
   à Ludea, un court message à sa session principale — ce qu'on a fait,
