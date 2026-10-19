@@ -17,7 +17,7 @@
 
 Ce dépôt est le site **https://encrine.ai**, publié tel quel par GitHub Pages : il explique le principe, guide l'enseignant qui veut créer sa classe, et montre « Les classes » que des enseignants ont choisi de partager. Une classe partagée reste dans le dépôt de son auteur, qui peut la retirer à tout moment ; cette page n'en garde qu'une fiche.
 
-Site statique, sans étape de fabrication : `index.html`, `styles.css`, `site.js` (le script commun aux pages : l'en-tête, le menu du téléphone, le panneau, la galerie), `classes.json` (les classes partagées), les trois pages `contact/`, `mentions-legales/` et `confidentialite/`, la page `design/` (le design system), `assets/` (logos ; `icone-onglet.svg`, l'icône d'onglet, les trois cases sans fond ; `icone-encrine.svg`, la même sur fond ardoise, pour `apple-touch-icon`, où un fond est obligatoire), `fonts/` (Marelle, Unbounded et Figtree, toutes servies par le site : aucune requête vers un service tiers, ce que la page Confidentialité affirme). Le style suit le design system Encrine, « Le parcours ».
+Site statique, sans étape de fabrication : `index.html`, `styles.css`, `site.js` (le script commun aux pages : l'en-tête, le menu du téléphone, le panneau, la galerie), `classes.json` (les classes partagées), les trois pages `contact/`, `mentions-legales/` et `confidentialite/`, la page `design/` (le design system), `assets/` (logos ; `icone-onglet.svg`, l'icône d'onglet, les trois cases sans fond ; `icone-encrine.svg`, la même sur fond ardoise, pour `apple-touch-icon`, où un fond est obligatoire), `fonts/` (Marelle, Unbounded et Figtree, toutes servies par le site : aucune requête vers un service tiers, ce que la page Confidentialité affirme), `outils/` (la relecture des classes proposées, que le site ne lie pas ; skill `relire-classe`, dans `.claude/skills/`). Le style suit le design system Encrine, « Le parcours ».
 
 ## Mettre en ligne
 
@@ -104,7 +104,8 @@ Le bouton « Partir de cette classe » n'apparaît que si la fiche a un `depot` 
       "site": "https://…",                                // le site de la classe (« Voir la classe »)
       "depot": "martin/il-etait-une-fois",                // facultatif : le dépôt de la classe, « propriétaire/dépôt », marqué Template repository ; sans lui, pas de « Partir de cette classe »
       "verifie": { "attendus": "120/120", "pdf": 140, "pagination": true, "le": "2027-09-20" },  // facultatif (absent pour la classe d'exemple, en cours d'écriture)
-      "partagee_le": "2027-09-21"                         // facultatif
+      "partagee_le": "2027-09-21",                        // facultatif
+      "relu": { "commit": "<sha>", "le": "2027-09-21", "demande": "https://github.com/encrine-ai/encrine-ai.github.io/issues/12" }  // ce que la galerie a relu (skill relire-classe) ; absent pour la classe d'exemple
     }
   ]
 }
@@ -116,11 +117,11 @@ Le bouton « Partir de cette classe » n'apparaît que si la fiche a un `depot` 
 
 1. L'enseignant le demande dans sa classe : le skill `partager-ma-classe` vérifie que l'année couvre le programme, que les PDF sont fabriqués et paginés, que chaque image et chaque texte a une licence qui permet le partage, et qu'aucune donnée d'élève n'y figure ; il prépare l'enregistrement de `classes.json`.
 2. Il ouvre une **demande de fusion sur ce dépôt**, qui n'ajoute que cet enregistrement.
-3. Une personne la relit (le contenu de la classe, ses licences, son ton) et le propriétaire de ce dépôt la fusionne. La carte apparaît au déploiement suivant.
+3. L'agent galerie la relit (skill `relire-classe`, chaque nuit) : au commit exact de la classe, avec les outils de confiance du moteur et `outils/` (`atelier-relecture.py`, `miroir-classe.py`), sans jamais exécuter son code ; un relecteur indépendant regarde chaque texte et chaque image. Le propriétaire de ce dépôt accepte, puis l'agent écrit la carte lui-même dans `classes.json` (la demande de fusion de l'enseignant n'est pas fusionnée telle quelle). La carte apparaît au déploiement suivant.
 
 ### Retirer une classe
 
-L'auteur le demande, ou retire lui-même son dépôt : son enregistrement est enlevé de `classes.json` par une demande de fusion, sans discussion. « Signaler une classe » ouvre une issue sur ce dépôt.
+L'auteur le demande, ou retire lui-même son dépôt : son enregistrement est enlevé de `classes.json`, sans discussion. « Signaler une classe » ouvre une issue sur ce dépôt ; un problème de sécurité signalé retire la carte aussitôt (skill `relire-classe`).
 
 ## Licences
 
