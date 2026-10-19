@@ -137,7 +137,7 @@ a { color: inherit; }
 .entete .cadre { display: flex; align-items: center; justify-content: space-between; gap: var(--pas-5); height: var(--entete-haut); }
 .entete .cadre > * { transition: transform .2s ease; }
 .entete--descendu .cadre > * { transform: translateY(calc(var(--entete-retrait) / 2)); }
-.entete__temoin { position: absolute; top: 0; left: 0; width: 1px; height: var(--entete-retrait); pointer-events: none; }
+.entete__temoin { position: absolute; top: 0; left: 0; width: 1px; height: max(var(--entete-retrait), 8px); pointer-events: none; }
 .marque { display: inline-flex; line-height: 0; }
 .marque img { height: 52px; width: auto; transform-origin: left center; transition: transform .2s ease; }
 .entete--descendu .marque img { transform: scale(.8); }
@@ -420,21 +420,25 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
   .entretien { grid-template-columns: 1fr; gap: var(--pas-5); }
   .mecanique { grid-template-columns: 1fr; }
   .mecanique li:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -16px; transform: translate(-50%, 50%); }
-  .parcours-heros { max-width: 180px; }   /* sous le texte, deux fois plus petite : le titre et les boutons d’abord */
+  /* La marelle en filigrane, derrière le texte du haut de page : décorative, très atténuée. */
+  .heros { overflow: hidden; overflow: clip; }
+  .heros .cadre { position: relative; }
+  .heros__texte { position: relative; z-index: 1; }
+  .parcours-heros { position: absolute; top: 8px; right: -40px; width: 400px; max-width: none; opacity: var(--filigrane, .09); pointer-events: none; user-select: none; }
   .etapes { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: var(--pas-7); }
     .boucle { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .nav a:not(.bouton):not(.nav__github) { display: none; }
-  :root { --entete-haut: 64px; --entete-retrait: 8px; }
+  :root { --entete-haut: 64px; }
   .marque img { height: 40px; }
   .nav { gap: var(--pas-4); }
   .section { --section-marge: 52px; }
   .chiffres { grid-template-columns: 1fr; gap: var(--pas-4); }
   .etapes { grid-template-columns: 1fr; }
   .etat div { grid-template-columns: 1fr; gap: 4px; }
-  .parcours-heros { max-width: 140px; }
+  .parcours-heros { right: -70px; width: 360px; }
   .heros .cadre { padding-block: 16px 48px; gap: var(--pas-5); }
   .heros .chapeau { margin: var(--pas-4) 0 var(--pas-5); font-size: 17.5px; }
   .cadre { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
@@ -670,22 +674,28 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
  * panneau sont posés par site.js. */
 .nav__menu { display: none; position: relative; align-items: center; gap: 9px; min-height: 44px; padding: 0 14px 0 12px; border: 0; background: transparent; color: var(--ardoise); font: 700 14px/1 var(--font-texte); cursor: pointer; }
 .nav__menu::before { content: ""; position: absolute; inset: 5px 0; border: 1.5px solid var(--ardoise); border-radius: 999px; }
-.nav__cases { position: relative; display: block; width: 18px; height: 18px; flex: none; }
-.nav__cases i { position: absolute; width: 8px; height: 8px; }
-.nav__cases i:nth-child(1) { left: 0; top: 0; background: var(--case-rouge); transform: rotate(-3deg); }
-.nav__cases i:nth-child(2) { right: 0; top: 0; background: var(--case-ocre); transform: rotate(2.5deg); }
-.nav__cases i:nth-child(3) { left: 5px; bottom: 0; background: var(--case-bleu); transform: rotate(-1.5deg); }
-@media (max-width: 1100px) { .nav__menu { display: inline-flex; } .nav { gap: var(--pas-2); } }
-@media (max-width: 380px) { .nav a.nav__github span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } .nav a.nav__github { padding: 0 12px; } }
+/* Le burger : trois traits. */
+.nav__burger { display: grid; gap: 4px; width: 18px; flex: none; }
+.nav__burger i { display: block; height: 2px; border-radius: 1px; background: currentColor; }
+/* Là où le menu remplace la navigation : le logo à gauche, le bouton à droite ;
+   GitHub passe dans le panneau, et le sommaire de l'accueil s'efface (le menu le reprend). */
+@media (max-width: 1100px) {
+  .nav__menu { display: inline-flex; }
+  .entete .nav a.nav__github { display: none; }
+  .sommaire--accueil { display: none; }
+  /* Sur téléphone et tablette, l'en-tête garde sa taille en défilant : seuls le filet et le fond. */
+  :root { --entete-retrait: 0px; }
+  .entete--descendu .marque img { transform: none; }
+}
 .menu { width: min(420px, calc(100vw - 24px)); max-width: none; max-height: calc(100dvh - 24px); margin: 12px 12px auto auto; padding: var(--pas-5); border: 0; border-radius: var(--angle-carte); background: var(--feuille); color: var(--ardoise); box-shadow: 0 10px 0 rgba(29, 42, 58, 0.25); overflow: auto; overscroll-behavior: contain; }
 .menu::backdrop { background: rgba(20, 28, 39, 0.55); }
 .menu__tete { display: flex; align-items: center; justify-content: space-between; gap: var(--pas-3); }
 .menu__titre { margin: 0; font: 400 22px/1.1 var(--font-cursive); color: var(--ardoise-douce); }
 .menu .partir__fermer { margin: -6px -10px 0 0; }
-.menu__liste { list-style: none; margin: var(--pas-4) 0 0; padding: 0; display: grid; gap: var(--pas-2); }
-.menu__liste a { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 0 14px 0 12px; background: var(--craie); border: 1.5px solid var(--trait); font-weight: 700; font-size: 16px; text-decoration: none; }
-.menu__liste a:hover { border-color: var(--ardoise); }
-.menu__liste li:nth-child(even) .sommaire__case { transform: rotate(5deg); }
+.menu__liste { list-style: none; margin: var(--pas-3) 0 0; padding: 0; }
+.menu__liste li + li { border-top: 1px solid var(--trait); }
+.menu__liste a { display: flex; align-items: center; min-height: 50px; font-weight: 700; font-size: 17px; text-decoration: none; }
+.menu__liste a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .menu__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--pas-3); margin-top: var(--pas-5); padding-top: var(--pas-4); border-top: 1.5px dashed var(--trait); }
 .menu__actions .bouton { flex: 1 1 auto; }
 .menu__actions .nav__github { position: relative; display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 14px; font-weight: 600; font-size: 14px; text-decoration: none; }

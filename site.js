@@ -38,9 +38,9 @@ var MODELE = gabarit(LIENS.proprietaire, LIENS.modele);
 })();
 
 /* 1 bis. Le menu du téléphone et de la tablette : sous 1100 px, les sections
- * quittent l'en-tête (styles.css). Le bouton « Menu » ouvre un <dialog> modal
- * (le focus y est retenu, Échap le ferme) qui reprend le sommaire de l'accueil,
- * dans ses couleurs, « Créer ma classe » et GitHub. Sur les autres pages, les
+ * et GitHub quittent l'en-tête (styles.css). Le bouton « Menu » (un burger) ouvre un <dialog> modal
+ * (le focus y est retenu, Échap le ferme) qui reprend, en liste sobre, le sommaire
+ * de l'accueil, puis « Créer ma classe » et GitHub. Sur les autres pages, les
  * liens mènent aux sections de l'accueil (../#…). La liste suit le sommaire
  * de index.html : une section ajoutée là s'ajoute ici. */
 var SECTIONS = [
@@ -63,7 +63,7 @@ var SECTIONS = [
   var bouton = document.createElement('button');
   bouton.type = 'button'; bouton.className = 'nav__menu';
   bouton.setAttribute('aria-expanded', 'false'); bouton.setAttribute('aria-controls', 'menu'); bouton.setAttribute('aria-haspopup', 'dialog');
-  bouton.innerHTML = '<span class="nav__cases" aria-hidden="true"><i></i><i></i><i></i></span><span>Menu</span>';
+  bouton.innerHTML = '<span class="nav__burger" aria-hidden="true"><i></i><i></i><i></i></span><span>Menu</span>';
   nav.insertBefore(bouton, github);
 
   var dlg = document.createElement('dialog');
@@ -71,7 +71,7 @@ var SECTIONS = [
   var html = '<div class="menu__tete"><p class="menu__titre" id="menu-titre">' + (surAccueil ? 'Sur cette page' : 'Sur l’accueil') + '</p>' +
     '<button class="partir__fermer" type="button" data-fermer aria-label="Fermer le menu">×</button></div><nav aria-label="Menu"><ol class="menu__liste">';
   SECTIONS.forEach(function (s) {
-    html += '<li><a href="' + accueil + '#' + s[0] + '"><span class="sommaire__case" style="background:var(--case-' + s[2] + ')" aria-hidden="true"></span>' + s[1] + '</a></li>';
+    html += '<li><a href="' + accueil + '#' + s[0] + '">' + s[1] + '</a></li>';
   });
   html += '</ol></nav><div class="menu__actions">' +
     (surAccueil ? '<button class="bouton bouton--principal" type="button" data-menu-creer>Créer ma classe</button>'

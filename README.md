@@ -27,7 +27,7 @@ Ce que vous recevez, Sous le capot et Les contrôles décrivent le moteur (`encr
 
 L'en-tête est **toujours visible** (`position: sticky`) sur les cinq pages. Une fois la page descendue, `site.js` lui pose la classe `entete--descendu` : un filet fin en bas, et il se resserre sans que rien ne saute (sa boîte garde `--entete-haut`, il remonte de `--entete-retrait` sous le bord de l'écran, le logo rapetisse ; pas d'animation si l'appareil demande moins de mouvement). Les ancres placent leurs titres juste dessous (`scroll-margin-top`, calculé sur ces deux valeurs). Le lien d'évitement « Aller au contenu » et les panneaux `<dialog>` passent au-dessus.
 
-Sous 1100 px, les sections quittent l'en-tête : le bouton « Menu » (trois cases, comme l'icône d'onglet), posé par `site.js`, ouvre un panneau qui reprend le sommaire de l'accueil (la liste `SECTIONS` de `site.js`, à tenir alignée sur le sommaire de `index.html`), « Créer ma classe » et GitHub. Sur les autres pages, ses liens mènent à l'accueil (`../#…`).
+Sous 1100 px (téléphone et tablette), l'en-tête ne garde que le logo et le bouton « Menu » (un burger), et il garde sa taille en défilant : seuls le filet et le fond apparaissent. Le bouton, posé par `site.js`, ouvre un panneau qui reprend en liste sobre le sommaire de l'accueil (la liste `SECTIONS` de `site.js`, à tenir alignée sur le sommaire de `index.html`), puis « Créer ma classe » et GitHub. Le sommaire en cases du haut de l'accueil s'efface alors (le menu fait le même travail), et la marelle du héros passe en filigrane derrière le texte (contraste du texte mesuré au-dessus de 4,5:1). Sur les autres pages, les liens du menu mènent à l'accueil (`../#…`).
 
 ## La page Design system
 
