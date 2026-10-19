@@ -23,6 +23,12 @@ Chaque chose ne se dit qu’à un endroit. Les garanties (le programme couvert, 
 
 Ce que vous recevez, Sous le capot et Les contrôles décrivent le moteur (`encrine-ai/moteur`) : chaque phrase y a été vérifiée dans son `README.md`, ses skills (`.claude/skills/*/SKILL.md`) et ses scripts. Quand le moteur change (un skill ajouté, un contrôle nouveau), ces trois sections se mettent à jour avec lui ; une chose prévue mais pas prête n’y entre pas. Les chiffres sont ceux du moteur, jamais ceux d’une classe (159 : les attendus de la liste de Grande Section, `referentiel/cycle1-gs.yml`).
 
+## L'aperçu de lien
+
+Les cinq pages portent, sous leur `<meta name="description">`, les balises Open Graph et Twitter que lisent les messageries et les réseaux (qui n'exécutent pas le JavaScript) : titre et description propres à chaque page, `og:url` et `og:image` en **adresses absolues** (`https://encrine.ai/…`), et `<link rel="canonical">`. Une page ajoutée les reçoit aussi, avec sa propre description.
+
+L'image, `assets/partage.png` (1200 × 630), se fabrique depuis `assets/partage.html` (le logo, le titre en Unbounded, la marelle du héros recopiée, sur la craie et l'ardoise) : une capture Playwright à 1200 × 630 en thème clair, puis une palette de 128 couleurs (Pillow) — une trentaine de Ko. Elle doit rester lisible réduite à 300 px de large, la taille d'un aperçu sur téléphone : le titre seul doit s'y lire. Si le héros ou le titre changent, refaire l'image.
+
 ## L'en-tête et le menu
 
 L'en-tête est **toujours visible** (`position: sticky`) sur les cinq pages. Une fois la page descendue, `site.js` lui pose la classe `entete--descendu` : un filet fin en bas, et il se resserre sans que rien ne saute (sa boîte garde `--entete-haut`, il remonte de `--entete-retrait` sous le bord de l'écran, le logo rapetisse ; pas d'animation si l'appareil demande moins de mouvement). Les ancres placent leurs titres juste dessous (`scroll-margin-top`, calculé sur ces deux valeurs). Le lien d'évitement « Aller au contenu » et les panneaux `<dialog>` passent au-dessus.
