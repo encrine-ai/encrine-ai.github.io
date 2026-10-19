@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 """Recopier, depuis le site EN LIGNE d'une classe, ce que contrôle la pagination.
 
-La carte de la galerie mène au site publié de l'enseignant : c'est lui qu'on
-relit, tel que le voient les visiteurs. Ce script télécharge son classe.json,
+Deux usages : à la relecture, le site de l'enseignant au commit relu (ce que
+fabrique son propre déploiement) ; après la publication et chaque nuit, la
+copie relue servie par Encrine (https://encrine.ai/<id>/), telle que la voient
+les visiteurs. Ce script télécharge son classe.json,
 la page HTML de chaque cahier et chaque PDF qu'il annonce, dans un dossier
 neuf, sans rien exécuter de la classe. Ensuite, l'outil de confiance du moteur :
 
