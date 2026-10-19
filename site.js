@@ -198,7 +198,9 @@ var panneau = (function () {
     lien.href = c.site;
     lien.setAttribute('aria-label', 'Voir le site de la classe « ' + c.titre + ' »');
     var ecran = texte('span', 'classe__ecran');
-    ecran.appendChild(texte('span', 'classe__barre')).setAttribute('aria-hidden', 'true');
+    var barre = texte('span', 'classe__barre'); barre.setAttribute('aria-hidden', 'true');
+    barre.appendChild(texte('span', 'classe__url', String(c.site || '').replace(/^https?:\/\//, '').replace(/\/$/, '')));
+    ecran.appendChild(barre);
     var img = document.createElement('img');
     img.src = adresse(a.ordinateur); img.alt = a.alt || ''; img.width = 1280; img.height = 800; img.loading = 'lazy'; img.decoding = 'async';
     ecran.appendChild(img); lien.appendChild(ecran);
@@ -236,13 +238,15 @@ var panneau = (function () {
     if (vue) art.appendChild(vue);
     var carteArt = art;
     if (vue) { art = texte('div', 'classe__corps'); carteArt.appendChild(art); }
-    var frise = texte('div', 'frise'); frise.setAttribute('aria-hidden', 'true');
-    var legende = texte('div', 'frise-legende'); legende.setAttribute('aria-hidden', 'true');
+    /* Les périodes en cases de marelle, chacune à sa couleur, avec son nom. */
+    var cases = texte('ul', 'classe__periodes'); cases.setAttribute('aria-hidden', 'true');
     c.milieux.forEach(function (m) {
-      var b = document.createElement('span'); b.style.flex = m.semaines; b.style.background = m.couleur; frise.appendChild(b);
-      var l = texte('span', null, m.nom); l.style.flex = m.semaines; legende.appendChild(l);
+      var li = texte('li');
+      var k = texte('span', 'classe__case'); k.style.background = m.couleur;
+      li.appendChild(k); li.appendChild(document.createTextNode(m.nom));
+      cases.appendChild(li);
     });
-    art.appendChild(frise); art.appendChild(legende);
+    art.appendChild(cases);
     if (c.exemple) art.appendChild(texte('p', 'classe__badge', 'Classe d’exemple'));
     var titre = texte('h3', 'classe__titre');
     if (c.icone) {
