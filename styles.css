@@ -694,7 +694,8 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .menu .partir__fermer { margin: -6px -10px 0 0; }
 .menu__liste { list-style: none; margin: var(--pas-3) 0 0; padding: 0; }
 .menu__liste li + li { border-top: 1px solid var(--trait); }
-.menu__liste a { display: flex; align-items: center; min-height: 50px; font-weight: 700; font-size: 17px; text-decoration: none; }
+.menu__liste a { display: flex; align-items: center; gap: 14px; min-height: 50px; font-weight: 700; font-size: 17px; text-decoration: none; }
+.menu__liste li:nth-child(even) .sommaire__case { transform: rotate(5deg); }
 .menu__liste a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .menu__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--pas-3); margin-top: var(--pas-5); padding-top: var(--pas-4); border-top: 1.5px dashed var(--trait); }
 .menu__actions .bouton { flex: 1 1 auto; }

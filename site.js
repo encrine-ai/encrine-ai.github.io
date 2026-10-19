@@ -39,8 +39,9 @@ var MODELE = gabarit(LIENS.proprietaire, LIENS.modele);
 
 /* 1 bis. Le menu du téléphone et de la tablette : sous 1100 px, les sections
  * et GitHub quittent l'en-tête (styles.css). Le bouton « Menu » (un burger) ouvre un <dialog> modal
- * (le focus y est retenu, Échap le ferme) qui reprend, en liste sobre, le sommaire
- * de l'accueil, puis « Créer ma classe » et GitHub. Sur les autres pages, les
+ * (le focus y est retenu, Échap le ferme) qui reprend le sommaire en cases de
+ * l'accueil, puis GitHub ; « Créer ma classe » n'y est pas, ce n'est pas une
+ * section (décidé par le propriétaire). Sur les autres pages, les
  * liens mènent aux sections de l'accueil (../#…). La liste suit le sommaire
  * de index.html : une section ajoutée là s'ajoute ici. */
 var SECTIONS = [
@@ -71,11 +72,9 @@ var SECTIONS = [
   var html = '<div class="menu__tete"><p class="menu__titre" id="menu-titre">' + (surAccueil ? 'Sur cette page' : 'Sur l’accueil') + '</p>' +
     '<button class="partir__fermer" type="button" data-fermer aria-label="Fermer le menu">×</button></div><nav aria-label="Menu"><ol class="menu__liste">';
   SECTIONS.forEach(function (s) {
-    html += '<li><a href="' + accueil + '#' + s[0] + '">' + s[1] + '</a></li>';
+    html += '<li><a href="' + accueil + '#' + s[0] + '"><span class="sommaire__case" style="background:var(--case-' + s[2] + ')" aria-hidden="true"></span>' + s[1] + '</a></li>';
   });
   html += '</ol></nav><div class="menu__actions">' +
-    (surAccueil ? '<button class="bouton bouton--principal" type="button" data-menu-creer>Créer ma classe</button>'
-                : '<a class="bouton bouton--principal" href="' + accueil + '#creer">Créer ma classe</a>') +
     '<a class="nav__github" href="' + (github ? github.getAttribute('href') : 'https://github.com/encrine-ai') + '">' + (github ? github.querySelector('svg').outerHTML : '') + '<span>GitHub</span></a></div>';
   dlg.innerHTML = html;
   document.body.appendChild(dlg);
