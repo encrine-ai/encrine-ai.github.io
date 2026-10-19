@@ -31,7 +31,7 @@ skill synchroniser-moteur du moteur : à tenir aligné sur lui.
         récupéré dans le clone : git fetch https://github.com/<source> <commit>) :
         fichiers repris tels quels, fichiers disparus retirés, la couche
         moteur et moteur.version de la copie gardés. Rien n'est committé :
-        relire `git status`, puis régénérer et contrôler (skill relire-classe).
+        relire `git status`, puis régénérer et contrôler (procédure relire-classe, dans encrine-ai/agents).
 
 Le script ne lance que git : aucun code de la classe n'est exécuté.
 """
