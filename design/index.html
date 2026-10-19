@@ -388,12 +388,12 @@
         </div>
       </div>
 
-      <div class="ds-planches ds-planches--2" style="margin-top:0">
+      <div class="ds-planches" style="margin-top:0">
         <div class="ds-planche">
           <h3>Une carte « Ce que vous recevez »</h3>
           <p>Une case numérotée, un titre, une phrase, et les points toujours visibles.</p>
           <div class="ds-scene">
-            <article class="fonction">
+            <article class="fonction" style="max-width:420px">
               <span class="fonction__case case--sombre-texte" style="background:var(--case-ocre)" aria-hidden="true">4</span>
               <h3>Les évaluations et les fiches élève</h3>
               <p class="fonction__phrase">Entraînement à deux niveaux et évaluation de fin de période, prêts à photocopier.</p>
@@ -407,13 +407,13 @@
         </div>
         <div class="ds-planche">
           <h3>La carte de classe de la galerie</h3>
-          <p>Lue dans <code>classes.json</code> et construite par le même script que l’accueil. Elle prend les couleurs du thème de la classe, jamais celles d’Encrine.</p>
+          <p>Lue dans <code>classes.json</code> et construite par le même script que l’accueil. Elle montre le site de la classe, sur l’ordinateur et sur le téléphone (champ <code>apercu</code>), et prend les couleurs du thème de la classe, jamais celles d’Encrine.</p>
           <div class="ds-scene">
-            <div class="classes" id="liste-classes" data-source="../classes.json" data-limite="1" style="margin-top:0;grid-template-columns:minmax(0,1fr)" aria-live="polite">
+            <div class="classes" id="liste-classes" data-source="../classes.json" data-limite="1" style="margin-top:0" aria-live="polite">
               <p class="classes__attente">Chargement de la classe d’exemple…</p>
             </div>
           </div>
-          <p class="ds-legende"><code>.classes</code> <code>.classe</code> <code>.frise</code> <code>.classe__badge</code> <code>.classe__faits</code> · <code>site.js</code></p>
+          <p class="ds-legende"><code>.classes</code> <code>.classe--apercu</code> <code>.classe__apercu</code> <code>.classe__telephone</code> <code>.classe__appli</code> <code>.frise</code> <code>.classe__badge</code> <code>.classe__faits</code> · <code>site.js</code></p>
         </div>
       </div>
 

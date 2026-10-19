@@ -54,6 +54,8 @@ La section « Les classes » est une galerie construite à partir de `classes.js
 - **« Créer ma classe »** (en-tête, haut de page, appel final) l'ouvre pour le modèle `moteur`, « Créer votre classe » : créer son dépôt depuis le modèle (lien construit depuis `LIENS`), activer le site (*Settings* → *Pages* → *Source* : *GitHub Actions*), puis taper `/nouvelle-classe` dans Claude Code, avec un bouton « Copier ». Sans JavaScript, le bouton reste un lien direct vers le modèle sur GitHub.
 - **« Partir de cette classe »** l'ouvre pour la carte. Chaque classe partagée est elle-même un modèle GitHub : on crée son dépôt depuis **celle-ci** (`github.com/new?template_owner=<propriétaire>&template_name=<dépôt>`, tiré du champ `depot`), on active le site, puis on tape `/nouvelle-classe`, sans adresse : l'agent voit de quelle classe il part, annonce ce qu'il garde et cite la classe d'origine.
 
+Avec un `apercu`, la carte prend toute la ligne : la capture de l'accueil du site sur un ordinateur, le téléphone posé devant, puis la fiche de la classe et la mention « S'installe comme une appli », qui renvoie au bloc `#appli` de l'accueil. Les captures se font sur le site en ligne, avec Playwright, à 1280 × 800 et à 390 × 844, sans l'invitation à installer (poser avant le chargement la clé `localStorage` `encrine-invitation:/<dépôt>/` à `fermee`) et sans service worker (`serviceWorkers: 'block'`) ; le site ne doit plus afficher « Chargement… ». Les chemins des images partent de la racine de ce site.
+
 Le bouton « Partir de cette classe » n'apparaît que si la fiche a un `depot` et une licence qui permet la reprise : CC BY ou CC BY-SA (ni NC, ni ND). Le dépôt d'une classe partagée doit donc être marqué *Template repository* dans ses réglages.
 
 ```json
@@ -68,6 +70,12 @@ Le bouton « Partir de cette classe » n'apparaît que si la fiche a un `depot` 
       "annee": "2027-2028",
       "zone": "B",
       "accroche": "Un conte par période…",                // facultatif : une ou deux phrases sur la classe
+      "apercu": {                                         // facultatif : l'accueil du site de la classe, en captures (WebP, moins de 150 Ko chacune, dans assets/classes/)
+        "ordinateur": "assets/classes/il-etait-une-fois-ordinateur.webp",  // 1280 × 800
+        "telephone": "assets/classes/il-etait-une-fois-telephone.webp",    // 390 × 844
+        "alt": "L'accueil du site « Il était une fois » : …"              // ce que montre la capture
+      },
+      "icone": "assets/classes/il-etait-une-fois-icone.png", // facultatif : l'icône d'appli de la classe, montrée en petit à côté du titre ; vide ou absent, rien n'est montré
       "milieux": [ { "nom": "les contes de randonnée", "couleur": "#7a4b9c", "semaines": 7 } ],  // une entrée par période, couleur du thème, semaines dans la zone
       "auteur": "M. Martin",                              // nom ou pseudonyme, au choix de l'auteur
       "licence": "CC BY-SA 4.0",                          // par défaut ; CC BY ou CC BY-SA pour que la classe puisse être reprise

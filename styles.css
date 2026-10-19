@@ -701,3 +701,34 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .menu__actions .nav__github { position: relative; display: inline-flex; align-items: center; gap: 7px; min-height: 44px; padding: 0 14px; font-weight: 600; font-size: 14px; text-decoration: none; }
 .menu__actions .nav__github::before { content: ""; position: absolute; inset: 5px 0; border: 1.5px solid var(--trait-fort); border-radius: 999px; }
 html.menu-ouvert { overflow: hidden; }
+
+/* ——— La carte de classe avec l’aperçu de son site ———
+ * Le site de la classe vu sur un ordinateur, le téléphone posé devant ; à
+ * côté (ou dessous, sur un écran étroit), la fiche de la classe. La carte
+ * occupe toute la ligne de la galerie, et se met en deux colonnes dès que
+ * la galerie est assez large (requête de conteneur). */
+.classes { container-type: inline-size; }
+.classe--apercu { grid-column: 1 / -1; padding: var(--pas-5); gap: var(--pas-6); }
+.classe__corps { min-width: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--pas-3); align-content: start; }
+.classe__apercu { position: relative; display: block; min-width: 0; margin: 0 6% 0 0; padding-bottom: 9%; text-decoration: none; border-radius: 12px; }
+.classe__ecran { display: block; overflow: hidden; border-radius: 12px; background: var(--trait); box-shadow: 0 0 0 1px var(--trait), 0 8px 0 rgba(29, 42, 58, 0.14); }
+.classe__barre { position: relative; display: block; height: 22px; background: var(--trait); }
+.classe__barre::before { content: ""; position: absolute; left: 12px; top: 8px; width: 7px; height: 7px; border-radius: 50%; background: var(--case-rouge); box-shadow: 12px 0 0 var(--case-ocre), 24px 0 0 var(--case-vert); }
+.classe__ecran img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; }
+.classe__telephone { position: absolute; right: -6%; bottom: 0; width: 23%; padding: 5px; border-radius: 20px; background: var(--sur-case-sombre); box-shadow: 0 0 0 1.5px rgba(255, 255, 255, .14) inset, var(--ombre-case); transform: rotate(3deg); }
+.classe__telephone img { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; border-radius: 15px; }
+.classe__apercu:hover .classe__ecran { box-shadow: 0 0 0 1.5px var(--ardoise), 0 8px 0 rgba(29, 42, 58, 0.14); }
+.classe__apercu:focus-visible { outline-offset: 6px; }
+.classe__titre { display: flex; align-items: center; gap: 10px; }
+.classe__icone { flex: none; width: 36px; height: 36px; border-radius: 9px; box-shadow: 0 0 0 1px var(--trait); }
+.classe--apercu .classe__titre { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.15; }
+.classe__appli { justify-self: start; display: inline-flex; align-items: center; gap: 7px; min-height: 32px; padding: 0 12px; border-radius: var(--angle-pastille); background: var(--craie); font-size: 13.5px; font-weight: 700; color: var(--ardoise); text-decoration: none; }
+.classe__appli:hover { text-decoration: underline; text-underline-offset: 3px; }
+@container (min-width: 760px) {
+  .classe--apercu { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; padding: var(--pas-6); column-gap: var(--pas-7); }
+}
+@media (max-width: 640px) {
+  .classe--apercu { padding: var(--pas-4); gap: var(--pas-5); }
+  .classe__telephone { padding: 3px; border-radius: 12px; right: -4%; width: 25%; }
+  .classe__telephone img { border-radius: 9px; }
+}

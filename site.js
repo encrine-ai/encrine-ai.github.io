@@ -181,6 +181,36 @@ var panneau = (function () {
   if (!liste) return;
   var source = liste.getAttribute('data-source') || 'classes.json';
   var limite = parseInt(liste.getAttribute('data-limite'), 10) || 0;
+  /* Les images de classes.json sont écrites depuis la racine du site : on les
+   * résout depuis l’adresse du fichier lui-même, quelle que soit la page. */
+  var base = new URL(source, location.href);
+  function adresse(chemin) { return new URL(chemin, base).href; }
+  /* Le bloc « Votre classe s’installe comme une appli » est sur l’accueil. */
+  var marque = document.querySelector('.entete .marque');
+  var accueil = marque && marque.getAttribute('href') !== '#' ? marque.getAttribute('href') : '';
+  var TELEPHONE = '<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><rect x="4" y="1" width="8" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 12.2h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>';
+
+  /* L’aperçu : l’accueil du site de la classe, vu sur un ordinateur, avec le
+   * téléphone posé devant. Champ `apercu` de classes.json. */
+  function apercu(c) {
+    var a = c.apercu;
+    if (!a || !a.ordinateur) return null;
+    var lien = texte('a', 'classe__apercu');
+    lien.href = c.site;
+    lien.setAttribute('aria-label', 'Voir le site de la classe « ' + c.titre + ' »');
+    var ecran = texte('span', 'classe__ecran');
+    ecran.appendChild(texte('span', 'classe__barre')).setAttribute('aria-hidden', 'true');
+    var img = document.createElement('img');
+    img.src = adresse(a.ordinateur); img.alt = a.alt || ''; img.width = 1280; img.height = 800; img.loading = 'lazy'; img.decoding = 'async';
+    ecran.appendChild(img); lien.appendChild(ecran);
+    if (a.telephone) {
+      var tel = texte('span', 'classe__telephone');
+      var it = document.createElement('img');
+      it.src = adresse(a.telephone); it.alt = ''; it.width = 390; it.height = 844; it.loading = 'lazy'; it.decoding = 'async';
+      tel.appendChild(it); lien.appendChild(tel);
+    }
+    return lien;
+  }
 
   function texte(balise, classe, contenu) {
     var el = document.createElement(balise);
@@ -202,7 +232,11 @@ var panneau = (function () {
   function reprenable(licence) { return /^CC BY(-SA)?(\s|$)/i.test(licence || ''); }
 
   function carte(c) {
-    var art = texte('article', 'classe' + (c.exemple ? ' classe--exemple' : ''));
+    var vue = apercu(c);
+    var art = texte('article', 'classe' + (c.exemple ? ' classe--exemple' : '') + (vue ? ' classe--apercu' : ''));
+    if (vue) art.appendChild(vue);
+    var carteArt = art;
+    if (vue) { art = texte('div', 'classe__corps'); carteArt.appendChild(art); }
     var frise = texte('div', 'frise'); frise.setAttribute('aria-hidden', 'true');
     var legende = texte('div', 'frise-legende'); legende.setAttribute('aria-hidden', 'true');
     c.milieux.forEach(function (m) {
@@ -211,7 +245,14 @@ var panneau = (function () {
     });
     art.appendChild(frise); art.appendChild(legende);
     if (c.exemple) art.appendChild(texte('p', 'classe__badge', 'Classe d’exemple'));
-    art.appendChild(texte('h3', 'classe__titre', c.titre));
+    var titre = texte('h3', 'classe__titre');
+    if (c.icone) {
+      var ic = document.createElement('img');
+      ic.className = 'classe__icone'; ic.src = adresse(c.icone); ic.alt = ''; ic.width = 36; ic.height = 36;
+      titre.appendChild(ic);
+    }
+    titre.appendChild(document.createTextNode(c.titre));
+    art.appendChild(titre);
     art.appendChild(texte('p', 'classe__sous', c.niveau + ' · ' + c.annee + ' · zone ' + c.zone));
     if (c.accroche) art.appendChild(texte('p', 'classe__accroche', c.accroche));
     art.appendChild(texte('p', 'cache', 'Les périodes : ' + c.milieux.map(function (m) { return m.nom; }).join(', ') + '.'));
@@ -220,6 +261,13 @@ var panneau = (function () {
       [c.verifie.attendus ? c.verifie.attendus + ' attendus du programme couverts' : null, c.verifie.pdf ? c.verifie.pdf + ' PDF' : null,
        c.verifie.pagination ? 'une page par fiche, vérifiée' : null].forEach(function (f) { if (f) faits.appendChild(texte('li', null, f)); });
       if (faits.children.length) art.appendChild(faits);
+    }
+    if (vue) {
+      var appli = texte('a', 'classe__appli');
+      appli.href = accueil + '#appli';
+      appli.innerHTML = TELEPHONE;
+      appli.appendChild(document.createTextNode('S’installe comme une appli'));
+      art.appendChild(appli);
     }
     var meta = 'Par ' + c.auteur + ' · licence ' + c.licence + (c.licence_note ? ' (' + c.licence_note + ')' : '');
     if (c.partagee_le) meta += ' · partagée le ' + date(c.partagee_le);
@@ -234,7 +282,7 @@ var panneau = (function () {
       actions.appendChild(partir);
     }
     art.appendChild(actions);
-    return art;
+    return carteArt;
   }
 
   fetch(source).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {

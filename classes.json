@@ -8,7 +8,13 @@
       "niveau": "Grande Section",
       "annee": "2026-2027",
       "zone": "C",
-      "accroche": "Un continent par période, de l’Europe aux pôles, avec Plume, la cigogne voyageuse. La période 1 est prête ; les autres continents arrivent période par période.",
+      "accroche": "Un continent par période, de l’Europe aux pôles, avec Plume, la cigogne voyageuse. Les cinq périodes sont prêtes : progressions, évaluations, fiches, imagier et cartes de vocabulaire.",
+      "apercu": {
+        "ordinateur": "assets/classes/tour-du-monde-ordinateur.webp",
+        "telephone": "assets/classes/tour-du-monde-telephone.webp",
+        "alt": "L’accueil du site « Le tour du monde » : un atlas ancien, le planisphère des cinq continents, chacun avec ses dates, et « Vous êtes ici » sur la période en cours."
+      },
+      "icone": "",
       "milieux": [
         {
           "nom": "l’Europe",
