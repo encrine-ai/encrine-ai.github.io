@@ -14,7 +14,7 @@
         "telephone": "assets/classes/tour-du-monde-telephone.webp",
         "alt": "L’accueil du site « Le tour du monde » : un atlas ancien, le planisphère des cinq continents, chacun avec ses dates, et « Vous êtes ici » sur la période en cours."
       },
-      "icone": "",
+      "icone": "assets/classes/tour-du-monde-icone.png",
       "milieux": [
         {
           "nom": "l’Europe",
