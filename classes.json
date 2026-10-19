@@ -2,8 +2,9 @@
   "version": 1,
   "classes": [
     {
-      "id": "gs-tour-du-monde-2026-2027",
+      "id": "tour-du-monde",
       "exemple": true,
+      "etat": "publiee",
       "titre": "Le tour du monde",
       "niveau": "Grande Section",
       "annee": "2026-2027",
@@ -15,6 +16,7 @@
         "alt": "L’accueil du site « Le tour du monde » : un atlas ancien, le planisphère des cinq continents, chacun avec ses dates, et « Vous êtes ici » sur la période en cours."
       },
       "icone": "assets/classes/tour-du-monde-icone.png",
+      "semaines": 36,
       "milieux": [
         {
           "nom": "l’Europe",
@@ -46,7 +48,14 @@
       "licence": "CC BY-SA 4.0",
       "licence_note": "sauf les pictogrammes ARASAAC, sous CC BY-NC-SA",
       "site": "https://encrine.ai/tour-du-monde/",
-      "depot": "encrine-ai/tour-du-monde"
+      "depot": "encrine-ai/tour-du-monde",
+      "copie": "encrine-ai/tour-du-monde",
+      "source": "encrine-ai/tour-du-monde",
+      "verifie": {
+        "commit": "3b8ac804bc4323ce0c13266085fe6c0d2b33a970"
+      },
+      "acceptee_le": null,
+      "demande": null
     }
   ]
 }

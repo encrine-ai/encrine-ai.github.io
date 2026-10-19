@@ -107,7 +107,7 @@ var SECTIONS = [
 document.querySelectorAll('[data-lien="modele"]').forEach(function (a) { a.href = MODELE; });
 document.querySelectorAll('[data-lien="exemple"]').forEach(function (a) { a.href = LIENS.exemple; });
 document.querySelectorAll('[data-lien="signaler"]').forEach(function (a) {
-  a.href = 'https://github.com/' + LIENS.proprietaire + '/' + LIENS.accueil + '/issues/new?title=' + encodeURIComponent('Signaler une classe');
+  a.href = 'https://github.com/' + LIENS.proprietaire + '/' + LIENS.accueil + '/issues/new?template=signaler-une-classe.yml';
 });
 
 /* 3. Le panneau : un seul <dialog>, rempli selon le bouton qui l’ouvre. « Créer
@@ -170,11 +170,14 @@ var panneau = (function () {
 })();
 
 /* 4. La galerie : classes.json (l’adresse est dans data-source). La classe
- * d’exemple d’abord (exemple: true), puis les classes partagées. Chaque carte
+ * d’exemple d’abord (exemple: true), puis les classes partagées ; une carte
+ * retirée (etat: "retiree") ne se montre pas. Chaque carte mène à la copie
+ * relue de la classe (`site`, `depot` : encrine-ai/<id>), crédite son auteur
+ * (« Par <auteur> », vers son dépôt `source`, et son site `source_site`) et
  * prend les couleurs de son thème. « Partir de cette classe » n’apparaît que si
  * la fiche donne son dépôt (`depot`) et une licence qui permet la reprise
- * (CC BY ou CC BY-SA). data-limite ne montre que les premières cartes (la page
- * Design system n’en montre qu’une). */
+ * (CC0, CC BY ou CC BY-SA). data-limite ne montre que les premières cartes (la
+ * page Design system n’en montre qu’une). */
 (function () {
   var liste = document.getElementById('liste-classes');
   if (!liste) return;
@@ -229,8 +232,11 @@ var panneau = (function () {
     var m = d.trim().replace(/^https?:\/\/github\.com\//i, '').replace(/\/+$/, '').replace(/\.git$/, '').match(/^([A-Za-z0-9-]+)\/([A-Za-z0-9._-]+)$/);
     return m ? { proprietaire: m[1], nom: m[2] } : null;
   }
-  /* CC BY ou CC BY-SA : ni NC, ni ND. */
-  function reprenable(licence) { return /^CC BY(-SA)?(\s|$)/i.test(licence || ''); }
+  /* CC0, CC BY ou CC BY-SA : ni NC, ni ND. */
+  function reprenable(licence) { return /^CC(0| BY(-SA)?)(\s|$)/i.test(licence || ''); }
+  /* Une adresse https, et rien d’autre (classes.json est relu, mais on ne fait
+   * jamais un lien d’une valeur qui n’en est pas un). */
+  function https(u) { return typeof u === 'string' && /^https:\/\//.test(u) ? u : null; }
 
   function carte(c) {
     var vue = apercu(c);
@@ -272,9 +278,24 @@ var panneau = (function () {
       appli.appendChild(document.createTextNode('S’installe comme une appli'));
       art.appendChild(appli);
     }
-    var meta = 'Par ' + c.auteur + ' · licence ' + c.licence + (c.licence_note ? ' (' + c.licence_note + ')' : '');
-    if (c.partagee_le) meta += ' · partagée le ' + date(c.partagee_le);
-    art.appendChild(texte('p', 'classe__meta', meta));
+    /* « Par <auteur> », vers le dépôt de l’enseignant (`source`), puis son site. */
+    var meta = texte('p', 'classe__meta', 'Par ');
+    var source = depot(c.source);
+    if (source) {
+      var auteur = texte('a', null, c.auteur);
+      auteur.href = 'https://github.com/' + source.proprietaire + '/' + source.nom;
+      auteur.title = 'Son dépôt sur GitHub';
+      meta.appendChild(auteur);
+    } else meta.appendChild(document.createTextNode(c.auteur));
+    if (https(c.source_site)) {
+      meta.appendChild(document.createTextNode(' ('));
+      var sienne = texte('a', null, 'son site'); sienne.href = c.source_site; meta.appendChild(sienne);
+      meta.appendChild(document.createTextNode(')'));
+    }
+    var suite = ' · licence ' + c.licence + (c.licence_note ? ' (' + c.licence_note + ')' : '');
+    if (c.partagee_le) suite += ' · partagée le ' + date(c.partagee_le);
+    meta.appendChild(document.createTextNode(suite));
+    art.appendChild(meta);
     var actions = texte('div', 'boutons classe__actions');
     var voir = texte('a', 'bouton bouton--principal bouton--petit', 'Voir la classe'); voir.href = c.site; actions.appendChild(voir);
     var d = depot(c.depot);
@@ -290,7 +311,7 @@ var panneau = (function () {
 
   fetch(source).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
     liste.textContent = '';
-    var classes = d.classes.slice().sort(function (a, b) { return (b.exemple ? 1 : 0) - (a.exemple ? 1 : 0); });
+    var classes = d.classes.filter(function (c) { return !c.etat || c.etat === 'publiee'; }).sort(function (a, b) { return (b.exemple ? 1 : 0) - (a.exemple ? 1 : 0); });
     if (limite) classes = classes.slice(0, limite);
     classes.forEach(function (c) { liste.appendChild(carte(c)); });
     if (!limite && !classes.some(function (c) { return !c.exemple; })) {

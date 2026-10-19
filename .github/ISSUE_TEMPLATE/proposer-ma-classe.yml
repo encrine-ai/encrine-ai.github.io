@@ -1,0 +1,70 @@
+name: "Propose my class · Proposer ma classe"
+description: "Share your Encrine class in the gallery: once reviewed and accepted, Encrine hosts a reviewed copy at encrine.ai. · Partager sa classe dans la galerie d'Encrine."
+title: "Partage : "
+labels: ["share-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **The easiest way is to ask your agent, in your class: _« je voudrais partager ma classe »_** (skill `partager-ma-classe`). It runs the checks and fills in this form for you.
+        **Le plus simple : demande à ton agent, dans ta classe, « je voudrais partager ma classe ».** Il fait les contrôles et remplit ce formulaire pour toi.
+
+        What happens next: a reviewer checks the exact version below (the programme, one page per sheet, image licences, and above all safety for children). If the gallery owner accepts it, Encrine copies your class at that version into `encrine-ai`, publishes the copy at `https://encrine.ai/<name>/` with its card, credited to you. Your own repository is never touched; the copy changes only when you propose an update, and it is taken down whenever you ask.
+
+        > **No pupil data, ever** — no pupil's first or last name, no photo of a child (even blurred or from behind), no scanned pupil work, no class list. A class that contains any is refused.
+        > **Aucune donnée d'élève** — ni prénom ni nom d'élève, ni photo d'enfant (même floutée, même de dos), ni production d'élève scannée, ni liste de classe.
+  - type: input
+    id: classe
+    attributes:
+      label: "Class repository · Dépôt de la classe"
+      description: "owner/repository on GitHub · propriétaire/dépôt"
+      placeholder: "martin/il-etait-une-fois"
+    validations:
+      required: true
+  - type: input
+    id: site
+    attributes:
+      label: "Your class site · Le site de ta classe"
+      placeholder: "https://martin.github.io/il-etait-une-fois/"
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: "Version to review (commit) · Version à relire"
+      description: "The commit of your default branch that the review covers — filled in by your agent. · Le commit relu, rempli par ton agent."
+    validations:
+      required: true
+  - type: textarea
+    id: marque
+    attributes:
+      label: "Marker (filled in by your agent — leave as is) · Marque (laisser telle quelle)"
+      description: "<!-- partage v1 genre=<ajout|mise-a-jour|retrait> classe=<owner/repo> commit=<sha> moteur=<version> -->"
+    validations:
+      required: true
+  - type: textarea
+    id: fiche
+    attributes:
+      label: "Class card · La fiche de la classe"
+      description: "JSON, with the gallery's field names (titre, niveau, annee, zone, auteur, licence, licence_note, accroche, semaines, milieux, site, depot, verifie, partagee_le)."
+      render: json
+    validations:
+      required: true
+  - type: textarea
+    id: controles
+    attributes:
+      label: "Checks output · Sortie des contrôles"
+      description: "couverture.py, verifier-pagination.py, verifier-partage.py, chercher-pictos.py verifier — as your agent ran them today."
+      render: text
+  - type: checkboxes
+    id: consentement
+    attributes:
+      label: "Consent · Consentement"
+      description: "Only the owner of the class repository (or one of its contributors) can give it. · Seul le propriétaire du dépôt (ou un contributeur) peut le donner."
+      options:
+        - label: "I agree that Encrine hosts a reviewed copy of my class at encrine.ai, shows it in its gallery credited with the author name in the card above, and lets other teachers start from it under its licence. Encrine takes it down whenever I ask. · J'accepte qu'Encrine héberge une copie relue de ma classe sur encrine.ai, la montre dans sa galerie au nom d'auteur de la fiche, et que d'autres enseignants en partent selon sa licence. Encrine la retire dès que je le demande."
+          required: true
+        - label: "My class contains no pupil data: no pupil's name, no photo of a child, no pupil work. · Ma classe ne contient aucune donnée d'élève."
+          required: true
+        - label: "Every image and text in my class may be shared under its licence (no album text or song lyrics copied). · Chaque image et chaque texte peuvent être partagés sous sa licence."
+          required: true

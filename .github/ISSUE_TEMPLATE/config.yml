@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: "Write to Encrine · Écrire à Encrine"
+    url: https://encrine.ai/contact/
+    about: "A question, an idea, the press, or a problem you would rather not report in public. · Une question, une idée, ou un problème à signaler sans passer par une page publique."
+  - name: "The engine (create your own class) · Le moteur"
+    url: https://github.com/encrine-ai/moteur
+    about: "Ideas and bugs of the tool itself: ask your agent « signale ce problème » in your class. · Les idées et défauts de l'outil : demande à ton agent « signale ce problème »."

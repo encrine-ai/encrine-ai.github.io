@@ -1,0 +1,42 @@
+name: "Report a class · Signaler une classe"
+description: "Something wrong in a class of the gallery: unsuitable for children, a pupil's name, a copied work, a wrong licence — or you are its author and want it removed. · Un problème dans une classe de la galerie."
+title: "Signaler une classe : "
+labels: ["safety-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. A safety problem takes the class out of the gallery while we check. **Please do not paste the problematic content or a child's name here** (this page is public): say where it is (page, sheet, image).
+        Merci. Un problème de sécurité retire la classe de la galerie le temps de vérifier. **Ne recopie pas ici le contenu en cause ni un prénom d'enfant** (cette page est publique) : dis seulement où il se trouve.
+
+        You can also write to hello@encrine.ai. · Tu peux aussi écrire à hello@encrine.ai.
+  - type: input
+    id: classe
+    attributes:
+      label: "Which class? · Quelle classe ?"
+      description: "Its title or its address · Son titre ou son adresse"
+      placeholder: "https://encrine.ai/il-etait-une-fois/"
+    validations:
+      required: true
+  - type: dropdown
+    id: probleme
+    attributes:
+      label: "What is the problem? · Quel est le problème ?"
+      options:
+        - "Pupil data (a name, a photo of a child, pupil work) · Une donnée d'élève"
+        - "An image or a text unsuitable for children · Une image ou un texte inadapté"
+        - "A copied work (album text, song, character) · Une œuvre recopiée"
+        - "A wrong licence or credit · Une licence ou un crédit faux"
+        - "A link or an ad that should not be there · Un lien ou une publicité"
+        - "I am the author: please remove my class · Je suis l'auteur : retirez ma classe"
+        - "Something is broken · Quelque chose ne marche pas"
+        - "Other · Autre"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: "Where, and what did you see? · Où, et qu'as-tu vu ?"
+      description: "The page, the sheet or the image — without copying the content itself. · La page, la fiche ou l'image, sans recopier le contenu."
+    validations:
+      required: true

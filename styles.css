@@ -244,6 +244,7 @@ h1 { font-size: clamp(36px, 5.2vw, 60px); line-height: 1.04; font-weight: 700; l
 .classe__faits li { padding: 3px 10px; border-radius: var(--angle-pastille); border: 1.5px solid var(--trait); font-size: 13px; font-weight: 600; }
 .classe__faits li::before { content: "✓ "; color: var(--case-vert); font-weight: 800; }
 .classe__meta { margin: 0; font-size: 13px; color: var(--ardoise-douce); }
+.classe__meta a { color: var(--ardoise); }
 .classes__attente { color: var(--ardoise-douce); }
 .classes__signaler { margin: var(--pas-5) 0 0; font-size: 14.5px; color: var(--ardoise-douce); }
 .classes__signaler a { color: var(--ardoise); font-weight: 700; }
