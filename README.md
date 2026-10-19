@@ -1,6 +1,21 @@
+<p align="center">
+  <a href="https://encrine.ai"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-encrine-craie.svg">
+    <img src="assets/logo-encrine.svg" alt="Encrine" width="260">
+  </picture></a>
+</p>
+
+<p align="center">
+  <strong>Case après case, votre année de classe.</strong><br>
+  <a href="https://encrine.ai">encrine.ai</a> ·
+  <a href="https://github.com/encrine-ai/moteur">Le moteur</a> ·
+  <a href="https://encrine.ai/tour-du-monde/">La classe d’exemple</a> ·
+  <a href="https://encrine.ai/design/">Design system</a>
+</p>
+
 # La page d'accueil d'Encrine
 
-Le site https://encrine.ai : il explique le principe, guide l'enseignant qui veut créer sa classe, et montre « Les classes » que des enseignants ont choisi de partager. Une classe partagée reste dans le dépôt de son auteur, qui peut la retirer à tout moment ; cette page n'en garde qu'une fiche.
+Ce dépôt est le site **https://encrine.ai**, publié tel quel par GitHub Pages : il explique le principe, guide l'enseignant qui veut créer sa classe, et montre « Les classes » que des enseignants ont choisi de partager. Une classe partagée reste dans le dépôt de son auteur, qui peut la retirer à tout moment ; cette page n'en garde qu'une fiche.
 
 Site statique, sans étape de fabrication : `index.html`, `styles.css`, `site.js` (le script commun aux pages : l'en-tête, le menu du téléphone, le panneau, la galerie), `classes.json` (les classes partagées), les trois pages `contact/`, `mentions-legales/` et `confidentialite/`, la page `design/` (le design system), `assets/` (logos ; `icone-onglet.svg`, l'icône d'onglet, les trois cases sans fond ; `icone-encrine.svg`, la même sur fond ardoise, pour `apple-touch-icon`, où un fond est obligatoire), `fonts/` (Marelle, Unbounded et Figtree, toutes servies par le site : aucune requête vers un service tiers, ce que la page Confidentialité affirme). Le style suit le design system Encrine, « Le parcours ».
 
