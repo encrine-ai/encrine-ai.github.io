@@ -77,3 +77,24 @@ avant de toucher à quoi que ce soit.
 - Le proxy de la session refuse les écritures destructives (supprimer une
   branche distante, créer un dépôt, parfois forker) : le dire, donner au
   propriétaire le lien ou le réglage exact, ne pas contourner.
+
+## Avec Ludea : des nouvelles et des questions, rien de plus
+
+Encrine et Ludea (https://ludea.ai, organisation `ludea-ai`) ont le même
+propriétaire et la même mécanique, mais chacun garde son périmètre (décidé
+le 19 octobre 2026) : une session d'Encrine ne lit, ne vérifie et ne modifie
+jamais un dépôt de `ludea-ai`, et Ludea fait de même ici. Les deux sessions
+principales gardent seulement un canal entre elles :
+
+- **des nouvelles** : quand quelque chose fait pour Encrine pourrait servir
+  à Ludea, un court message à sa session principale — ce qu'on a fait,
+  pourquoi, où le trouver ;
+- **des questions** : chacun peut demander à l'autre comment il a fait une
+  chose ; celui qui reçoit répond (ce qu'il a fait, comment, ce qu'il peut
+  partager).
+
+Celui qui reçoit décide seul, avec le propriétaire, s'il reprend quelque
+chose, et le fait dans son propre périmètre. Les adresses des sessions
+principales ne s'écrivent pas ici (elles changent) : le propriétaire les
+donne. Côté Ludea, la même règle est écrite dans le README de
+`ludea-ai/agents`.
