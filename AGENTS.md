@@ -71,6 +71,11 @@ avant de toucher à quoi que ce soit.
   site a été vérifié (captures à 390 × 844 et 1280 × 800, aucune ressource
   en 404) ; confirmer sur pièces (`git log origin/main`) et attendre le
   déploiement vert.
+- Les sessions Claude Code sur le web peuvent pousser une branche
+  `claude/…` à elles : le travail, lui, va sur `main`, et le workflow
+  `menage-branches` (copie de celui du moteur) supprime ces branches une
+  fois intégrées à `main` — jamais une autre, jamais une `claude/…` qui
+  garde un commit absent de `main`. Plus besoin de les supprimer à la main.
 - **Langues** : les fichiers et les commits en français ; tout ce qui
   s'écrit sur GitHub (issues, demandes de fusion, commentaires, étiquettes,
   formulaires d'issue) en anglais — avec une phrase en français quand on
